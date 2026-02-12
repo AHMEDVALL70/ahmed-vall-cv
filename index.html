@@ -1,144 +1,95 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Vall - Professional Profile</title>
+    <title>Ahmed Vall Jemal Dine Sidina - Professional CV</title>
     <style>
-        /* تنسيق الصفحة العام */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f7f6;
-            color: #333;
-            padding: 20px;
-        }
-
-        /* تنسيق الجداول */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #003366;
-            color: white;
-        }
-
-        /* تنسيق زر واتساب */
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white !important;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            margin-top: 10px;
-        }
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-        }
-        
-        h2, h3 { color: #003366; }
-        /* تنسيقات خاصة للجوال فقط */
-@media screen and (max-width: 600px) {
-    body {
-        padding: 10px; /* تقليل المسافات الجانبية */
-        font-size: 14px; /* تصغير الخط قليلاً */
-    }
-    table {
-        display: block;
-        overflow-x: auto; /* يسمح بسحب الجدول يميناً ويساراً فقط إذا كان كبيراً */
-    }
-    .whatsapp-btn {
-        width: 100%; /* الزر يأخذ عرض الشاشة بالكامل ليسهل الضغط عليه */
-        justify-content: center;
-    }
-}
+        :root { --primary-color: #1a5f7a; --secondary-color: #d35400; --bg-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: var(--bg-color); }
+        .container { max-width: 900px; margin: auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { color: var(--primary-color); margin: 10px 0; text-transform: uppercase; font-size: 26px; }
+        h2 { color: var(--primary-color); border-left: 5px solid var(--primary-color); padding-left: 15px; margin-top: 30px; text-transform: uppercase; font-size: 20px; border-bottom: none; }
+        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: #666; font-size: 0.9em; margin-top: 10px; }
+        .exp-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; position: relative; }
+        .exp-title { font-weight: bold; color: var(--secondary-color); font-size: 1.1em; }
+        .exp-company { font-weight: 600; color: #444; }
+        .exp-date { color: #888; font-size: 0.85em; float: right; }
+        .skills-grid { display: flex; gap: 20px; margin-top: 15px; }
+        .skill-category { flex: 1; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+        .whatsapp-btn { display: inline-flex; align-items: center; background-color: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; }
+        @media (max-width: 600px) { .exp-date { float: none; display: block; } .skills-grid { flex-direction: column; } }
     </style>
 </head>
 <body>
 
-    <h1 style="color: #003366;">Professional Profile</h1>
-    
-    <p>My name is <strong>Ahmed Vall Jemal Dine Sidina</strong>.</p>
-    <p>I am a <b>State Engineer</b> specializing in maintenance and electronics.</p>
+<div class="container">
+    <div class="header">
+        <h1>Ahmed Vall Jemal Dine Sidina</h1>
+        <p><strong>State Engineer | Diplomat | Biometrics Specialist</strong></p>
+        <div class="contact-info">
+            <span>📧 ahmedvalljemaldine@gmail.com</span>
+            <span>📞 +974 7473 6271</span>
+            <span>📍 Umm Salal, Qatar</span>
+        </div>
+    </div>
 
-    <h2>Professional Skills:</h2>
+    <h2>Professional Experience</h2>
+
+    <div class="exp-item">
+        <span class="exp-date">2019 – 2024</span>
+        <div class="exp-title">Deputy Consul General of Mauritania</div>
+        <div class="exp-company">Consulate General of Mauritania | Jeddah, Saudi Arabia</div>
+        <p>In charge of Civil Status and secure document services for the Mauritanian community.</p>
+    </div>
+
+    <div class="exp-item">
+        <span class="exp-date">2016 – 2018</span>
+        <div class="exp-title">Member of the Internal Procurement Committee (CIMAC)</div>
+        <div class="exp-company">National Agency (ANRPTS) | Mauritania</div>
+        <p>Supervised internal agency transactions and public tenders.</p>
+    </div>
+
+    <div class="exp-item">
+        <span class="exp-date">2002 – 2005</span>
+        <div class="exp-title">Network Administrator & IT Supervisor</div>
+        <div class="exp-company">Dar Al-Computer</div>
+        <p>Responsible for network management and computer maintenance across several regions.</p>
+    </div>
+
+    <h2>Technical & Managerial Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <strong>Technical Expertise</strong>
+            <ul>
+                <li>Biometrics & Secure Systems</li>
+                <li>Network Installation (LAN, WAN, MAN)</li>
+                <li>Cisco Router Configuration (PIX)</li>
+                <li>Advanced IT Maintenance</li>
+            </ul>
+        </div>
+        <div class="skill-category">
+            <strong>Management & Governance</strong>
+            <ul>
+                <li>Public Tenders & Procurement</li>
+                <li>Results-Based Management (RBM)</li>
+                <li>Human & Financial Resources</li>
+                <li>Project Planning & Evaluation</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Education</h2>
     <ul>
-        <li>Electronic Maintenance & Repair</li>
-        <li>Computer Systems Engineering</li>
-        <li>Technical Team Management</li>
+        <li><strong>State Engineer (B.Sc. + 5) in Electronics and Digital Development</strong> - Al Jabal AL Gharbi University, Libya (1997)</li>
+        <li><strong>Diploma in Business Administration</strong> - United Academy, Egypt (2021)</li>
     </ul>
 
-    <h2>Languages:</h2>
-    <ul>
-        <li>Arabic (Native)</li>
-        <li>French (Professional)</li>
-        <li>English (Learning - Lesson 7)</li>
-    </ul>
-
-    <h2>Professional Experience:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Year</th>
-                <th>Position</th>
-                <th>Location</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2016 - 2026</td>
-                <td>State Engineer / Maintenance Expert</td>
-                <td>Uganda / Mauritania</td>
-            </tr>
-            <tr>
-                <td>Previous</td>
-                <td>Electronics Technician</td>
-                <td>Technical Department</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <hr>
-
-    <h3>Contact Information:</h3>
-    
-    <a href="https://wa.me/222484440041" target="_blank" class="whatsapp-btn">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" style="width:20px; height:20px; margin-right:10px;">
-        تواصل عبر واتساب
-    </a>
-
-    <br><br>
-
-    <a href="mailto:a.jsidina@icloud.com" style="text-decoration: none; color: #0056b3; font-weight: bold;">
-        ✉️ Contact Me via Email
-    </a>
-
-    <p style="background-color: #e8f5e9; padding: 15px; border-left: 5px solid green; margin-top: 20px;">
-        <strong>Status:</strong> I am currently developing this website to showcase my engineering skills.
-    </p>
-
-    <h3>My Maintenance Workflow:</h3>
-    <ol>
-        <li>Diagnosing the hardware issues.</li>
-        <li>Checking the electrical circuits using a <b>Multimeter</b>.</li>
-        <li>Replacing the broken parts.</li>
-        <li>Testing the system after fixing.</li>
-    </ol>
+    <div style="text-align: center;">
+        <a href="https://wa.me/97474736271" class="whatsapp-btn">Connect via WhatsApp</a>
+    </div>
+</div>
 
 </body>
 </html>
