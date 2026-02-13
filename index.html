@@ -9,6 +9,18 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: var(--bg-color); }
         .container { max-width: 900px; margin: auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         .header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
+        
+        /* تنسيق الصورة الشخصية */
+        .profile-img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid var(--primary-color); 
+            margin-bottom: 15px;
+            background-color: #eee;
+        }
+
         h1 { color: var(--primary-color); margin: 10px 0; text-transform: uppercase; font-size: 26px; }
         h2 { color: var(--primary-color); border-left: 5px solid var(--primary-color); padding-left: 15px; margin-top: 30px; text-transform: uppercase; font-size: 20px; border-bottom: none; }
         .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: #666; font-size: 0.9em; margin-top: 10px; }
@@ -26,6 +38,8 @@
 
 <div class="container">
     <div class="header">
+        <img src="my-photo.jpg" alt="Ahmed Vall" class="profile-img" onerror="this.src='my-photo.JPG'">
+        
         <h1>Ahmed Vall Jemal Dine Sidina</h1>
         <p><strong>State Engineer | Diplomat | Biometrics Specialist</strong></p>
         <div class="contact-info">
