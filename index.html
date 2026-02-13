@@ -25,6 +25,12 @@
         .progress-bar { background: #e0e0e0; border-radius: 10px; height: 8px; overflow: hidden; }
         .progress { background: var(--primary); height: 100%; border-radius: 10px; }
 
+        /* تنسيق المشاريع الجديد */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px; }
+        .project-card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; border-left: 5px solid var(--primary); border: 1px solid #eee; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        .tag { display: inline-block; background: #e9ecef; padding: 4px 10px; border-radius: 15px; font-size: 0.75rem; margin-top: 10px; font-weight: bold; color: var(--primary); }
+
         /* تنسيق الأزرار */
         .btn-container { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 15px; }
         .btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; transition: 0.3s; }
@@ -90,6 +96,20 @@
         </div>
     </div>
 
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>Network Infrastructure Design</h3>
+            <p>Designed and implemented a secure network for a local firm using Cisco devices.</p>
+            <span class="tag">Networking</span>
+        </div>
+        <div class="project-card">
+            <h3>Biometric System Integration</h3>
+            <p>Managed secure identification systems for public community services.</p>
+            <span class="tag">Biometrics</span>
+        </div>
+    </div>
+
     <h2>Honors & Education</h2>
     <div class="skill-category">
         <ul>
@@ -97,6 +117,12 @@
             <li><strong>State Engineer in Electronics</strong> - Al Jabal AL Gharbi University (1997)</li>
             <li>Professional Certificate in Public Tenders Management (RBM)</li>
         </ul>
+    </div>
+
+    <h2>Recognition & Awards</h2>
+    <div style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 12px; margin-top: 15px;">
+        <img src="award.jpg" alt="Award Ceremony" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+        <p style="margin-top: 15px; color: #666; font-style: italic;">Moment from the award ceremony</p>
     </div>
 
     <div class="btn-container">
