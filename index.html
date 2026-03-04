@@ -44,9 +44,11 @@
 
         /* Quran Radio Section */
         .radio-section { margin-top: 60px; padding: 35px; background: #fdfaf1; border-radius: 20px; text-align: center; border: 2px solid var(--gold); box-shadow: 0 15px 40px rgba(225, 192, 122, 0.2); }
-        .radio-title { color: #8d6e63; font-size: 1.7em; margin-bottom: 10px; font-weight: bold; }
         .radio-dedication { font-size: 1.2em; color: #5d4037; font-weight: bold; margin-bottom: 25px; line-height: 1.5; }
-        audio { width: 100%; height: 50px; outline: none; }
+        
+        /* --- التعديل: تصحيح حجم الإذاعة هنا --- */
+        .iframe-wrapper { width: 100%; height: 160px; overflow: hidden; border-radius: 12px; border: 1px solid #eee; background: white; }
+        .iframe-wrapper iframe { width: 100%; height: 160px; border: none; }
         
         /* Counter & Buttons */
         .counter-badge { background: var(--primary); color: white; display: inline-block; padding: 8px 30px; border-radius: 50px; font-weight: bold; margin-top: 20px; font-size: 1.1em; }
@@ -133,7 +135,8 @@
         <img src="award.jpg" alt="Award Ceremony" style="max-width: 100%; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
         <p style="font-style: italic; color: #777; margin-top: 15px;">Awarded for excellence in diplomatic and technical service.</p>
     </div>
-<div class="radio-section">
+
+    <div class="radio-section">
         <div class="radio-dedication">
             صدقة جارية عن الوالدين الكريمين:<br>
             جمال الدين سيدينا & فاطمة بنت سيدي حمود (رحمهما الله)
@@ -143,28 +146,29 @@
         </div>
         
         <div style="margin-top: 20px;">
-            <span style="background: var(--primary); color: white; padding: 8px 25px; border-radius: 50px; font-weight: bold;">
+            <span class="counter-badge">
                 الزوار: <span id="v-count">0</span>
             </span>
         </div>
     
-    <div class="btn-group">
-        <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;" download>
-            <i class="fas fa-file-pdf"></i> تحميل السيرة (العربية)
-        </a>
-        <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #1a5f7a;" download>
-            <i class="fas fa-file-pdf"></i> Download CV (English)
-        </a>
-         <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;" download>
-            <i class="fas fa-file-pdf"></i> Download CV (French)
-        </a>
+        <div class="btn-group">
+            <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;" download>
+                <i class="fas fa-file-pdf"></i> تحميل السيرة (العربية)
+            </a>
+            <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #1a5f7a;" download>
+                <i class="fas fa-file-pdf"></i> Download CV (English)
+            </a>
+            <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;" download>
+                <i class="fas fa-file-pdf"></i> Download CV (French)
+            </a>
+        </div>
     </div>
 </div>
 
 <script>
-    // Visit Counter logic using LocalStorage
-    const countDisplay = document.getElementById('visit-count');
-    const storageKey = 'ahmed_vall_ultimate_v5';
+    /* --- التعديل: ربط العداد بالـ ID الصحيح --- */
+    const countDisplay = document.getElementById('v-count');
+    const storageKey = 'ahmed_vall_views_final';
     let currentViews = localStorage.getItem(storageKey) || 195;
     currentViews = parseInt(currentViews) + 1;
     localStorage.setItem(storageKey, currentViews);
