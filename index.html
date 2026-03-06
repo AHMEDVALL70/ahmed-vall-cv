@@ -1,4 +1,3 @@
-٠٦—٢-٢٠٢٦
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +193,7 @@
     }
 
     // عداد زوار بسيط (يحفظ في المتصفح)
-    let count = localStorage.getItem('site_visits') || 217;
+    let count = localStorage.getItem('site_visits') || 370;
     count = parseInt(count) + 1;
     localStorage.setItem('site_visits', count);
     document.getElementById('v_count').innerText = count;
@@ -225,7 +224,7 @@
     /* --- التعديل: ربط العداد بالـ ID الصحيح --- */
     const countDisplay = document.getElementById('v-count');
     const storageKey = 'ahmed_vall_views_final';
-    let currentViews = localStorage.getItem(storageKey) || 195;
+    let currentViews = localStorage.getItem(storageKey) || 370;
     currentViews = parseInt(currentViews) + 1;
     localStorage.setItem(storageKey, currentViews);
     countDisplay.innerText = currentViews;
