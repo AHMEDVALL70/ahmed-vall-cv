@@ -1,9 +1,10 @@
+٠٦—٢-٢٠٢٦
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Vall Sidina - Professional Portfolio</title>
+    <title>Ahmeçd Vall Sidina - Professional Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #1a5f7a; --secondary: #d35400; --bg: #f4f7f6; --text: #333; --gold: #e1c07a; }
@@ -141,51 +142,62 @@
     <div style="margin-bottom: 25px;">
         <h2 style="color: #1a5f7a; font-size: 1.8em; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">صدقة جارية عن الوالدين الكريمين</h2>
         
-      <div style="text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif; direction: rtl;">
+      <div style="text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif; direction: rtl; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
     
-    <div style="font-size: 1.5em; color: #2c3e50; font-weight: bold; background: #fdfaf5; padding: 15px 25px; border-radius: 10px; display: inline-block; border-right: 5px solid #d4af37; margin-bottom: 20px;">
+    <div style="font-size: 1.4em; color: #2c3e50; font-weight: bold; background: #fdfaf5; padding: 15px 20px; border-radius: 10px; display: inline-block; border-right: 5px solid #d4af37; margin-bottom: 20px; width: 90%;">
         جمال الدين سيدينا و فاطمة بنت سيدي حمود 
         <br>
         <span style="font-size: 0.7em; color: #7f8c8d; font-weight: normal; margin-top: 10px; display: block;">(رحمهما الله وأسكنهما فسيح جناته)</span>
     </div>
 
-    <div style="background: #f4f7f9; padding: 20px; border-radius: 15px; border: 1px solid #e1e8ed; max-width: 500px; margin: 0 auto;">
+    <div style="background: #f4f7f9; padding: 20px; border-radius: 15px; border: 1px solid #e1e8ed;">
         <p style="margin-bottom: 15px; color: #1a5f7a; font-weight: bold; font-size: 1.1em;">
-             إذاعة القرآن الكريم - بث مباشر
+            <i class="fas fa-quran"></i> إذاعة القرآن الكريم - بث مباشر
         </p>
 
-        <div style="margin-bottom: 15px; display: flex; gap: 8px; justify-content: center;">
-            <button onclick="updateAudio('https://backup.qurango.net/radio/badr_alturki')" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #1a5f7a; color: white;">الشيخ بدر التركي</button>
-            <button onclick="updateAudio('https://backup.qurango.net/radio/ahmad_al_alhuthaifi')" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a;">الشيخ أحمد طالب</button>
+        <div style="margin-bottom: 15px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="changeRadio('https://qurango.net/radio/mix', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #1a5f7a; color: white; font-size: 0.9em;">الإذاعة العامة</button>
+            <button onclick="changeRadio('https://qurango.net/radio/badr_alturki', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ بدر التركي</button>
+            <button onclick="changeRadio('https://qurango.net/radio/ahmad_al_alhuthaifi', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ أحمد طالب</button>
         </div>
 
-        <audio id="quran-player" controls style="width: 100%; height: 50px; border-radius: 30px;">
-            <source id="audio-source" src="https://backup.qurango.net/radio/badr_alturki" type="audio/mpeg">
+        <audio id="quranPlayer" controls style="width: 100%; height: 50px; border-radius: 30px;">
+            <source id="quranSrc" src="https://qurango.net/radio/mix" type="audio/mpeg">
             متصفحك لا يدعم تشغيل الصوت.
         </audio>
+    </div>
+
+    <div style="margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        
+        
     </div>
 </div>
 
 <script>
-    function updateAudio(url) {
-        var audio = document.getElementById('quran-player');
-        var source = document.getElementById('audio-source');
+    // وظيفة تبديل البث المباشر
+    function changeRadio(url, btn) {
+        var audio = document.getElementById('quranPlayer');
+        var source = document.getElementById('quranSrc');
         
-        // تحديث الرابط
         source.src = url;
-        audio.pause();
         audio.load();
-        
-        // محاولة التشغيل مع معالجة قيود المتصفح
-        var playPromise = audio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                // بدأ التشغيل بنجاح
-            }).catch(error => {
-                console.log("التشغيل التلقائي يحتاج ضغطة زر من المستخدم");
-            });
+        audio.play();
+
+        // تحديث شكل الأزرار
+        var buttons = btn.parentElement.getElementsByTagName('button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].style.background = "white";
+            buttons[i].style.color = "#1a5f7a";
         }
+        btn.style.background = "#1a5f7a";
+        btn.style.color = "white";
     }
+
+    // عداد زوار بسيط (يحفظ في المتصفح)
+    let count = localStorage.getItem('site_visits') || 217;
+    count = parseInt(count) + 1;
+    localStorage.setItem('site_visits', count);
+    document.getElementById('v_count').innerText = count;
 </script>
 
     <div style="margin-top: 25px;">
