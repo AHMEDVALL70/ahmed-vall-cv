@@ -154,7 +154,7 @@
                 <button onclick="changeRadio('https://backup.qurango.net/radio/ahmad_al_alhuthaifi', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ أحمد طالب</button>
             </div>
 
-            <audio id="quranPlayer" controls preload="none" style="width: 100%; height: 50px; border-radius: 30px;">
+            <audio id="quranPlayer" controls style="width: 100%; height: 50px; border-radius: 30px;">
                 <source id="quranSrc" src="https://backup.qurango.net/radio/mix" type="audio/mpeg">
             </audio>
         </div>
@@ -176,20 +176,10 @@
         var audio = document.getElementById('quranPlayer');
         var source = document.getElementById('quranSrc');
         
-        // السر هنا: يجب تصفير المصدر تماماً قبل وضع الجديد
         audio.pause();
         source.src = url;
         audio.load();
-        
-        // محاولة التشغيل مع معالجة قيود المتصفح
-        var playPromise = audio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                // بدأ التشغيل
-            }).catch(error => {
-                console.log("اضغط زر التشغيل يدوياً");
-            });
-        }
+        audio.play().catch(function(e) { console.log("تحتاج تشغيل يدوي"); });
 
         var buttons = btn.parentElement.getElementsByTagName('button');
         for (var i = 0; i < buttons.length; i++) {
@@ -202,7 +192,7 @@
 
     (function() {
         const countDisplay = document.getElementById('v-count');
-        const storageKey = 'ahmed_vall_v20_final';
+        const storageKey = 'ahmed_vall_v25_fixed';
         let currentViews = localStorage.getItem(storageKey);
         if (!currentViews || parseInt(currentViews) < 384) {
             currentViews = 384;
