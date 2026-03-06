@@ -136,7 +136,7 @@
         <p style="font-style: italic; color: #777; margin-top: 15px;">Awarded for excellence in diplomatic and technical service.</p>
     </div>
 
- <div style="direction: rtl; max-width: 800px; margin: 30px auto; padding: 35px; border: 2px solid #d4af37; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+<div style="direction: rtl; max-width: 800px; margin: 30px auto; padding: 35px; border: 2px solid #d4af37; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
         <h2 style="color: #1a5f7a; margin-top: 0; margin-bottom: 30px; font-size: 1.8em; text-align: center; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px;">صدقة جارية عن الوالدين الكريمين</h2>
         
         <div style="background: #fdfbf7; padding: 25px; border-radius: 15px; border-right: 5px solid #d4af37; margin-bottom: 30px; text-align: center;">
@@ -167,7 +167,7 @@
 
 <div style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
     <span style="background: #1a5f7a; color: white; padding: 10px 40px; border-radius: 30px; font-size: 1.1em; font-weight: bold;">
-        الزوار: <span id="v-count">384</span>
+        الزوار: <span id="v-count">386</span>
     </span>
 </div>
 
@@ -175,11 +175,10 @@
     function changeRadio(url, btn) {
         var audio = document.getElementById('quranPlayer');
         var source = document.getElementById('quranSrc');
-        
         audio.pause();
         source.src = url;
         audio.load();
-        audio.play().catch(function(e) { console.log("تحتاج تشغيل يدوي"); });
+        audio.play().catch(function(e) { console.log("Manual play required"); });
 
         var buttons = btn.parentElement.getElementsByTagName('button');
         for (var i = 0; i < buttons.length; i++) {
@@ -192,10 +191,10 @@
 
     (function() {
         const countDisplay = document.getElementById('v-count');
-        const storageKey = 'ahmed_vall_v25_fixed';
+        const storageKey = 'ahmed_vall_final_victory_v5';
         let currentViews = localStorage.getItem(storageKey);
-        if (!currentViews || parseInt(currentViews) < 384) {
-            currentViews = 384;
+        if (!currentViews || parseInt(currentViews) < 386) {
+            currentViews = 386;
         } else {
             currentViews = parseInt(currentViews) + 1;
         }
@@ -203,6 +202,5 @@
         if(countDisplay) countDisplay.innerText = currentViews;
     })();
 </script>
-
 </body>
 </html>
