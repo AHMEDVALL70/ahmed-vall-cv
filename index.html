@@ -136,53 +136,61 @@
         <p style="font-style: italic; color: #777; margin-top: 15px;">Awarded for excellence in diplomatic and technical service.</p>
     </div>
 
- <div style="direction: rtl; max-width: 800px; margin: 30px auto; padding: 35px; border: 2px solid #d4af37; border-radius: 20px; background-color: #ffffff; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, sans-serif;">
-    
-    <div style="margin-bottom: 25px;">
-        <h2 style="color: #1a5f7a; font-size: 1.8em; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">صدقة جارية عن الوالدين الكريمين</h2>
+ <div style="direction: rtl; max-width: 800px; margin: 30px auto; padding: 35px; border: 2px solid #d4af37; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <h2 style="color: #1a5f7a; margin-top: 0; margin-bottom: 30px; font-size: 1.8em; text-align: center; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px;">صدقة جارية عن الوالدين الكريمين</h2>
         
-      <div style="text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif; direction: rtl; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-    
-    <div style="font-size: 1.4em; color: #2c3e50; font-weight: bold; background: #fdfaf5; padding: 15px 20px; border-radius: 10px; display: inline-block; border-right: 5px solid #d4af37; margin-bottom: 20px; width: 90%;">
-        جمال الدين سيدينا و فاطمة بنت سيدي حمود 
-        <br>
-        <span style="font-size: 0.7em; color: #7f8c8d; font-weight: normal; margin-top: 10px; display: block;">(رحمهما الله وأسكنهما فسيح جناته)</span>
-    </div>
-
-    <div style="background: #f4f7f9; padding: 20px; border-radius: 15px; border: 1px solid #e1e8ed;">
-        <p style="margin-bottom: 15px; color: #1a5f7a; font-weight: bold; font-size: 1.1em;">
-            <i class="fas fa-quran"></i> إذاعة القرآن الكريم - بث مباشر
-        </p>
-
-        <div style="margin-bottom: 15px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-            <button onclick="changeRadio('https://qurango.net/radio/mix', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #1a5f7a; color: white; font-size: 0.9em;">الإذاعة العامة</button>
-            <button onclick="changeRadio('https://qurango.net/radio/badr_alturki', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ بدر التركي</button>
-            <button onclick="changeRadio('https://qurango.net/radio/ahmad_al_alhuthaifi', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ أحمد طالب</button>
+        <div style="background: #fdfbf7; padding: 25px; border-radius: 15px; border-right: 5px solid #d4af37; margin-bottom: 30px; text-align: center;">
+            <h3 style="color: #2c3e50; margin: 0; font-size: 1.5em; line-height: 1.6;">جمال الدين سيدينا و فاطمة بنت سيدي حمود</h3>
+            <p style="color: #7f8c8d; margin-top: 10px; font-style: italic;">(رحمهما الله وأسكنهما فسيح جناته)</p>
         </div>
 
-        <audio id="quranPlayer" controls style="width: 100%; height: 50px; border-radius: 30px;">
-            <source id="quranSrc" src="https://qurango.net/radio/mix" type="audio/mpeg">
-            متصفحك لا يدعم تشغيل الصوت.
-        </audio>
-    </div>
+        <div style="margin-bottom: 25px;">
+            <div style="text-align: center; margin-bottom: 15px; color: #1a5f7a; font-weight: bold;">
+                <i class="fas fa-mosque"></i> إذاعة القرآن الكريم - بث مباشر
+            </div>
+            <div style="margin-bottom: 15px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="changeRadio('https://backup.qurango.net/radio/mix', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #1a5f7a; color: white; font-size: 0.9em;">الإذاعة العامة</button>
+                <button onclick="changeRadio('https://backup.qurango.net/radio/badr_alturki', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ بدر التركي</button>
+                <button onclick="changeRadio('https://backup.qurango.net/radio/ahmad_al_alhuthaifi', this)" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a; font-size: 0.9em;">الشيخ أحمد طالب</button>
+            </div>
 
-    <div style="margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        
-        
+            <audio id="quranPlayer" controls preload="none" style="width: 100%; height: 50px; border-radius: 30px;">
+                <source id="quranSrc" src="https://backup.qurango.net/radio/mix" type="audio/mpeg">
+            </audio>
+        </div>
     </div>
+</div> <div style="display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap;">
+    <a href="Ahmed-Vall-CV-AR.pdf" style="background: #2c3e50; padding: 12px 25px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold;" download>تحميل السيرة (العربية)</a>
+    <a href="Ahmed-Vall-CV-EN.pdf" style="background: #1a5f7a; padding: 12px 25px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold;" download>Download CV (English)</a>
+    <a href="Ahmed-Vall-CV-FR.pdf" style="background: #1a5f7a; padding: 12px 25px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold;" download>Download CV (French)</a>
+</div>
+
+<div style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
+    <span style="background: #1a5f7a; color: white; padding: 10px 40px; border-radius: 30px; font-size: 1.1em; font-weight: bold;">
+        الزوار: <span id="v-count">384</span>
+    </span>
 </div>
 
 <script>
-    // وظيفة تبديل البث المباشر
     function changeRadio(url, btn) {
         var audio = document.getElementById('quranPlayer');
         var source = document.getElementById('quranSrc');
         
+        // السر هنا: يجب تصفير المصدر تماماً قبل وضع الجديد
+        audio.pause();
         source.src = url;
         audio.load();
-        audio.play();
+        
+        // محاولة التشغيل مع معالجة قيود المتصفح
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                // بدأ التشغيل
+            }).catch(error => {
+                console.log("اضغط زر التشغيل يدوياً");
+            });
+        }
 
-        // تحديث شكل الأزرار
         var buttons = btn.parentElement.getElementsByTagName('button');
         for (var i = 0; i < buttons.length; i++) {
             buttons[i].style.background = "white";
@@ -192,42 +200,18 @@
         btn.style.color = "white";
     }
 
-    // عداد زوار بسيط (يحفظ في المتصفح)
-    let count = localStorage.getItem('site_visits') || 370;
-    count = parseInt(count) + 1;
-    localStorage.setItem('site_visits', count);
-    document.getElementById('v_count').innerText = count;
-</script>
-
-    <div style="margin-top: 25px;">
-        <span style="background: #1a5f7a; color: white; padding: 10px 40px; border-radius: 30px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 10px rgba(26, 95, 122, 0.3);">
-            الزوار: <span id="v-count">0</span>
-        </span>
-    </div>
-</div>
-    
-        <div class="btn-group">
-            <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;" download>
-                <i class="fas fa-file-pdf"></i> تحميل السيرة (العربية)
-            </a>
-            <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #1a5f7a;" download>
-                <i class="fas fa-file-pdf"></i> Download CV (English)
-            </a>
-            <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;" download>
-                <i class="fas fa-file-pdf"></i> Download CV (French)
-            </a>
-        </div>
-    </div>
-</div>
-
-<script>
-    /* --- التعديل: ربط العداد بالـ ID الصحيح --- */
-    const countDisplay = document.getElementById('v-count');
-    const storageKey = 'ahmed_vall_views_final';
-    let currentViews = localStorage.getItem(storageKey) || 370;
-    currentViews = parseInt(currentViews) + 1;
-    localStorage.setItem(storageKey, currentViews);
-    countDisplay.innerText = currentViews;
+    (function() {
+        const countDisplay = document.getElementById('v-count');
+        const storageKey = 'ahmed_vall_v20_final';
+        let currentViews = localStorage.getItem(storageKey);
+        if (!currentViews || parseInt(currentViews) < 384) {
+            currentViews = 384;
+        } else {
+            currentViews = parseInt(currentViews) + 1;
+        }
+        localStorage.setItem(storageKey, currentViews);
+        if(countDisplay) countDisplay.innerText = currentViews;
+    })();
 </script>
 
 </body>
