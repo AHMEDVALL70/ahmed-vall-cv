@@ -141,22 +141,52 @@
     <div style="margin-bottom: 25px;">
         <h2 style="color: #1a5f7a; font-size: 1.8em; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">صدقة جارية عن الوالدين الكريمين</h2>
         
-        <div style="font-size: 1.5em; color: #2c3e50; font-weight: bold; background: #fdfaf5; padding: 15px 25px; border-radius: 10px; display: inline-block; border-right: 5px solid #d4af37;">
-            جمال الدين سيدينا و فاطمة بنت سيدي حمود 
-            <br>
-            <span style="font-size: 0.7em; color: #7f8c8d; font-weight: normal; margin-top: 10px; display: block;">(رحمهما الله وأسكنهما فسيح جناته)</span>
-        </div>
+      <div style="text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif; direction: rtl;">
+    
+    <div style="font-size: 1.5em; color: #2c3e50; font-weight: bold; background: #fdfaf5; padding: 15px 25px; border-radius: 10px; display: inline-block; border-right: 5px solid #d4af37; margin-bottom: 20px;">
+        جمال الدين سيدينا و فاطمة بنت سيدي حمود 
+        <br>
+        <span style="font-size: 0.7em; color: #7f8c8d; font-weight: normal; margin-top: 10px; display: block;">(رحمهما الله وأسكنهما فسيح جناته)</span>
     </div>
 
-    <div style="background: #f4f7f9; padding: 20px; border-radius: 15px; border: 1px solid #e1e8ed;">
+    <div style="background: #f4f7f9; padding: 20px; border-radius: 15px; border: 1px solid #e1e8ed; max-width: 500px; margin: 0 auto;">
         <p style="margin-bottom: 15px; color: #1a5f7a; font-weight: bold; font-size: 1.1em;">
-            <i class="fas fa-quran"></i> إذاعة القرآن الكريم - بث مباشر
+             إذاعة القرآن الكريم - بث مباشر
         </p>
-        <audio controls style="width: 100%; height: 50px; border-radius: 30px;">
-            <source src="https://qurango.net/radio/mix" type="audio/mpeg">
+
+        <div style="margin-bottom: 15px; display: flex; gap: 8px; justify-content: center;">
+            <button onclick="updateAudio('https://backup.qurango.net/radio/badr_alturki')" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #1a5f7a; color: white;">الشيخ بدر التركي</button>
+            <button onclick="updateAudio('https://backup.qurango.net/radio/ahmad_al_alhuthaifi')" style="cursor:pointer; padding: 8px 15px; border-radius: 20px; border: 1px solid #1a5f7a; background: #fff; color: #1a5f7a;">الشيخ أحمد طالب</button>
+        </div>
+
+        <audio id="quran-player" controls style="width: 100%; height: 50px; border-radius: 30px;">
+            <source id="audio-source" src="https://backup.qurango.net/radio/badr_alturki" type="audio/mpeg">
             متصفحك لا يدعم تشغيل الصوت.
         </audio>
     </div>
+</div>
+
+<script>
+    function updateAudio(url) {
+        var audio = document.getElementById('quran-player');
+        var source = document.getElementById('audio-source');
+        
+        // تحديث الرابط
+        source.src = url;
+        audio.pause();
+        audio.load();
+        
+        // محاولة التشغيل مع معالجة قيود المتصفح
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                // بدأ التشغيل بنجاح
+            }).catch(error => {
+                console.log("التشغيل التلقائي يحتاج ضغطة زر من المستخدم");
+            });
+        }
+    }
+</script>
 
     <div style="margin-top: 25px;">
         <span style="background: #1a5f7a; color: white; padding: 10px 40px; border-radius: 30px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 10px rgba(26, 95, 122, 0.3);">
