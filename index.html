@@ -6,7 +6,6 @@
     <title>Ahmed Vall Sidina - Professional Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* تعريف الألوان للوضعين الفاتح والليلي */
         :root { 
             --primary: #1a5f7a; 
             --secondary: #d35400; 
@@ -15,6 +14,7 @@
             --gold: #d4af37; 
             --card-bg: #ffffff;
             --border-color: #eee;
+            --radio-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
 
         [data-theme="dark"] {
@@ -23,6 +23,7 @@
             --card-bg: #1e1e1e;
             --primary: #4ca1af;
             --border-color: #333;
+            --radio-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
 
         body { 
@@ -45,7 +46,6 @@
             position: relative;
         }
 
-        /* زر تبديل الوضع */
         .theme-switch {
             position: absolute;
             top: 20px;
@@ -63,7 +63,6 @@
         
         .social-header { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
         .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; font-size: 1.2rem; }
-        .social-btn:hover { transform: translateY(-3px); }
         
         h2 { color: var(--primary); border-left: 6px solid var(--primary); padding: 10px 15px; margin-top: 40px; font-size: 22px; text-transform: uppercase; background: rgba(26, 95, 122, 0.05); border-radius: 0 8px 8px 0; }
         
@@ -79,27 +78,47 @@
         .progress-bar { background: #e0e0e0; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 5px; }
         .progress { background: var(--primary); height: 100%; border-radius: 10px; }
 
-        /* قسم الإذاعة */
-        .charity-wrapper { direction: rtl; border: 2px solid var(--gold); border-radius: 20px; padding: 25px; margin-top: 40px; background: var(--card-bg); text-align: center; }
-        .parents-box { font-size: 1.3em; color: var(--text); font-weight: bold; background: rgba(212, 175, 55, 0.08); padding: 15px; border-radius: 12px; border-right: 5px solid var(--gold); margin-bottom: 20px; display: inline-block; width: 90%; }
-        .radio-controls { background: rgba(0,0,0,0.02); padding: 20px; border-radius: 15px; border: 1px solid var(--border-color); }
-        .radio-btns { margin-bottom: 15px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-        
-        .radio-btns button { 
-            cursor: pointer; padding: 8px 14px; border-radius: 20px; 
-            border: 1px solid var(--primary); background: transparent; 
-            color: var(--primary); transition: 0.2s; font-size: 0.9em;
+        .charity-wrapper { 
+            direction: rtl; 
+            border-radius: 25px; 
+            padding: 30px; 
+            margin-top: 50px; 
+            background: var(--radio-bg); 
+            text-align: center;
+            border: 1px solid rgba(26, 95, 122, 0.08);
         }
-        .radio-btns button.active { background: var(--primary); color: white; }
+        .parents-box { 
+            font-size: 1.4em; 
+            color: var(--primary); 
+            font-weight: bold; 
+            background: rgba(255, 255, 255, 0.8); 
+            padding: 15px; 
+            border-radius: 15px; 
+            margin-bottom: 20px; 
+            display: inline-block; 
+            width: 85%;
+            border: 1px solid rgba(26, 95, 122, 0.05);
+        }
+        .dua { font-size: 0.75em; color: var(--secondary); display: block; margin-top: 5px; font-weight: normal; }
+
+        .radio-btn { 
+            padding: 8px 20px; 
+            border: 2px solid var(--primary); 
+            background: white; 
+            color: var(--primary); 
+            cursor: pointer; 
+            border-radius: 50px; 
+            transition: 0.3s; 
+            font-weight: bold;
+            margin: 5px;
+        }
+        .radio-btn.active { background: var(--primary); color: white; }
 
         .btn-group { display: flex; justify-content: center; gap: 12px; margin-top: 35px; flex-wrap: wrap; }
-        .download-btn { padding: 12px 22px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.95em; }
-        
-        @media (max-width: 768px) { 
-            .exp-date { position: static; display: block; margin-top: 5px; } 
-            .container { padding: 20px; } 
-            h1 { font-size: 24px; }
-        }
+        .download-btn { padding: 12px 22px; border-radius: 5px; color: white; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.9em; }
+
+        .visitor-counter { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .counter-badge { display: inline-block; background: var(--primary); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -150,120 +169,92 @@
         
         <div class="info-card">
             <h3><i class="fas fa-language"></i> Languages</h3>
-            <div class="progress-container" style="margin-bottom:10px">
-                <div style="display:flex; justify-content:space-between"><span>Arabic</span><span>100%</span></div>
-                <div class="progress-bar"><div class="progress" style="width: 100%"></div></div>
-            </div>
-            <div class="progress-container" style="margin-bottom:10px">
-                <div style="display:flex; justify-content:space-between"><span>French</span><span>70%</span></div>
-                <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
-            </div>
-            <div class="progress-container">
-                <div style="display:flex; justify-content:space-between"><span>English</span><span>50%</span></div>
-                <div class="progress-bar"><div class="progress" style="width: 50%"></div></div>
-            </div>
+            <div style="margin-bottom:10px">Arabic 100% <div class="progress-bar"><div class="progress" style="width: 100%"></div></div></div>
+            <div style="margin-bottom:10px">French 70% <div class="progress-bar"><div class="progress" style="width: 70%"></div></div></div>
+            <div>English 50% <div class="progress-bar"><div class="progress" style="width: 50%"></div></div></div>
         </div>
     </div>
 
     <h2>Honors & Awards</h2>
-    <div style="text-align: center; margin-top: 20px;">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
         <img src="award.jpg" alt="Award Ceremony" style="max-width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
         <p style="font-style: italic; opacity: 0.7; margin-top: 10px;">Awarded for excellence in diplomatic and technical service.</p>
     </div>
 
     <div class="charity-wrapper">
-        <h2 style="background:none; border:none; text-align:center; color: var(--primary); margin-top:0;">صدقة جارية عن الوالدين الكريمين</h2>
+        <div style="color: var(--primary); font-weight: bold; margin-bottom: 15px;"><i class="fas fa-heart"></i> صَدقة جارية</div>
         <div class="parents-box">
-            جمال الدين سيدينا و فاطمة بنت سيدي حمود 
-            <br>
-            <span style="font-size: 0.7em; opacity: 0.8; font-weight: normal;">(رحمهما الله وأسكنهما فسيح جناته)</span>
+            جمال الدين سيدينا & فاطمة بنت سيدي حمود
+            <span class="dua">رحمهما الله وأسكنهما فسيح جناته</span>
         </div>
 
-       <div class="radio-btns">
-    <button onclick="changeRadio('https://live.mp3quran.net:8000/radio', this)" class="active">الإذاعة العامة</button>
-    <button onclick="changeRadio('https://backup.qurango.net/radio/abdulsamad', this)">الشيخ عبد الباسط</button>
-    <button onclick="changeRadio('https://backup.qurango.net/radio/minshawi', this)">الشيخ المنشاوي</button>
-    <button onclick="changeRadio('https://backup.qurango.net/radio/badr_alturki', this)">الشيخ بدر التركي</button>
-</div>
+        <div class="radio-btns">
+            <button onclick="changeRadio('https://backup.qurango.net/radio/mix', this)" class="radio-btn active">الإذاعة العامة</button>
+            <button onclick="changeRadio('https://backup.qurango.net/radio/badr_alturki', this)" class="radio-btn">الشيخ بدر التركي</button>
+        </div>
     
-    <audio id="quranPlayer" controls style="width: 100%; height: 50px; border-radius: 30px; margin-top: 15px;">
-        <source id="quranSrc" src="https://live.mp3quran.net:8000/radio" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
-    </audio>
+        <audio id="quranPlayer" controls style="width: 100%; border-radius: 50px; margin-top: 10px;">
+            <source id="audioSource" src="https://backup.qurango.net/radio/mix" type="audio/mpeg">
+        </audio>
     </div>
-    
 
     <div class="btn-group">
-        <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;"><i class="fas fa-file-pdf"></i> تحميل السيرة (العربية)</a>
-        <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: var(--primary);"><i class="fas fa-file-pdf"></i> Download CV (English)</a>
-        <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: var(--primary);"><i class="fas fa-file-pdf"></i> Download CV (French)</a>
+        <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;"><i class="fas fa-file-pdf"></i> تحميل السيرة (AR)</a>
+        <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #16a085;"><i class="fas fa-file-pdf"></i> Download CV (EN)</a>
+        <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;"><i class="fas fa-file-pdf"></i> Download CV (FR)</a>
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <span style="background: var(--primary); color: white; padding: 8px 30px; border-radius: 30px; font-weight: bold;">
-            الزوار: <span id="v-count">390</span>
-        </span>
+    <div class="visitor-counter">
+        <div class="counter-badge">
+            <i class="fas fa-eye"></i> عدد الزيارات: <span id="v-count">411</span>
+        </div>
     </div>
 </div>
 
 <script>
-    // تغيير الإذاعة
-   function changeRadio(url, btn) {
-    var audio = document.getElementById('quranPlayer');
-    var source = document.getElementById('quranSrc');
-    
-    // إيقاف المشغل تماماً قبل تغيير الرابط
-    audio.pause();
-    
-    // تحديث الرابط
-    source.src = url;
-    
-    // إجبار المتصفح على تحميل المصدر الجديد
-    audio.load(); 
-    
-    // محاولة التشغيل مع معالجة قيود التشغيل التلقائي
-    var playPromise = audio.play();
-    
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.log("Safari: يرجى الضغط على زر التشغيل يدوياً");
-        });
+    // وظيفة تغيير الإذاعة وإصلاح تشغيل الصوت
+    function changeRadio(url, btn) {
+        var audio = document.getElementById('quranPlayer');
+        var source = document.getElementById('audioSource');
+        audio.pause();
+        source.src = url;
+        audio.load();
+        audio.play().catch(e => console.log("التشغيل يتطلب تفاعل المستخدم أولاً"));
+        document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
     }
 
-    // تحديث شكل الأزرار (الكود الذي كتبته في الصورة سليم تماماً)
-    document.querySelectorAll('.radio-btns button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
     // تبديل الوضع الليلي
     function toggleTheme() {
         const body = document.documentElement;
-        const icon = document.getElementById('theme-icon');
-        if (body.getAttribute('data-theme') === 'dark') {
-            body.setAttribute('data-theme', 'light');
-            icon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            icon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        }
+        const isDark = body.getAttribute('data-theme') === 'dark';
+        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        document.getElementById('theme-icon').classList.replace(isDark ? 'fa-sun' : 'fa-moon', isDark ? 'fa-moon' : 'fa-sun');
     }
 
-    // عند التحميل
-    window.onload = function() {
+    // عند تحميل الصفحة بالكامل
+    window.addEventListener('DOMContentLoaded', () => {
+        // العداد الذكي يبدأ من 411
+        const countDisplay = document.getElementById('v-count');
+        if (countDisplay) {
+            let views = localStorage.getItem('site_views_final_411');
+            if (!views) { 
+                views = 411; 
+            } else { 
+                views = parseInt(views) + 1; 
+            }
+            localStorage.setItem('site_views_final_411', views);
+            countDisplay.innerText = views;
+        }
+
+        // استعادة الثيم المختار
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.classList.replace('fa-moon', 'fa-sun');
         }
-        
-        // عداد الزوار
-        const countDisplay = document.getElementById('v-count');
-        let views = localStorage.getItem('site_views_vfinal') || 390;
-        views = parseInt(views) + 1;
-        localStorage.setItem('site_views_vfinal', views);
-        if(countDisplay) countDisplay.innerText = views;
-    };
+    });
 </script>
-
 </body>
 </html>
