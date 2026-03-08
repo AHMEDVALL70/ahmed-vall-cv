@@ -112,7 +112,7 @@
         .progress-bar { background: #e2e8f0; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 5px; }
         .progress { background: var(--primary); height: 100%; border-radius: 10px; }
 
-        /* Charity Section Styling - High Contrast */
+        /* Charity Section Styling - Enhanced Padding for Mobile */
         .charity-wrapper { 
             direction: rtl; 
             border-radius: 20px; 
@@ -125,26 +125,26 @@
         }
         
         .parents-box { 
-            font-size: 1.5em; 
+            font-size: 1.4em; 
             color: #1a202c; 
             font-weight: 800; 
             background: #ffffff; 
-            padding: 20px; 
+            padding: 30px 20px; /* زيادة المسافة العلوية والسفلية لحل مشكلة المربع */
             border-radius: 15px; 
-            margin-bottom: 20px; 
+            margin-bottom: 25px; 
             display: inline-block; 
             width: 90%;
             border: 1px solid var(--gold-matte);
-            box-shadow: inset 0 0 10px rgba(192, 161, 107, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            line-height: 1.7;
         }
         
         .dua { 
-            font-size: 0.9em; 
+            font-size: 0.85em; 
             color: #744210; 
             display: block; 
-            margin-top: 12px; 
+            margin-top: 15px; 
             font-weight: 700; 
-            line-height: 1.5;
         }
 
         .radio-btn { 
@@ -174,7 +174,7 @@
         .counter-badge { display: inline-block; background: var(--primary); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
 
         @media (max-width: 600px) {
-            .parents-box { font-size: 1.3em; width: 95%; }
+            .parents-box { font-size: 1.3em; width: 95%; padding: 35px 15px; }
             .radio-btn { padding: 10px 15px; font-size: 0.85em; }
             .container { padding: 20px; }
             h1 { font-size: 22px; }
@@ -314,10 +314,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         const countDisplay = document.getElementById('v-count');
-        let views = localStorage.getItem('site_views_final_v5');
-        // تم تحديث الرقم الابتدائي ليكون 468
+        let views = localStorage.getItem('site_views_v6');
         if (!views) { views = 468; } else { views = parseInt(views) + 1; }
-        localStorage.setItem('site_views_final_v5', views);
+        localStorage.setItem('site_views_v6', views);
         countDisplay.innerText = views;
 
         if (localStorage.getItem('theme') === 'dark') {
