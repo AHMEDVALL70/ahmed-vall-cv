@@ -220,10 +220,27 @@
     function changeRadio(url, btn) {
         var audio = document.getElementById('quranPlayer');
         var source = document.getElementById('audioSource');
+        
+        // 1. إيقاف أي صوت يعمل حالياً
         audio.pause();
+        
+        // 2. تحديث الرابط وتحميله من جديد
         source.src = url;
-        audio.load();
-        audio.play().catch(e => console.log("User must interact first"));
+        audio.load(); 
+        
+        // 3. محاولة التشغيل مع معالجة قيود المتصفح
+        var playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                console.log("Started playing successfully");
+            }).catch(error => {
+                console.log("Playback interaction required");
+                // في حال فشل التشغيل التلقائي، سيحتاج المستخدم للضغط على زر Play في المشغل
+            });
+        }
+
+        // 4. تحديث شكل الأزرار
         document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
@@ -237,6 +254,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+        // العداد الذكي يبدأ من 411
         const countDisplay = document.getElementById('v-count');
         if (countDisplay) {
             let views = localStorage.getItem('site_views_final_411_fixed');
@@ -245,6 +263,7 @@
             countDisplay.innerText = views;
         }
 
+        // استعادة الثيم
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             const icon = document.getElementById('theme-icon');
