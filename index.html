@@ -264,11 +264,55 @@
         <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;"><i class="fas fa-file-pdf"></i> Download CV (FR)</a>
     </div>
 
+   <style>
+        .charity-wrapper { 
+            direction: rtl; 
+            border-radius: 20px; 
+            padding: 30px 15px; 
+            margin-top: 50px; 
+            background: var(--radio-bg); 
+            text-align: center;
+            border: 2px solid var(--gold); /* إطار أوضح */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        
+        .parents-box { 
+            font-size: 1.5em; /* تكبير الخط للجوال */
+            color: #1a202c; /* لون داكن وواضح جداً */
+            font-weight: 800; /* خط عريض */
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-bottom: 20px; 
+            display: inline-block; 
+            width: 90%;
+            border: 1px solid var(--gold-matte);
+            box-shadow: inset 0 0 10px rgba(192, 161, 107, 0.1);
+        }
+        
+        .dua { 
+            font-size: 0.9em; 
+            color: #744210; /* لون بني ذهبي غامق وواضح */
+            display: block; 
+            margin-top: 12px; 
+            font-weight: 700; 
+            line-height: 1.5;
+        }
+
+        /* تحسين مظهر الأزرار على الجوال */
+        @media (max-width: 600px) {
+            .parents-box { font-size: 1.3em; }
+            .radio-btn { padding: 10px 15px; font-size: 0.85em; }
+        }
+    </style>
+
     <div class="charity-wrapper">
-        <div style="color: var(--primary); font-weight: bold; margin-bottom: 15px;"><i class="fas fa-heart"></i> صَدقة جارية</div>
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 20px; font-size: 1.1em;">
+            <i class="fas fa-heart" style="color: #e53e3e;"></i> صَدقة جارية
+        </div>
         <div class="parents-box">
-            جمال الدين سيدينا و فاطمة بنت سيدي حمود
-            <span class="dua">رحمهما الله وأسكنهما فسيح جناته</span>
+            جمال الدين سيدينا & فاطمة بنت سيدي حمود
+            <span class="dua">رحمهما الله وأسكنهما فسيح جناته ورفعهما في عليين</span>
         </div>
 
         <div class="surah-btns" style="margin-bottom: 25px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
@@ -280,7 +324,7 @@
             <button onclick="playMedia('https://qurango.net/radio/mix', this)" class="radio-btn radio-special">الإذاعة العامة</button>
         </div>
 
-        <audio id="smartPlayer" controls preload="auto" style="width: 100%; border-radius: 50px;">
+        <audio id="smartPlayer" controls preload="auto" style="width: 100%; border-radius: 50px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));">
             <source src="https://server7.mp3quran.net/shur/001.mp3" type="audio/mpeg">
         </audio>
     </div>
