@@ -40,7 +40,6 @@
             padding: 20px; 
             background: var(--bg); 
             transition: background 0.4s ease, color 0.4s ease;
-            -webkit-font-smoothing: antialiased;
         }
 
         .container { 
@@ -53,18 +52,45 @@
             position: relative;
         }
 
-        .theme-switch {
+        .top-controls {
             position: absolute;
             top: 20px;
             right: 20px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--primary);
-            z-index: 10;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 100;
         }
 
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+            background: var(--bg);
+            padding: 5px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            border: none;
+            background: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .theme-switch { cursor: pointer; font-size: 1.3rem; color: var(--primary); }
+
         .header { text-align: center; border-bottom: 3px solid var(--primary); padding-bottom: 25px; margin-bottom: 30px; }
-        .profile-img { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary); margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .profile-img { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary); margin-bottom: 15px; }
         h1 { color: var(--primary); margin: 10px 0 5px 0; font-size: 28px; }
         
         .status-badge {
@@ -78,50 +104,38 @@
             font-size: 0.8em;
             font-weight: 700;
             margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.7; }
         }
 
         .subtitle { font-size: 1.1em; color: var(--text); opacity: 0.9; font-weight: 600; margin-bottom: 20px; }
         
         .social-header { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
-        .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; font-size: 1.2rem; }
+        .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.2rem; }
         
-        h2 { color: var(--primary); border-left: 6px solid var(--primary); padding: 10px 15px; margin-top: 40px; font-size: 20px; text-transform: uppercase; background: rgba(44, 62, 80, 0.03); border-radius: 0 8px 8px 0; }
-        
+        h2 { color: var(--primary); border-left: 6px solid var(--primary); padding: 10px 15px; margin-top: 40px; font-size: 20px; text-transform: uppercase; background: rgba(44, 62, 80, 0.03); }
+        [lang="ar"] h2 { border-left: none; border-right: 6px solid var(--primary); }
+
         .exp-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); position: relative; }
         .exp-title { font-weight: 700; color: var(--secondary); font-size: 1.15em; display: block; }
         .exp-company { color: var(--primary); font-weight: 600; }
         .exp-date { color: #888; font-size: 0.85em; position: absolute; right: 0; top: 10px; }
+        [lang="ar"] .exp-date { right: auto; left: 0; }
         
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
         .info-card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
         .info-card h3 { margin-top: 0; color: var(--primary); border-bottom: 2px solid var(--gold); padding-bottom: 8px; font-size: 1.1em; }
         
         .progress-bar { background: #e2e8f0; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 5px; }
-        .progress { background: var(--primary); height: 100%; border-radius: 10px; }
+        .progress { background: var(--primary); height: 100%; }
 
-        /* Charity Section Styling - Enhanced Padding for Mobile */
+        /* Charity Section Styling - Enhanced Padding */
         .charity-wrapper { 
             direction: rtl; 
             border-radius: 20px; 
-            padding: 30px 15px; 
+            padding: 35px 20px; 
             margin-top: 50px; 
             background: var(--radio-bg); 
             text-align: center;
             border: 2px solid var(--gold); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
         .parents-box { 
@@ -129,76 +143,53 @@
             color: #1a202c; 
             font-weight: 800; 
             background: #ffffff; 
-            padding: 30px 20px; /* زيادة المسافة العلوية والسفلية لحل مشكلة المربع */
+            padding: 40px 25px; 
             border-radius: 15px; 
             margin-bottom: 25px; 
             display: inline-block; 
-            width: 90%;
+            width: 85%;
             border: 1px solid var(--gold-matte);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-            line-height: 1.7;
+            line-height: 1.8;
         }
         
-        .dua { 
-            font-size: 0.85em; 
-            color: #744210; 
-            display: block; 
-            margin-top: 15px; 
-            font-weight: 700; 
-        }
+        .dua { font-size: 0.8em; color: #744210; display: block; margin-top: 15px; font-weight: 700; }
 
-        .radio-btn { 
-            padding: 10px 18px; 
-            border: 2px solid var(--primary); 
-            background: white; 
-            color: var(--primary); 
-            cursor: pointer; 
-            border-radius: 50px; 
-            transition: 0.3s; 
-            font-weight: 600;
-            margin: 5px;
-            font-size: 0.9em;
-        }
+        .radio-btn { padding: 10px 18px; border: 2px solid var(--primary); background: white; color: var(--primary); cursor: pointer; border-radius: 50px; margin: 5px; font-size: 0.9em; font-weight: 600; }
         .radio-btn.active { background: var(--primary); color: white; }
-        
-        .radio-special {
-            background: #16a085 !important;
-            border-color: #16a085 !important;
-            color: white !important;
-        }
+        .radio-special { background: #16a085 !important; color: white !important; border-color: #16a085 !important; }
 
         .btn-group { display: flex; justify-content: center; gap: 12px; margin-top: 35px; flex-wrap: wrap; }
-        .download-btn { padding: 12px 20px; border-radius: 6px; color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.85em; }
+        .download-btn { padding: 12px 20px; border-radius: 6px; color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85em; }
 
         .visitor-counter { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); }
-        .counter-badge { display: inline-block; background: var(--primary); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+        .counter-badge { display: inline-block; background: var(--primary); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.8em; }
 
         @media (max-width: 600px) {
-            .parents-box { font-size: 1.3em; width: 95%; padding: 35px 15px; }
-            .radio-btn { padding: 10px 15px; font-size: 0.85em; }
-            .container { padding: 20px; }
-            h1 { font-size: 22px; }
-            .exp-date { position: relative; display: block; margin-bottom: 5px; top: 0; }
+            .top-controls { top: 10px; right: 10px; flex-direction: column-reverse; gap: 10px; }
+            .parents-box { font-size: 1.25em; width: 95%; padding: 35px 15px; }
+            .container { padding: 20px; padding-top: 60px; }
         }
     </style>
 </head>
-<body>
+<body data-lang="en">
 
 <div class="container">
-    <div class="theme-switch" onclick="toggleTheme()">
-        <i id="theme-icon" class="fas fa-moon"></i>
+    <div class="top-controls">
+        <div class="lang-switcher">
+            <button class="lang-btn" onclick="setLanguage('ar')">AR</button>
+            <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+        </div>
+        <div class="theme-switch" onclick="toggleTheme()">
+            <i id="theme-icon" class="fas fa-moon"></i>
+        </div>
     </div>
 
     <div class="header">
         <img src="my-photo.jpg" alt="Ahmed Vall" class="profile-img" onerror="this.src='my-photo.JPG'">
-        <h1>Ahmed Vall Jemal Dine Sidina</h1>
-        
-        <div class="status-badge">
-            <span class="status-dot"></span>
-            Open for New Projects & Cooperation
-        </div>
-
-        <div class="subtitle">State Engineer | Diplomat | Biometrics Specialist</div>
+        <h1 id="name-title">Ahmed Vall Jemal Dine Sidina</h1>
+        <div class="status-badge"><span id="status-text">Open for New Projects & Cooperation</span></div>
+        <div class="subtitle" id="job-subtitle">State Engineer | Diplomat | Biometrics Specialist</div>
         
         <div class="social-header">
             <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-btn" style="background:#25D366;" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -209,61 +200,29 @@
         </div>
     </div>
 
-    <h2>Professional Experience</h2>
-    <div class="exp-item">
-        <span class="exp-date">2019 – 2024</span>
-        <span class="exp-title">Deputy Consul General</span>
-        <span class="exp-company">Consulate General of Mauritania, Jeddah, KSA</span>
-        <p class="exp-desc">Senior diplomat supervising civil status services and secure identification document issuance. Expert in biometrics systems integration and diplomatic operations.</p>
-    </div>
+    <h2 id="exp-header">Professional Experience</h2>
+    <div id="experience-list"></div>
 
-    <div class="exp-item">
-        <span class="exp-date">Previous Years</span>
-        <span class="exp-title">State Engineer</span>
-        <span class="exp-company">Information Technology & Telecommunications</span>
-        <p class="exp-desc">Designed and maintained robust network infrastructures. Specialized in Cisco systems and secure biometric data management for government entities.</p>
-    </div>
-
-    <h2>Key Projects & Missions</h2>
-    <div class="grid-2">
-        <div class="info-card">
-            <h3><i class="fas fa-fingerprint"></i> Biometric System Migration</h3>
-            <p style="font-size: 0.9em; opacity: 0.8;">Led the modernization of biometric registration systems for the Mauritanian community in KSA, significantly accelerating the issuance of passports and secure documents.</p>
-        </div>
-        <div class="info-card">
-            <h3><i class="fas fa-network-wired"></i> Infrastructure Security</h3>
-            <p style="font-size: 0.9em; opacity: 0.8;">Supervised internal network security and secure information linking to ensure the confidentiality of sensitive consular data according to high technical standards.</p>
-        </div>
-    </div>
+    <h2 id="projects-header">Key Projects & Missions</h2>
+    <div class="grid-2" id="projects-list"></div>
 
     <div class="grid-2">
         <div class="info-card">
-            <h3><i class="fas fa-brain"></i> Technical Skills</h3>
-            <ul style="padding-right: 20px; line-height: 2; direction: ltr;">
-                <li>Biometric Identification & Security</li>
-                <li>Cisco Networking & Infrastructure</li>
-                <li>Effective Communication</li>
-                <li>Meeting Management & Leadership</li>
-            </ul>
+            <h3 id="skills-header"><i class="fas fa-brain"></i> Technical Skills</h3>
+            <ul id="skills-list" style="padding: 0 20px;"></ul>
         </div>
-        
         <div class="info-card">
-            <h3><i class="fas fa-language"></i> Languages</h3>
-            <div style="margin-bottom:10px">Arabic 100% <div class="progress-bar"><div class="progress" style="width: 100%"></div></div></div>
-            <div style="margin-bottom:10px">French 70% <div class="progress-bar"><div class="progress" style="width: 70%"></div></div></div>
-            <div>English 50% <div class="progress-bar"><div class="progress" style="width: 50%"></div></div></div>
+            <h3 id="lang-header"><i class="fas fa-language"></i> Languages</h3>
+            <div id="lang-levels"></div>
         </div>
     </div>
 
-    <h2>Honors & Testimonials</h2>
+    <h2 id="honors-header">Honors & Testimonials</h2>
     <div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
         <img src="award.jpg" alt="Award Ceremony" style="max-width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
     </div>
-    
-    <div class="info-card" style="border-right: 4px solid var(--gold); border-left: none; font-style: italic;">
-        <p>"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy, leading to tangible improvements in consular services."</p>
-        <small style="color: var(--primary); font-weight: bold;">— Official Commendation from the General Directorate of Consular Services</small>
-    </div>
+    <div class="info-card" id="testimonial-card" style="border-right: 4px solid var(--gold); border-left: none; font-style: italic;">
+        </div>
 
     <div class="btn-group">
         <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;"><i class="fas fa-file-pdf"></i> Download CV (AR)</a>
@@ -272,15 +231,14 @@
     </div>
 
     <div class="charity-wrapper">
-        <div style="color: var(--primary); font-weight: 800; margin-bottom: 20px; font-size: 1.1em;">
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 20px; font-size: 1.15em;">
             <i class="fas fa-heart" style="color: #e53e3e;"></i> صَدقة جارية عن الوالدين
         </div>
         <div class="parents-box">
             جمال الدين سيدينا و فاطمة بنت سيدي حمود
             <span class="dua">رحمهما الله وأسكنهما فسيح جناته ورفعهما في عليين</span>
         </div>
-
-        <div class="surah-btns" style="margin-bottom: 25px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+        <div class="surah-btns" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px;">
             <button onclick="playMedia('https://server7.mp3quran.net/shur/001.mp3', this)" class="radio-btn active">الفاتحة</button>
             <button onclick="playMedia('https://server7.mp3quran.net/shur/002.mp3', this)" class="radio-btn">البقرة</button>
             <button onclick="playMedia('https://server7.mp3quran.net/shur/018.mp3', this)" class="radio-btn">الكهف</button>
@@ -288,42 +246,131 @@
             <button onclick="playMedia('https://server7.mp3quran.net/shur/067.mp3', this)" class="radio-btn">الملك</button>
             <button onclick="playMedia('https://qurango.net/radio/mix', this)" class="radio-btn radio-special">الإذاعة العامة</button>
         </div>
-
-        <audio id="smartPlayer" controls preload="auto" style="width: 100%; border-radius: 50px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));">
+        <audio id="smartPlayer" controls style="width: 100%; border-radius: 50px;">
             <source src="https://server7.mp3quran.net/shur/001.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <div class="visitor-counter">
-        <div class="counter-badge">
-            <i class="fas fa-eye"></i> Visitors Count: <span id="v-count">468</span>
-        </div>
+        <div class="counter-badge"><i class="fas fa-eye"></i> <span id="v-text">Visitors Count</span>: <span id="v-count">468</span></div>
     </div>
 </div>
 
 <script>
+    const translations = {
+        en: {
+            name: "Ahmed Vall Jemal Dine Sidina",
+            status: "Open for New Projects & Cooperation",
+            subtitle: "State Engineer | Diplomat | Biometrics Specialist",
+            expHeader: "Professional Experience",
+            projectsHeader: "Key Projects & Missions",
+            skillsHeader: "Technical Skills",
+            langHeader: "Languages",
+            honorsHeader: "Honors & Testimonials",
+            testimonial: "\"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy.\"",
+            author: "— Official Commendation from the General Directorate of Consular Services",
+            visitor: "Visitors Count",
+            dir: "ltr",
+            experience: [
+                { date: "2019 – 2024", title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah, KSA", desc: "Senior diplomat supervising civil status services and secure identification document issuance." },
+                { date: "Previous", title: "State Engineer", company: "IT & Telecommunications", desc: "Designed and maintained robust network infrastructures and biometric data management." }
+            ],
+            skills: ["Biometric Identification", "Cisco Networking", "Communication", "Leadership"],
+            projects: [
+                { title: "Biometric Migration", desc: "Led modernization of registration systems in KSA." },
+                { title: "Infrastructure Security", desc: "Supervised internal network security for consular data." }
+            ]
+        },
+        ar: {
+            name: "أحمد فال جمال الدين سيدينا",
+            status: "متاح للمشاريع الجديدة والتعاون الدولي",
+            subtitle: "مهندس دولة | دبلوماسي | خبير نظم بيومترية",
+            expHeader: "الخبرة المهنية",
+            projectsHeader: "المشاريع والمهمات الكبرى",
+            skillsHeader: "المهارات التقنية",
+            langHeader: "اللغات",
+            honorsHeader: "التكريم والشهادات",
+            testimonial: "\"أظهر أحمد فال كفاءة استثنائية في الربط بين المتطلبات التقنية المعقدة والدبلوماسية الإدارية.\"",
+            author: "— إشادة رسمية من الإدارة العامة للخدمات القنصلية",
+            visitor: "عدد الزوار",
+            dir: "rtl",
+            experience: [
+                { date: "2019 – 2024", title: "نائب القنصل العام", company: "القنصلية العامة لموريتانيا بجدة، السعودية", desc: "دبلوماسي سامٍ مشرف على خدمات الحالة المدنية وإصدار وثائق الهوية المؤمنة." },
+                { date: "سنوات سابقة", title: "مهندس دولة", company: "تكنولوجيا المعلومات والاتصالات", desc: "تصميم وصيانة البنى التحتية للشبكات وإدارة البيانات البيومترية." }
+            ],
+            skills: ["الهوية البيومترية والأمن", "شبكات سيسكو", "التواصل الفعال", "إدارة الاجتماعات والقيادة"],
+            projects: [
+                { title: "تحديث النظام البيومتري", desc: "تطوير أنظمة التسجيل للجالية الموريتانية بالسعودية." },
+                { title: "أمن البنية التحتية", desc: "تأمين الشبكات والربط الآمن للمعلومات القنصلية." }
+            ]
+        },
+        fr: {
+            name: "Ahmed Vall Jemal Dine Sidina",
+            status: "Disponible pour de nouveaux projets",
+            subtitle: "Ingénieur d'État | Diplomate | Spécialiste Biométrie",
+            expHeader: "Expérience Professionnelle",
+            projectsHeader: "Projets et Missions Clés",
+            skillsHeader: "Compétences Techniques",
+            langHeader: "Langues",
+            honorsHeader: "Honneurs et Témoignages",
+            testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant exigences techniques et diplomatie administrative.\"",
+            author: "— Éloge officiel de la Direction Générale des Services Consulaires",
+            visitor: "Nombre de visiteurs",
+            dir: "ltr",
+            experience: [
+                { date: "2019 – 2024", title: "Consul Général Adjoint", company: "Consulat Général de Mauritanie à Djeddah, KSA", desc: "Diplomate senior supervisant les services d'état civil." },
+                { date: "Antérieur", title: "Ingénieur d'État", company: "Informatique & Télécoms", desc: "Conception d'infrastructures réseaux et gestion biométrique." }
+            ],
+            skills: ["Identification Biométrique", "Réseaux Cisco", "Communication", "Leadership"],
+            projects: [
+                { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement." },
+                { title: "Sécurité", desc: "Supervision de la sécurité des réseaux consulaires." }
+            ]
+        }
+    };
+
+    function setLanguage(lang) {
+        const data = translations[lang];
+        document.documentElement.setAttribute('lang', lang);
+        document.body.style.direction = data.dir;
+        document.getElementById('name-title').innerText = data.name;
+        document.getElementById('status-text').innerText = data.status;
+        document.getElementById('job-subtitle').innerText = data.subtitle;
+        document.getElementById('exp-header').innerText = data.expHeader;
+        document.getElementById('projects-header').innerText = data.projectsHeader;
+        document.getElementById('skills-header').innerHTML = `<i class="fas fa-brain"></i> ${data.skillsHeader}`;
+        document.getElementById('lang-header').innerHTML = `<i class="fas fa-language"></i> ${data.langHeader}`;
+        document.getElementById('honors-header').innerText = data.honorsHeader;
+        document.getElementById('v-text').innerText = data.visitor;
+        document.getElementById('testimonial-card').innerHTML = `<p>${data.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${data.author}</small>`;
+
+        let expHtml = '';
+        data.experience.forEach(item => {
+            expHtml += `<div class="exp-item"><span class="exp-date">${item.date}</span><span class="exp-title">${item.title}</span><span class="exp-company">${item.company}</span><p>${item.desc}</p></div>`;
+        });
+        document.getElementById('experience-list').innerHTML = expHtml;
+
+        let skillsHtml = '';
+        data.skills.forEach(s => skillsHtml += `<li>${s}</li>`);
+        document.getElementById('skills-list').innerHTML = skillsHtml;
+
+        let projHtml = '';
+        data.projects.forEach(p => projHtml += `<div class="info-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`);
+        document.getElementById('projects-list').innerHTML = projHtml;
+
+        const l = lang === 'ar' ? ['العربية', 'الفرنسية', 'الإنجليزية'] : (lang === 'fr' ? ['Arabe', 'Français', 'Anglais'] : ['Arabic', 'French', 'English']);
+        document.getElementById('lang-levels').innerHTML = `<div style="margin-bottom:10px">${l[0]} 100% <div class="progress-bar"><div class="progress" style="width:100%"></div></div></div><div style="margin-bottom:10px">${l[1]} 70% <div class="progress-bar"><div class="progress" style="width:70%"></div></div></div><div>${l[2]} 50% <div class="progress-bar"><div class="progress" style="width:50%"></div></div></div>`;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.innerText.toLowerCase() === lang));
+    }
+
     function playMedia(url, btn) {
         const player = document.getElementById('smartPlayer');
         document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        player.pause();
         player.src = url;
-        player.load();
-        player.play().catch(e => console.log("Playback interaction required"));
+        player.play();
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const countDisplay = document.getElementById('v-count');
-        let views = localStorage.getItem('site_views_v6');
-        if (!views) { views = 468; } else { views = parseInt(views) + 1; }
-        localStorage.setItem('site_views_v6', views);
-        countDisplay.innerText = views;
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('theme-icon').className = 'fas fa-sun';
-        }
-    });
 
     function toggleTheme() {
         const body = document.documentElement;
@@ -331,8 +378,16 @@
         const isDark = body.getAttribute('data-theme') === 'dark';
         body.setAttribute('data-theme', isDark ? 'light' : 'dark');
         icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        setLanguage('en');
+        const countDisplay = document.getElementById('v-count');
+        let views = localStorage.getItem('site_views_v8') || 468;
+        views = parseInt(views) + 1;
+        localStorage.setItem('site_views_v8', views);
+        countDisplay.innerText = views;
+    });
 </script>
 </body>
 </html>
