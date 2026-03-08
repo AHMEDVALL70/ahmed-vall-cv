@@ -185,91 +185,84 @@
         <img src="award.jpg" alt="Award Ceremony" style="max-width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
         <p style="font-style: italic; opacity: 0.7; margin-top: 10px;">Awarded for excellence in diplomatic and technical service.</p>
     </div>
-
-    <div class="charity-wrapper">
-        <div style="color: var(--primary); font-weight: bold; margin-bottom: 15px;"><i class="fas fa-heart"></i> صَدقة جارية</div>
-        <div class="parents-box">
-            جمال الدين سيدينا & فاطمة بنت سيدي حمود
-            <span class="dua">رحمهما الله وأسكنهما فسيح جناته</span>
-        </div>
-
-        <div class="radio-btns">
-            <button onclick="changeRadio('https://backup.qurango.net/radio/mix', this)" class="radio-btn active">الإذاعة العامة</button>
-            <button onclick="changeRadio('https://backup.qurango.net/radio/badr_alturki', this)" class="radio-btn">الشيخ بدر التركي</button>
-        </div>
-    
-        <audio id="quranPlayer" controls style="width: 100%; border-radius: 50px; margin-top: 10px;">
-            <source id="audioSource" src="https://backup.qurango.net/radio/mix" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <div class="btn-group">
+ <div class="btn-group">
         <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;"><i class="fas fa-file-pdf"></i> تحميل السيرة (AR)</a>
         <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #16a085;"><i class="fas fa-file-pdf"></i> Download CV (EN)</a>
         <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;"><i class="fas fa-file-pdf"></i> Download CV (FR)</a>
     </div>
 
-    <div class="visitor-counter">
-        <div class="counter-badge">
-            <i class="fas fa-eye"></i> عدد الزيارات: <span id="v-count">411</span>
-        </div>
-    </div>
-</div>
 
-<script>
-    function changeRadio(url, btn) {
-        var audio = document.getElementById('quranPlayer');
-        var source = document.getElementById('audioSource');
-        
-        // 1. إيقاف أي صوت يعمل حالياً
-        audio.pause();
-        
-        // 2. تحديث الرابط وتحميله من جديد
-        source.src = url;
-        audio.load(); 
-        
-        // 3. محاولة التشغيل مع معالجة قيود المتصفح
-        var playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                console.log("Started playing successfully");
-            }).catch(error => {
-                console.log("Playback interaction required");
-                // في حال فشل التشغيل التلقائي، سيحتاج المستخدم للضغط على زر Play في المشغل
+<div class="charity-wrapper" style="direction: rtl; border-radius: 25px; padding: 30px; margin-top: 50px; background: var(--radio-bg); text-align: center; border: 1px solid rgba(26, 95, 122, 0.1);">
+            <div style="color: var(--primary); font-weight: bold; margin-bottom: 15px;"><i class="fas fa-heart"></i> صَدقة جارية</div>
+            <div class="parents-box" style="font-size: 1.3em; color: var(--primary); font-weight: bold; background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 15px; margin-bottom: 25px; display: inline-block; width: 90%;">
+                جمال الدين سيدينا & فاطمة بنت سيدي حمود
+                <span style="font-size: 0.75em; color: var(--secondary); display: block; margin-top: 5px; font-weight: normal;">رحمهما الله وأسكنهما فسيح جناته</span>
+            </div>
+
+            <div class="surah-btns" style="margin-bottom: 25px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+                <button onclick="playMedia('https://server7.mp3quran.net/shur/001.mp3', this)" class="radio-btn active">الفاتحة</button>
+                <button onclick="playMedia('https://server7.mp3quran.net/shur/002.mp3', this)" class="radio-btn">البقرة</button>
+                <button onclick="playMedia('https://server7.mp3quran.net/shur/018.mp3', this)" class="radio-btn">الكهف</button>
+                <button onclick="playMedia('https://server7.mp3quran.net/shur/036.mp3', this)" class="radio-btn">يس</button>
+                <button onclick="playMedia('https://server7.mp3quran.net/shur/067.mp3', this)" class="radio-btn">الملك</button>
+                <button onclick="playMedia('https://qurango.net/radio/mix', this)" class="radio-btn" style="background: #1a5f7a; color: white;">الإذاعة العامة</button>
+            </div>
+
+            <audio id="smartPlayer" controls preload="auto" style="width: 100%; border-radius: 50px;">
+                <source src="https://server7.mp3quran.net/shur/001.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="visitor-counter" style="text-align: center; margin-top: 40px; padding-bottom: 20px;">
+            <div class="counter-badge" style="display: inline-block; background: var(--primary); color: white; padding: 6px 18px; border-radius: 20px;">
+                <i class="fas fa-eye"></i> عدد الزيارات: <span id="v-count">411</span>
+            </div>
+        </div>
+    </div> <script>
+        // وظيفة تبديل السور والإذاعة
+        function playMedia(url, btn) {
+            const player = document.getElementById('smartPlayer');
+            
+            // 1. تحديث شكل الأزرار
+            document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 2. تحديث الرابط والتحميل لضمان عدم وجود Error
+            player.pause();
+            player.src = url;
+            player.load();
+            
+            // 3. محاولة التشغيل التلقائي
+            player.play().catch(e => {
+                console.log("Safari requires manual click to play");
             });
         }
 
-        // 4. تحديث شكل الأزرار
-        document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    }
+        // إعدادات العداد والسمة عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            const countDisplay = document.getElementById('v-count');
+            if (countDisplay) {
+                let views = localStorage.getItem('site_views_final_411_fixed');
+                if (!views) { 
+                    views = 411; 
+                } else { 
+                    views = parseInt(views) + 1; 
+                }
+                localStorage.setItem('site_views_final_411_fixed', views);
+                countDisplay.innerText = views;
+            }
 
-    function toggleTheme() {
-        const body = document.documentElement;
-        const isDark = body.getAttribute('data-theme') === 'dark';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
-        document.getElementById('theme-icon').classList.replace(isDark ? 'fa-sun' : 'fa-moon', isDark ? 'fa-moon' : 'fa-sun');
-    }
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        });
 
-    window.addEventListener('DOMContentLoaded', () => {
-        // العداد الذكي يبدأ من 411
-        const countDisplay = document.getElementById('v-count');
-        if (countDisplay) {
-            let views = localStorage.getItem('site_views_final_411_fixed');
-            if (!views) { views = 411; } else { views = parseInt(views) + 1; }
-            localStorage.setItem('site_views_final_411_fixed', views);
-            countDisplay.innerText = views;
+        function toggleTheme() {
+            const body = document.documentElement;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
         }
-
-        // استعادة الثيم
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const icon = document.getElementById('theme-icon');
-            if (icon) icon.classList.replace('fa-moon', 'fa-sun');
-        }
-    });
-</script>
+    </script>
 </body>
 </html>
