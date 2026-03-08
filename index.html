@@ -16,7 +16,6 @@
             --card-bg: #ffffff;
             --border-color: #edf2f7;
             --radio-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            --dua-color: #744210; 
             --status-bg: #dcfce7;
             --status-text: #15803d;
         }
@@ -29,8 +28,6 @@
             --secondary: #fb923c;
             --border-color: #334155;
             --radio-bg: linear-gradient(135deg, #1e293b 0%, #111827 100%);
-            --dua-color: #ffd700; 
-            --gold-matte: #4e4537; 
             --status-bg: #064e3b;
             --status-text: #4ade80;
         }
@@ -115,7 +112,7 @@
         .progress-bar { background: #e2e8f0; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 5px; }
         .progress { background: var(--primary); height: 100%; border-radius: 10px; }
 
-        /* Charity Section Styling */
+        /* Charity Section Styling - High Contrast */
         .charity-wrapper { 
             direction: rtl; 
             border-radius: 20px; 
@@ -180,6 +177,8 @@
             .parents-box { font-size: 1.3em; width: 95%; }
             .radio-btn { padding: 10px 15px; font-size: 0.85em; }
             .container { padding: 20px; }
+            h1 { font-size: 22px; }
+            .exp-date { position: relative; display: block; margin-bottom: 5px; top: 0; }
         }
     </style>
 </head>
@@ -277,7 +276,7 @@
             <i class="fas fa-heart" style="color: #e53e3e;"></i> صَدقة جارية
         </div>
         <div class="parents-box">
-            جمال الدين سيدينا & فاطمة بنت سيدي حمود
+            جمال الدين سيدينا و فاطمة بنت سيدي حمود
             <span class="dua">رحمهما الله وأسكنهما فسيح جناته ورفعهما في عليين</span>
         </div>
 
@@ -297,7 +296,7 @@
 
     <div class="visitor-counter">
         <div class="counter-badge">
-            <i class="fas fa-eye"></i> Visitors Count: <span id="v-count">458</span>
+            <i class="fas fa-eye"></i> Visitors Count: <span id="v-count">468</span>
         </div>
     </div>
 </div>
@@ -315,9 +314,10 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         const countDisplay = document.getElementById('v-count');
-        let views = localStorage.getItem('site_views_v4');
-        if (!views) { views = 458; } else { views = parseInt(views) + 1; }
-        localStorage.setItem('site_views_v4', views);
+        let views = localStorage.getItem('site_views_final_v5');
+        // تم تحديث الرقم الابتدائي ليكون 468
+        if (!views) { views = 468; } else { views = parseInt(views) + 1; }
+        localStorage.setItem('site_views_final_v5', views);
         countDisplay.innerText = views;
 
         if (localStorage.getItem('theme') === 'dark') {
