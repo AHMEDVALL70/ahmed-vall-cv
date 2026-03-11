@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Ahmed Vall Sidina - Professional Portfolio</title>
+    <meta name="description" content="Official Portfolio of Ahmed Vall Jemal Dine Sidina - State Engineer, Diplomat, and Machine Learning Specialist. Showcase of technical projects and professional experience.">
+    <meta name="keywords" content="Ahmed Vall Sidina, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, GitHub Projects">
+    <meta name="author" content="Ahmed Vall Jemal Dine Sidina">
+    
+    <meta property="og:title" content="Ahmed Vall Sidina - Professional Portfolio">
+    <meta property="og:description" content="State Engineer & Machine Learning Practitioner.">
+    <meta property="og:image" content="my-photo.jpg">
+    <meta property="og:url" content="https://github.com/ahmedvallsidina">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
@@ -81,7 +91,22 @@
         .project-card { 
             margin-bottom: 20px; padding: 15px; border-left: 5px solid var(--primary); 
             background: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
+        .project-card:hover { transform: translateY(-3px); }
+
+        /* ستايل قسم الشهادات */
+        .cert-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg);
+            margin-bottom: 15px;
+        }
+        .cert-icon { font-size: 2rem; color: var(--gold); }
 
         .progress-bar { background: #e2e8f0; border-radius: 10px; height: 10px; margin-top: 10px; overflow: hidden; }
         .progress { background: var(--primary); height: 100%; transition: width 1s; }
@@ -146,6 +171,9 @@
     <h2 id="projects-header"></h2>
     <div class="grid-2" id="projects-list"></div>
 
+    <h2 id="certs-header"><i class="fas fa-certificate"></i> Certificates</h2>
+    <div id="certs-list"></div>
+
     <h2 id="tech-portfolio-header"></h2>
     <div id="tech-portfolio-list"></div>
 
@@ -206,14 +234,20 @@
             testimonial: "\"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy.\"",
             author: "— Official Commendation from the General Directorate",
             visitor: "Visitors",
-            viewBtn: "View Project File",
+            viewBtn: "View on GitHub", /* تم التغيير ليكون أكثر وضوحاً */
             dir: "ltr",
+            /* 3. تحديث روابط GitHub الحقيقية */
             techProjects: [
-                { title: "01. Diabetes Prediction", desc: "ML model with Scikit-Learn and Linear Regression for health indicators.", link: "Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. Iris Classification", desc: "Implementing KNN algorithm for flower species classification.", link: "Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. Gemini AI Integration", desc: "Python connectivity with Google Gemini 1.5 Flash for AI text generation.", link: "Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. Sentiment Analysis", desc: "NLP tool using TextBlob to categorize customer feedback.", link: "Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. Currency Tracker", desc: "Financial tool fetching live exchange rates using External APIs.", link: "Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. Diabetes Prediction", desc: "ML model with Scikit-Learn for health indicators.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. Iris Classification", desc: "Implementing KNN algorithm for flower species classification.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. Gemini AI Integration", desc: "Python connectivity with Google Gemini 1.5 Flash.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. Sentiment Analysis", desc: "NLP tool using TextBlob to categorize customer feedback.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. Currency Tracker", desc: "Financial tool fetching live exchange rates using APIs.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            /* إضافة مصفوفة الشهادات */
+            certs: [
+                { title: "Machine Learning Specialization", provider: "Coursera / Stanford", date: "2025" },
+                { title: "Python for Data Science", provider: "IBM", date: "2024" }
             ],
             experience: [
                 { title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah", date: "2019 – 2024", desc: "Supervising civil status services and secure identification document issuance." },
@@ -232,21 +266,25 @@
             subtitle: "مهندس دولة | دبلوماسي | خبير نظم بيومترية",
             expHeader: "الخبرة المهنية",
             projectsHeader: "المهمات الكبرى",
-            techHeader: "المشاريع التقنية (تعلم الآلة)",
+            techHeader: "المشاريع التقنية (GitHub)",
             skillsHeader: "المهارات التقنية",
             langHeader: "اللغات",
             honorsHeader: "التكريم والشهادات",
             testimonial: "\"أظهر أحمد فال كفاءة استثنائية في الربط بين المتطلبات التقنية المعقدة والدبلوماسية الإدارية.\"",
             author: "— إشادة رسمية من الإدارة العامة",
             visitor: "عدد الزوار",
-            viewBtn: "عرض ملف المشروع",
+            viewBtn: "عرض الكود على GitHub",
             dir: "rtl",
             techProjects: [
-                { title: "01. التنبؤ بالسكري", desc: "نموذج تعلم آلة باستخدام Scikit-Learn للتنبؤ بالمؤشرات الصحية.", link: "Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. تصنيف فصائل الزهور", desc: "تطبيق خوارزمية KNN لتصنيف فصائل الزهور بدقة.", link: "Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. دمج ذكاء Gemini", desc: "ربط بايثون بذكاء جوجل الاصطناعي 1.5 Flash لتوليد النصوص.", link: "Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. تحليل المشاعر", desc: "أداة معالجة لغات طبيعية لتحليل آراء العملاء باستخدام TextBlob.", link: "Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. متتبع العملات المباشر", desc: "أداة مالية لجلب أسعار الصرف الحقيقية عبر واجهات API.", link: "Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. التنبؤ بالسكري", desc: "نموذج تعلم آلة باستخدام Scikit-Learn للتنبؤ بالمؤشرات الصحية.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. تصنيف فصائل الزهور", desc: "تطبيق خوارزمية KNN لتصنيف فصائل الزهور بدقة.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. دمج ذكاء Gemini", desc: "ربط بايثون بذكاء جوجل الاصطناعي 1.5 Flash لتوليد النصوص.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. تحليل المشاعر", desc: "أداة معالجة لغات طبيعية لتحليل آراء العملاء باستخدام TextBlob.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. متتبع العملات المباشر", desc: "أداة مالية لجلب أسعار الصرف الحقيقية عبر واجهات API.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            certs: [
+                { title: "تخصص تعلم الآلة", provider: "كورسيرا / ستانفورد", date: "2025" },
+                { title: "بايثون لعلوم البيانات", provider: "IBM", date: "2024" }
             ],
             experience: [
                 { title: "نائب القنصل العام", company: "قنصلية موريتانيا بجدة، السعودية", date: "2019 – 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية المؤمنة." },
@@ -265,21 +303,25 @@
             subtitle: "Ingénieur d'État | Diplomate | Spécialiste Biométrie",
             expHeader: "Expérience Professionnelle",
             projectsHeader: "Missions Majeures",
-            techHeader: "Portfolio Technique ML",
+            techHeader: "Portfolio GitHub ML",
             skillsHeader: "Compétences Techniques",
             langHeader: "Langues",
             honorsHeader: "Distinctions",
             testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant technique et diplomatie.\"",
             author: "— Éloge officiel",
             visitor: "Visiteurs",
-            viewBtn: "Voir le projet",
+            viewBtn: "Voir sur GitHub",
             dir: "ltr",
             techProjects: [
-                { title: "01. Prédiction Diabète", desc: "Modèle ML avec Scikit-Learn pour les indicateurs de santé.", link: "Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. Classification Iris", desc: "Utilisation de l'algorithme KNN pour la classification.", link: "Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. Intégration Gemini AI", desc: "Connexion Python avec Google Gemini 1.5 Flash.", link: "Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. Analyse de Sentiment", desc: "Outil NLP pour les retours clients via TextBlob.", link: "Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. Tracker de Devises", desc: "Outil financier via API externe en temps réel.", link: "Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. Prédiction Diabète", desc: "Modèle ML avec Scikit-Learn pour les indicateurs de santé.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. Classification Iris", desc: "Utilisation de l'algorithme KNN pour la classification.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. Intégration Gemini AI", desc: "Connexion Python avec Google Gemini 1.5 Flash.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. Analyse de Sentiment", desc: "Outil NLP pour les retours clients via TextBlob.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. Tracker de Devises", desc: "Outil financier via API externe en temps réel.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            certs: [
+                { title: "Spécialisation Machine Learning", provider: "Coursera / Stanford", date: "2025" },
+                { title: "Python pour Data Science", provider: "IBM", date: "2024" }
             ],
             experience: [
                 { title: "Consul Général Adjoint", company: "Consulat de Mauritanie à Djeddah", date: "2019 – 2024", desc: "Supervision des services d'état civil." }
@@ -300,6 +342,9 @@
         document.getElementById('job-subtitle').innerText = d.subtitle;
         document.getElementById('v-text').innerText = d.visitor;
 
+        // SEO: تحديث وصف الصفحة عند تغيير اللغة
+        document.querySelector('meta[name="description"]').setAttribute("content", d.bio);
+
         document.getElementById('exp-header').innerHTML = `<i class="fas fa-briefcase"></i> ${d.expHeader}`;
         document.getElementById('projects-header').innerHTML = `<i class="fas fa-tasks"></i> ${d.projectsHeader}`;
         document.getElementById('tech-portfolio-header').innerHTML = `<i class="fas fa-code"></i> ${d.techHeader}`;
@@ -309,12 +354,26 @@
 
         document.getElementById('testimonial-card').innerHTML = `<p>${d.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${d.author}</small>`;
 
-        // Render Technical Projects
+        // Render Certificates
+        let certHtml = '';
+        d.certs.forEach(c => {
+            certHtml += `
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <div>
+                    <strong style="display:block;">${c.title}</strong>
+                    <small>${c.provider} • ${c.date}</small>
+                </div>
+            </div>`;
+        });
+        document.getElementById('certs-list').innerHTML = certHtml;
+
+        // Render Technical Projects (GitHub Links)
         let techHtml = '';
         d.techProjects.forEach(p => {
             techHtml += `<div class="project-card" style="border-left-color:${p.color}">
                 <h3>${p.title}</h3><p>${p.desc}</p>
-                <a href="${p.link}" style="color:${p.color}; font-weight:bold;"><i class="fas fa-external-link-alt"></i> ${d.viewBtn}</a>
+                <a href="${p.link}" target="_blank" style="color:${p.color}; font-weight:bold;"><i class="fab fa-github"></i> ${d.viewBtn}</a>
             </div>`;
         });
         document.getElementById('tech-portfolio-list').innerHTML = techHtml;
