@@ -83,9 +83,23 @@
             border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
         
-        .project-card { 
-            margin-bottom: 20px; padding: 15px; border-left: 5px solid var(--primary); 
-            background: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        #tech-portfolio-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+            border-left: 5px solid var(--primary);
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s;
         }
         .project-card:hover { transform: translateY(-3px); }
@@ -130,7 +144,7 @@
 <nav class="navbar-fixed">
     <div class="lang-switcher">
         <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
-        <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
         <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
     </div>
     <div class="theme-switch" onclick="toggleTheme()"><i id="theme-icon" class="fas fa-moon"></i></div>
@@ -325,15 +339,13 @@
 
     function setLanguage(lang) {
         const d = translations[lang];
+        document.documentElement.lang = lang;
         document.body.setAttribute('dir', d.dir);
         document.getElementById('name-title').innerText = d.name;
         document.getElementById('bio-text').innerText = d.bio;
         document.getElementById('status-text').innerText = d.status;
         document.getElementById('job-subtitle').innerText = d.subtitle;
         document.getElementById('v-text').innerText = d.visitor;
-
-        // SEO Update
-        document.querySelector('meta[name="description"]').setAttribute("content", d.bio);
 
         document.getElementById('exp-header').innerHTML = `<i class="fas fa-briefcase"></i> ${d.expHeader}`;
         document.getElementById('projects-header').innerHTML = `<i class="fas fa-tasks"></i> ${d.projectsHeader}`;
@@ -345,56 +357,60 @@
 
         document.getElementById('testimonial-card').innerHTML = `<p>${d.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${d.author}</small>`;
 
-        // Render Certificates
-        let certHtml = '';
-        d.certs.forEach(c => {
-            certHtml += `
-            <div class="cert-card">
-                <i class="fas fa-certificate cert-icon"></i>
-                <div>
-                    <strong style="display:block;">${c.title}</strong>
-                    <small>${c.provider} • ${c.date}</small>
-                </div>
-            </div>`;
+        // Render Lists
+        renderCerts(d.certs);
+        renderTechProjects(d.techProjects, d.viewBtn);
+        renderExperience(d.experience);
+        renderSkills(d.skills);
+        renderGeneralProjects(d.projects);
+        renderLangBars(lang);
+
+        document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+    }
+
+    function renderCerts(certs) {
+        let html = '';
+        certs.forEach(c => {
+            html += `<div class="cert-card"><i class="fas fa-certificate cert-icon"></i><div><strong>${c.title}</strong><small>${c.provider} • ${c.date}</small></div></div>`;
         });
-        document.getElementById('certs-list').innerHTML = certHtml;
+        document.getElementById('certs-list').innerHTML = html;
+    }
 
-        // Render Tech Projects (GitHub links)
-        let techHtml = '';
-        d.techProjects.forEach(p => {
-            techHtml += `<div class="project-card" style="border-left-color:${p.color}">
-                <h3>${p.title}</h3><p>${p.desc}</p>
-                <a href="${p.link}" target="_blank" style="color:${p.color}; font-weight:bold;"><i class="fab fa-github"></i> ${d.viewBtn}</a>
-            </div>`;
+    function renderTechProjects(projs, btnTxt) {
+        let html = '';
+        projs.forEach(p => {
+            html += `<div class="project-card" style="border-left-color:${p.color}"><h3>${p.title}</h3><p>${p.desc}</p><a href="${p.link}" target="_blank" style="color:${p.color}; font-weight:bold;"><i class="fab fa-github"></i> ${btnTxt}</a></div>`;
         });
-        document.getElementById('tech-portfolio-list').innerHTML = techHtml;
+        document.getElementById('tech-portfolio-list').innerHTML = html;
+    }
 
-        // Render Experience
-        let expHtml = '';
-        d.experience.forEach(item => {
-            expHtml += `<div class="exp-item"><span class="exp-title">${item.title}</span><span class="exp-company">${item.company}</span><span class="exp-date">${item.date}</span><p>${item.desc}</p></div>`;
+    function renderExperience(exp) {
+        let html = '';
+        exp.forEach(item => {
+            html += `<div class="exp-item"><span class="exp-title">${item.title}</span><span class="exp-company">${item.company}</span><span class="exp-date">${item.date}</span><p>${item.desc}</p></div>`;
         });
-        document.getElementById('experience-list').innerHTML = expHtml;
+        document.getElementById('experience-list').innerHTML = html;
+    }
 
-        // Render Skills
-        let sHtml = '';
-        d.skills.forEach(s => sHtml += `<li>${s}</li>`);
-        document.getElementById('skills-list').innerHTML = sHtml;
+    function renderSkills(skills) {
+        let html = '';
+        skills.forEach(s => html += `<li>${s}</li>`);
+        document.getElementById('skills-list').innerHTML = html;
+    }
 
-        // Render General Projects
-        let pHtml = '';
-        d.projects.forEach(p => pHtml += `<div class="info-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`);
-        document.getElementById('projects-list').innerHTML = pHtml;
+    function renderGeneralProjects(projs) {
+        let html = '';
+        projs.forEach(p => html += `<div class="info-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`);
+        document.getElementById('projects-list').innerHTML = html;
+    }
 
-        // Language bars
+    function renderLangBars(lang) {
         const labels = lang === 'ar' ? ['العربية', 'الفرنسية', 'الإنجليزية'] : (lang === 'fr' ? ['Arabe', 'Français', 'Anglais'] : ['Arabic', 'French', 'English']);
         document.getElementById('lang-levels').innerHTML = `
             <div style="margin-bottom:12px">${labels[0]} 100% <div class="progress-bar"><div class="progress" style="width:100%"></div></div></div>
             <div style="margin-bottom:12px">${labels[1]} 70% <div class="progress-bar"><div class="progress" style="width:70%"></div></div></div>
             <div>${labels[2]} 50% <div class="progress-bar"><div class="progress" style="width:50%"></div></div></div>`;
-
-        document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
     }
 
     function toggleTheme() {
@@ -407,7 +423,8 @@
 
     function playMedia(url, btn) {
         const player = document.getElementById('smartPlayer');
-        player.src = url; player.play();
+        player.src = url; 
+        player.play().catch(e => console.log("Audio play prevented or error: ", e));
         document.querySelectorAll('.surah-btns .lang-btn').forEach(b => b.style.opacity = "0.6");
         btn.style.opacity = "1";
     }
