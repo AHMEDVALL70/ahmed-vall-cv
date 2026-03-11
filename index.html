@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
-            --primary: #2c3e50; --secondary: #e67e22; --bg: #f8fafc; --text: #1e293b; 
-            --gold: #c0a16b; --gold-matte: #d1b58c; --card-bg: #ffffff;
+            --primary: #2c3e50; --secondary: #e67e22; 
+            --bg: #fdfeff; /* تغيير للون الأبيض الثلجي */
+            --text: #1a365d; /* تدرج أزرق ملكي للنصوص */
+            --gold: #c0a16b; --gold-matte: #d1b58c; 
+            --card-bg: #f0f9ff; /* تغيير للون سماوي فاتح جداً ناعم */
             --border-color: #edf2f7; --status-bg: #dcfce7; --status-text: #15803d;
             --radio-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
         }
@@ -32,19 +35,20 @@
         }
 
         .container { 
-            max-width: 900px; margin: 80px auto 20px auto; background: var(--card-bg); 
-            padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
+            max-width: 900px; margin: 80px auto 20px auto; background: #ffffff; 
+            padding: 40px; border-radius: 24px; /* زوايا منحنية 24px */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
             position: relative;
         }
 
         .navbar-fixed {
-            position: fixed; top: 0; left: 0; right: 0; background: var(--card-bg);
+            position: fixed; top: 0; left: 0; right: 0; background: #ffffff;
             padding: 12px 25px; display: flex; justify-content: space-between;
             align-items: center; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             border-bottom: 2px solid var(--border-color);
         }
 
-        .lang-switcher { display: flex; gap: 6px; background: var(--bg); padding: 5px; border-radius: 30px; }
+        .lang-switcher { display: flex; gap: 6px; background: #f1f5f9; padding: 5px; border-radius: 30px; }
         .lang-btn {
             border: none; background: none; color: var(--text); cursor: pointer;
             padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; transition: 0.3s;
@@ -78,11 +82,15 @@
         .exp-date { color: #888; font-size: 0.9em; font-weight: bold; }
 
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .info-card { 
-            background: var(--card-bg); padding: 25px; border-radius: 15px; 
-            border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
         
+        .info-card, .project-card { 
+            background: var(--card-bg); padding: 25px; border-radius: 24px; /* زوايا 24px */
+            border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        /* تحول للأبيض النقي عند تمرير الفأرة */
+        .info-card:hover, .project-card:hover { background: #ffffff; transform: translateY(-3px); }
+
         #tech-portfolio-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -97,16 +105,11 @@
             justify-content: space-between;
             padding: 15px;
             border-left: 5px solid var(--primary);
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
         }
-        .project-card:hover { transform: translateY(-3px); }
 
         .cert-card {
-            border: 1px solid var(--border-color); padding: 15px; border-radius: 12px;
-            display: flex; align-items: center; gap: 15px; background: var(--bg); margin-bottom: 15px;
+            border: 1px solid var(--border-color); padding: 15px; border-radius: 24px;
+            display: flex; align-items: center; gap: 15px; background: var(--card-bg); margin-bottom: 15px;
         }
         .cert-icon { font-size: 2rem; color: var(--gold); }
 
@@ -118,15 +121,18 @@
             align-items: center; justify-content: center; color: white; margin: 0 5px; transition: 0.3s; 
         }
 
+        /* إصلاح توسيط مربع الإذاعة للهواتف */
         .charity-wrapper { 
-            direction: rtl; border-radius: 20px; padding: 40px 20px; margin-top: 60px; 
+            direction: rtl; border-radius: 24px; padding: 40px 20px; margin-top: 60px; 
             background: var(--radio-bg); text-align: center; border: 2px solid var(--gold); 
+            display: flex; flex-direction: column; align-items: center;
         }
         .parents-box { 
             font-size: 1.4em; color: #1a202c; font-weight: 800; background: #fff; 
             padding: 35px; border-radius: 15px; margin-bottom: 25px; display: inline-block; 
             width: 90%; max-width: 550px; border: 1px solid var(--gold-matte);
         }
+        #smartPlayer { width: 100%; max-width: 450px; height: 40px; border-radius: 30px; margin: 20px auto 0 auto; display: block; }
 
         .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
         .download-btn { 
@@ -213,7 +219,7 @@
             <button onclick="playMedia('https://server7.mp3quran.net/shur/067.mp3', this)" class="lang-btn">الملك</button>
             <button onclick="playMedia('https://qurango.net/radio/mix', this)" class="lang-btn" style="background:var(--gold); color:white;">الإذاعة العامة</button>
         </div>
-        <audio id="smartPlayer" controls style="width: 100%; max-width: 450px; height: 40px; border-radius: 30px; margin-top:20px;"></audio>
+        <audio id="smartPlayer" controls></audio>
     </div>
 
     <div class="visitor-counter" style="text-align: center; margin-top: 30px; opacity: 0.6;">
@@ -357,7 +363,6 @@
 
         document.getElementById('testimonial-card').innerHTML = `<p>${d.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${d.author}</small>`;
 
-        // Render Lists
         renderCerts(d.certs);
         renderTechProjects(d.techProjects, d.viewBtn);
         renderExperience(d.experience);
