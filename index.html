@@ -187,11 +187,26 @@
     color: var(--primary);
     font-size: 1.2rem;
 }
+/* تنسيق خلفية الجزيئات */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 450px; /* يغطي منطقة الهيدر فقط */
+    z-index: -1;   /* يجعله خلف كل شيء لضمان ظهور النصوص */
+    top: 0;
+    left: 0;
+    pointer-events: none; /* لضمان القدرة على الضغط على الأزرار والصورة فوقه */
+}
+
+header {
+    position: relative;
+    z-index: 1; /* يرفع محتوى الهيدر فوق الخلفية المتحركة */
+}
     </style>
 </head>
 <body data-lang="en">
-
 <nav class="navbar-fixed">
+    <div id="particles-js" style="position: absolute; width: 100%; height: 450px; z-index: -1;"></div>
     <div class="lang-switcher">
         <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
         <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
@@ -554,6 +569,27 @@
     window.addEventListener('load', () => {
         setTimeout(typeEffect, 1000);
     });
+    // استدعاء مكتبة الجزيئات وتفعيلها
+const particlesScript = document.createElement('script');
+particlesScript.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+particlesScript.onload = function() {
+    particlesJS('particles-js', {
+        "particles": {
+            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#6366f1" }, 
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.3 },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#6366f1", "opacity": 0.2, "width": 1 },
+            "move": { "enable": true, "speed": 1.5 }
+        },
+        "interactivity": {
+            "events": { "onhover": { "enable": true, "mode": "grab" } }
+        },
+        "retina_detect": true
+    });
+};
+document.head.appendChild(particlesScript);
 </script>
 </body>
 </html>
