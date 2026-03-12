@@ -170,6 +170,23 @@
         @media (max-width: 600px) {
             .container { padding: 20px 15px; }
         }
+        /* تأثير الوميض للمؤشر */
+.typewriter-cursor {
+    border-inline-end: 3px solid var(--secondary);
+    animation: blink 0.7s infinite;
+    margin-inline-start: 5px;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.subtitle {
+    min-height: 1.6em; /* لمنع اهتزاز الصفحة أثناء الكتابة */
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
     </style>
 </head>
 <body data-lang="en">
@@ -258,6 +275,9 @@
     const translations = {
         en: {
             name: "Ahmed Vall Jemal Dine Sidina",
+            roles: ["State Engineer", "Diplomat", "Machine Learning Specialist", "Biometrics Expert"],
+            bio: '"Dedicated Developer & Machine Learning Practitioner..." ',
+            name: "Ahmed Vall Jemal Dine Sidina",
             bio: '"Dedicated Developer & Machine Learning Practitioner specialized in building data-driven solutions. From predictive healthcare models to Generative AI, I bridge the gap between complex code and real-world applications."',
             status: "Available for Projects",
             subtitle: "State Engineer | Diplomat | Biometrics Specialist",
@@ -297,6 +317,11 @@
         },
         ar: {
             name: "أحمد فال جمال الدين سيدينا",
+            // أضف السطر المقابل له هنا أيضاً
+            roles: ["مهندس دولة", "دبلوماسي", "مختص في تعلم الآلة", "خبير نظم بيومترية"],
+            bio: '"مهندس وممارس في تعلم الآلة..." ',
+            // ... بقية البيانات
+            name: "أحمد فال جمال الدين سيدينا",
             bio: '"مهندس وممارس في تعلم الآلة، متخصص في بناء الحلول القائمة على البيانات. من النماذج الصحية التنبؤية إلى الذكاء الاصطناعي التوليدي، أقوم بربط الكود المعقد بالتطبيقات الواقعية."',
             status: "متاح للمشاريع والتعاون الدولي",
             subtitle: "مهندس دولة | دبلوماسي | خبير نظم بيومترية",
@@ -333,9 +358,13 @@
                 { title: "تحديث النظام البيومتري", desc: "تطوير أنظمة التسجيل للجالية الموريتانية بالخارج." },
                 { title: "تأمين البيانات القنصلية", desc: "بناء مسارات ربط آمنة لنقل البيانات الحساسة." }
             ]
-            
         },
         fr: {
+            name: "Ahmed Vall Jemal Dine Sidina",
+            // وأخيراً هنا للفرنسية
+            roles: ["Ingénieur d'État", "Diplomate", "Spécialiste ML", "Expert en Biométrie"],
+            bio: '"Développeur dédié et praticien en Machine Learning..." ',
+            // ... بقية البيانات
             name: "Ahmed Vall Jemal Dine Sidina",
             bio: '"Développeur dédié et praticien en Machine Learning spécialisé dans les solutions basées sur les données. Des modèles de santé prédictifs à l\'IA générative, je comble le fossé entre le code complexe et les applications réelles."',
             status: "Disponible pour projets et collaboration",
@@ -358,7 +387,7 @@
                 { title: "03. Intégration Gemini AI", desc: "Pont Python pour l'IA générative de Google.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
                 { title: "04. Performance Étudiante", desc: "Analyse de régression pour les résultats éducatifs.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#f39c12" },
                 { title: "05. Système Détection Faciale", desc: "Reconnaissance biométrique en temps réel utilisant OpenCV.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#e74c3c" },
-                { title: "06. Expert Immobilier Numérique", desc: "Prédiction des prix immobiliers saoudiens via Random Forest et codage des données catégorielles.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb", color: "#6366f1" }
+                { title: "06. Expert Immobilier Numérique", desc: "", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb", color: "#6366f1" }
             ],
             certs: [
                 { title: "Spécialisation Machine Learning", provider: "Stanford / Coursera", date: "2025" },
@@ -486,6 +515,45 @@
         localStorage.setItem('site_v_count', views);
         document.getElementById('v-count').innerText = views;
     };
+    // إعدادات تأثير الكتابة (Typewriter)
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function typeEffect() {
+        const lang = document.documentElement.lang || 'en';
+        // تأكد من إضافة صف 'roles' في كائن translations لكل لغة
+        const currentRoles = translations[lang].roles || ["Engineer", "Diplomat"]; 
+        const currentFullText = currentRoles[roleIndex];
+        const displayElement = document.getElementById('job-subtitle');
+
+        if (isDeleting) {
+            charIndex--;
+            typeSpeed = 50;
+        } else {
+            charIndex++;
+            typeSpeed = 100;
+        }
+
+        displayElement.innerHTML = currentFullText.substring(0, charIndex) + '<span class="typewriter-cursor"></span>';
+
+        if (!isDeleting && charIndex === currentFullText.length) {
+            isDeleting = true;
+            typeSpeed = 2000; // مدة التوقف عند اكتمال الكلمة
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % currentRoles.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+    }
+
+    // تشغيل التأثير عند تحميل النافذة
+    window.addEventListener('load', () => {
+        setTimeout(typeEffect, 1000);
+    });
 </script>
 </body>
 </html>
