@@ -13,10 +13,10 @@
     <style>
         :root { 
             --primary: #2c3e50; --secondary: #e67e22; 
-            --bg: #fdfeff; /* تغيير للون الأبيض الثلجي */
-            --text: #1a365d; /* تدرج أزرق ملكي للنصوص */
+            --bg: #fdfeff; 
+            --text: #1a365d; 
             --gold: #c0a16b; --gold-matte: #d1b58c; 
-            --card-bg: #f0f9ff; /* تغيير للون سماوي فاتح جداً ناعم */
+            --card-bg: #f0f9ff; 
             --border-color: #edf2f7; --status-bg: #dcfce7; --status-text: #15803d;
             --radio-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
         }
@@ -36,7 +36,7 @@
 
         .container { 
             max-width: 900px; margin: 80px auto 20px auto; background: #ffffff; 
-            padding: 40px; border-radius: 24px; /* زوايا منحنية 24px */
+            padding: 40px; border-radius: 24px; 
             box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
             position: relative;
         }
@@ -83,29 +83,57 @@
 
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
-        .info-card, .project-card { 
-            background: var(--card-bg); padding: 25px; border-radius: 24px; /* زوايا 24px */
+        .info-card { 
+            background: var(--card-bg); padding: 25px; border-radius: 24px; 
             border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
         }
-        /* تحول للأبيض النقي عند تمرير الفأرة */
-        .info-card:hover, .project-card:hover { background: #ffffff; transform: translateY(-3px); }
+        .info-card:hover { background: #ffffff; transform: translateY(-3px); }
 
+        /* --- التعديل الجديد للمشاريع (مطابق للصورة والمتحرك) --- */
         #tech-portfolio-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
         .project-card {
-            height: 100%;
+            background: #ffffff !important;
+            padding: 30px 25px;
+            border-radius: 30px !important;
+            border: 1px solid #e2e8f0 !important;
+            border-top-width: 8px !important; /* الحدود الملونة من الأعلى كما في الصورة */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 15px;
-            border-left: 5px solid var(--primary);
+            gap: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            opacity: 0; transform: translateY(20px); /* للتحريك عند البداية */
         }
+
+        .project-card.visible { opacity: 1; transform: translateY(0); }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .project-card h3 { 
+            margin: 0; font-size: 1.15rem; color: #1a202c; font-weight: 700; 
+        }
+
+        .project-card p { 
+            margin: 0; font-size: 0.95rem; color: #718096; flex-grow: 1; 
+        }
+
+        .project-card a {
+            text-decoration: none; font-weight: 700; font-size: 0.95rem;
+            display: inline-flex; align-items: center; gap: 5px;
+            transition: 0.3s;
+        }
+        .project-card a:hover { gap: 10px; opacity: 0.8; }
+        /* ---------------------------------------------------- */
 
         .cert-card {
             border: 1px solid var(--border-color); padding: 15px; border-radius: 24px;
@@ -121,7 +149,6 @@
             align-items: center; justify-content: center; color: white; margin: 0 5px; transition: 0.3s; 
         }
 
-        /* إصلاح توسيط مربع الإذاعة للهواتف */
         .charity-wrapper { 
             direction: rtl; border-radius: 24px; padding: 40px 20px; margin-top: 60px; 
             background: var(--radio-bg); text-align: center; border: 2px solid var(--gold); 
@@ -179,11 +206,11 @@
     <h2 id="projects-header"></h2>
     <div class="grid-2" id="projects-list"></div>
 
-    <h2 id="certs-header"></h2>
-    <div id="certs-list"></div>
-
     <h2 id="tech-portfolio-header"></h2>
     <div id="tech-portfolio-list"></div>
+
+    <h2 id="certs-header"></h2>
+    <div id="certs-list"></div>
 
     <div class="grid-2" style="margin-top: 30px;">
         <div class="info-card">
@@ -244,14 +271,14 @@
             testimonial: "\"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy.\"",
             author: "— Official Commendation from the General Directorate",
             visitor: "Visitors",
-            viewBtn: "View Notebook on GitHub",
+            viewBtn: "View on GitHub →",
             dir: "ltr",
             techProjects: [
-                { title: "01. Diabetes Prediction", desc: "ML model with Scikit-Learn for health indicators.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. Iris Classification", desc: "Implementing KNN algorithm for flower species classification.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. Gemini AI Integration", desc: "Python connectivity with Google Gemini 1.5 Flash.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. Sentiment Analysis", desc: "NLP tool using TextBlob to categorize customer feedback.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. Currency Tracker", desc: "Financial tool fetching live exchange rates using APIs.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. Diabetes Prediction", desc: "ML model with Scikit-Learn for health indicators forecasting.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
+                { title: "02. Sentiment Analysis", desc: "NLP implementation for text emotion detection.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#3498db" },
+                { title: "03. Gemini AI Integration", desc: "Python bridge for Google's Generative AI.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
+                { title: "04. Student Performance", desc: "Regression analysis for educational outcomes.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#f39c12" },
+                { title: "05. Face Detection System", desc: "Real-time Biometric Recognition using OpenCV.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#e74c3c" }
             ],
             certs: [
                 { title: "Machine Learning Specialization", provider: "Stanford / Coursera", date: "2025" },
@@ -275,21 +302,21 @@
             expHeader: "الخبرة المهنية",
             projectsHeader: "المهمات الكبرى",
             certsHeader: "الشهادات والدورات التدريبية",
-            techHeader: "المشاريع التقنية (ملفات GitHub)",
+            techHeader: "المشاريع التقنية (GitHub)",
             skillsHeader: "المهارات التقنية",
             langHeader: "اللغات",
             honorsHeader: "التكريم والشهادات",
             testimonial: "\"أظهر أحمد فال كفاءة استثنائية في الربط بين المتطلبات التقنية المعقدة والدبلوماسية الإدارية.\"",
             author: "— إشادة رسمية من الإدارة العامة",
             visitor: "عدد الزوار",
-            viewBtn: "عرض الملف على GitHub",
+            viewBtn: "عرض على GitHub ←",
             dir: "rtl",
             techProjects: [
-                { title: "01. التنبؤ بالسكري", desc: "نموذج تعلم آلة باستخدام Scikit-Learn للتنبؤ بالمؤشرات الصحية.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. تصنيف فصائل الزهور", desc: "تطبيق خوارزمية KNN لتصنيف فصائل الزهور بدقة.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. دمج ذكاء Gemini", desc: "ربط بايثون بذكاء جوجل الاصطناعي 1.5 Flash لتوليد النصوص.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. تحليل المشاعر", desc: "أداة معالجة لغات طبيعية لتحليل آراء العملاء باستخدام TextBlob.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. متتبع العملات المباشر", desc: "أداة مالية لجلب أسعار الصرف الحقيقية عبر واجهات API.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. التنبؤ بالسكري", desc: "نموذج تعلم آلة للتنبؤ بالمؤشرات الصحية.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
+                { title: "02. تحليل المشاعر", desc: "تطبيق معالجة اللغات الطبيعية للكشف عن المشاعر.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#3498db" },
+                { title: "03. دمج ذكاء Gemini", desc: "ربط بايثون بذكاء جوجل الاصطناعي التوليدي.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
+                { title: "04. أداء الطلاب", desc: "تحليل انحدار للنتائج التعليمية.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#f39c12" },
+                { title: "05. نظام كشف الوجه", desc: "التعرف البيومتري في الوقت الفعلي باستخدام OpenCV.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#e74c3c" }
             ],
             certs: [
                 { title: "تخصص تعلم الآلة", provider: "جامعة ستانفورد / Coursera", date: "2025" },
@@ -307,8 +334,8 @@
         },
         fr: {
             name: "Ahmed Vall Jemal Dine Sidina",
-            bio: '"Développeur dédié et praticien en Machine Learning spécialisé dans les solutions basées sur les données."',
-            status: "Disponible pour projets",
+            bio: '"Développeur dédié et praticien en Machine Learning spécialisé dans les solutions basées sur les données. Des modèles de santé prédictifs à l\'IA générative, je comble le fossé entre le code complexe et les applications réelles."',
+            status: "Disponible pour projets et collaboration",
             subtitle: "Ingénieur d'État | Diplomate | Spécialiste Biométrie",
             expHeader: "Expérience Professionnelle",
             projectsHeader: "Missions Majeures",
@@ -316,35 +343,37 @@
             techHeader: "Portfolio Technique ML (GitHub)",
             skillsHeader: "Compétences Techniques",
             langHeader: "Langues",
-            honorsHeader: "Distinctions",
-            testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant technique et diplomatie.\"",
-            author: "— Éloge officiel",
+            honorsHeader: "Distinctions & Témoignages",
+            testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant les exigences techniques complexes et la diplomatie administrative.\"",
+            author: "— Éloge officiel de la Direction Générale",
             visitor: "Visiteurs",
-            viewBtn: "Voir sur GitHub",
+            viewBtn: "Voir sur GitHub →",
             dir: "ltr",
             techProjects: [
-                { title: "01. Prédiction Diabète", desc: "Modèle ML avec Scikit-Learn pour les indicateurs de santé.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
-                { title: "02. Classification Iris", desc: "Utilisation de l'algorithme KNN pour la classification.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#3498db" },
-                { title: "03. Intégration Gemini AI", desc: "Connexion Python avec Google Gemini 1.5 Flash.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
-                { title: "04. Analyse de Sentiment", desc: "Outil NLP pour les retours clients via TextBlob.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#e67e22" },
-                { title: "05. Tracker de Devises", desc: "Outil financier via API externe en temps réel.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#2c3e50" }
+                { title: "01. Prédiction du Diabète", desc: "Modèle ML avec Scikit-Learn pour la prévision des indicateurs de santé.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#2ecc71" },
+                { title: "02. Analyse de Sentiment", desc: "Implémentation NLP pour la détection des émotions textuelles.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", color: "#3498db" },
+                { title: "03. Intégration Gemini AI", desc: "Pont Python pour l'IA générative de Google.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#9b59b6" },
+                { title: "04. Performance Étudiante", desc: "Analyse de régression pour les résultats éducatifs.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#f39c12" },
+                { title: "05. Système Détection Faciale", desc: "Reconnaissance biométrique en temps réel utilisant OpenCV.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb", color: "#e74c3c" }
             ],
             certs: [
                 { title: "Spécialisation Machine Learning", provider: "Stanford / Coursera", date: "2025" },
                 { title: "Python pour Data Science", provider: "IBM", date: "2024" }
             ],
             experience: [
-                { title: "Consul Général Adjoint", company: "Consulat de Mauritanie à Djeddah", date: "2019 – 2024", desc: "Supervision des services d'état civil." }
+                { title: "Consul Général Adjoint", company: "Consulat de Mauritanie à Djeddah", date: "2019 – 2024", desc: "Supervision des services d'état civil et délivrance de documents sécurisés." },
+                { title: "Ingénieur d'État", company: "IT & Télécommunications", date: "Années précédentes", desc: "Conception d'infrastructures réseaux et gestion de systèmes biométriques." }
             ],
-            skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie"],
+            skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie Numérique", "Planification Stratégique"],
             projects: [
-                { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement." }
+                { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement des citoyens à l'étranger." },
+                { title: "Infrastructure Sécurisée", desc: "Développement de connectivité sécurisée pour les données consulaires." }
             ]
-        }
+        },
     };
 
     function setLanguage(lang) {
-        const d = translations[lang];
+        const d = translations[lang] || translations['en'];
         document.documentElement.lang = lang;
         document.body.setAttribute('dir', d.dir);
         document.getElementById('name-title').innerText = d.name;
@@ -384,10 +413,22 @@
 
     function renderTechProjects(projs, btnTxt) {
         let html = '';
-        projs.forEach(p => {
-            html += `<div class="project-card" style="border-left-color:${p.color}"><h3>${p.title}</h3><p>${p.desc}</p><a href="${p.link}" target="_blank" style="color:${p.color}; font-weight:bold;"><i class="fab fa-github"></i> ${btnTxt}</a></div>`;
+        projs.forEach((p, index) => {
+            html += `
+            <div class="project-card" style="border-top-color:${p.color}; transition-delay: ${index * 0.1}s">
+                <h3>${p.title}</h3>
+                <p>${p.desc}</p>
+                <a href="${p.link}" target="_blank" style="color:${p.color};">
+                    ${btnTxt}
+                </a>
+            </div>`;
         });
         document.getElementById('tech-portfolio-list').innerHTML = html;
+        
+        // تفعيل حركة الظهور بعد تحميل العناصر
+        setTimeout(() => {
+            document.querySelectorAll('.project-card').forEach(card => card.classList.add('visible'));
+        }, 100);
     }
 
     function renderExperience(exp) {
@@ -411,7 +452,7 @@
     }
 
     function renderLangBars(lang) {
-        const labels = lang === 'ar' ? ['العربية', 'الفرنسية', 'الإنجليزية'] : (lang === 'fr' ? ['Arabe', 'Français', 'Anglais'] : ['Arabic', 'French', 'English']);
+        const labels = lang === 'ar' ? ['العربية', 'الفرنسية', 'الإنجليزية'] : ['Arabic', 'French', 'English'];
         document.getElementById('lang-levels').innerHTML = `
             <div style="margin-bottom:12px">${labels[0]} 100% <div class="progress-bar"><div class="progress" style="width:100%"></div></div></div>
             <div style="margin-bottom:12px">${labels[1]} 70% <div class="progress-bar"><div class="progress" style="width:70%"></div></div></div>
@@ -429,7 +470,7 @@
     function playMedia(url, btn) {
         const player = document.getElementById('smartPlayer');
         player.src = url; 
-        player.play().catch(e => console.log("Audio play prevented or error: ", e));
+        player.play().catch(e => console.log("Audio play error: ", e));
         document.querySelectorAll('.surah-btns .lang-btn').forEach(b => b.style.opacity = "0.6");
         btn.style.opacity = "1";
     }
