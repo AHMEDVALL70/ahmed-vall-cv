@@ -170,6 +170,23 @@
         @media (max-width: 600px) {
             .container { padding: 20px 15px; }
         }
+        /* تحسين المسافات في قسم الخبرة */
+            .exp-item {
+                margin-bottom: 30px; /* مسافة بين كل وظيفة وأخرى */
+                line-height: 1.6;    /* زيادة المسافة بين الأسطر للقراءة المريحة */
+         }
+
+           .exp-item h3 {
+    font-size: 1.35rem;   /* تكبير الخط قليلاً للهيبة */
+    margin-bottom: 0.4rem;
+    color: var(--secondary); /* سيجعل العنوان باللون البرتقالي (مثل "نائب القنصل العام") */
+    font-weight: 800;      /* جعل الخط عريضاً جداً */
+    letter-spacing: 0.5px; /* لمسة جمالية للخطوط الإنجليزية */
+}
+
+            .exp-item p {
+                margin-bottom: 5px;  /* مسافة تحت اسم الشركة */
+         }
         /* تأثير الوميض للمؤشر */
 .typewriter-cursor {
     border-inline-end: 3px solid var(--secondary);
@@ -201,6 +218,54 @@
 header {
     position: relative;
     z-index: 1; /* يرفع محتوى الهيدر فوق الخلفية المتحركة */
+}
+/* تنسيق حاوية الخبرة */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* فجوة كبيرة بين كل وظيفة وأخرى */
+}
+
+/* تنسيق مفردات الخبرة */
+.exp-item {
+    border-right: 4px solid var(--primary); /* خط جانبي برتقالي يعطي لمسة جمالية في العربية */
+    padding-right: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* لضبط الخط الجانبي عند التحويل للإنجليزية */
+[data-lang="en"] .exp-item {
+    border-right: none;
+    border-left: 4px solid var(--primary);
+    padding-right: 0;
+    padding-left: 1.5rem;
+}
+
+.exp-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+    color: var(--primary);
+}
+
+.exp-item strong {
+    display: block;
+    color: #444;
+    margin-bottom: 0.2rem;
+}
+
+.exp-item small {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.exp-item p {
+    line-height: 1.8; /* جعل المسافة بين أسطر الوصف مريحة للعين */
+    color: #555;
+    text-align: justify; /* توزيع النص بشكل متساوٍ */
 }
     </style>
 </head>
@@ -330,14 +395,16 @@ header {
             { title: " Machine Learning Specialization", provider: " Stanford / Coursera", date: "2025" },
             { title: " Deep Learning Specialization", provider: " DeepLearning.AI / Coursera", date: "2025" },
             { title: " Python for Data Science & AI", provider: " IBM", date: "2024" },
-                { title: " Machine Learning Specialization", provider: " Stanford / Coursera", date: "2025" },
-                { title: " Python for Data Science", provider: " IBM", date: "2024" }
+            { title: " Machine Learning Specialization", provider: " Stanford / Coursera", date: "2025" },
+            { title: " Python for Data Science", provider: " IBM", date: "2024" }
             
         ],
             experience: [
-                { title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah", date: "2019 – 2024", desc: "Supervising civil status services and secure identification document issuance." },
-                { title: "State Engineer", company: "IT & Telecommunications", date: "Previous Years", desc: "Designed and maintained robust network infrastructures and biometric systems." }
-            ],
+            { title: "Consul General Adjoint", company: "Consulate General of Mauritania, Jeddah", date: "2019 — 2024", desc: "Supervising civil status services and issuing secure identity documents." },
+            { title: "Public Procurement Expert", company: "Procurement Division", date: "Expertise", desc: "I have been responsible for managing deals and tenders across a variety of previous projects, which has allowed me to develop advanced negotiation skills." },
+            { title: "State Engineer", company: "Information Technology & Telecom", date: "Previous Years", desc: "Design and implementation of advanced network infrastructures, management of complex security systems, and computer hardware maintenance." }
+        ],
+            
             skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "Digital Diplomacy", "Strategic Planning"],
             projects: [
                 { title: "Biometric Migration", desc: "Modernization of citizen registration systems abroad." },
@@ -378,20 +445,21 @@ header {
         { title: "07. محلل مشاعر العملاء", desc: "معالجة اللغات الطبيعية (NLP) لتحليل آراء العملاء مع تمثيل بياني تفاعلي للنتائج.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb", color: "#1abc9c" },
         { title: "08. تصنيف الأرقام المكتوبة", desc: "استخدام الشبكات العصبية العميقة للتعرف على الأرقام المكتوبة بخط اليد بدقة تصل إلى 97%.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb", color: "#34495e" },
         { title: "09. متنبئ الأسعار", desc: "استخدام شبكات LSTM العصبية للتنبؤ باتجاهات العملات المشفرة وحركات الأسعار.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb", color: "#d35400" }
-    ],
+       ],
             certs: [
             { title: " شهادة مهندس دولة (BAC + 5)", provider: " تخصص الإلكترونيات والتطوير الرقمي ", date: "1998" },
             { title: " دبلوم في إدارة الأعمال", provider: " الأكاديمية المتحدة لإدارة التدريب ", date: "2024" },
             { title: " تخصص تعلم الآلة (Machine Learning)", provider: " Stanford / Coursera ", date: "2025" },
             { title: " تخصص التعلم العميق (Deep Learning)", provider: " DeepLearning.AI / Coursera ", date: "2025" },
             { title: " بايثون لعلوم البيانات والذكاء الاصطناعي", provider: " IBM", date: "2024" },
-                { title: " تخصص تعلم الآلة", provider: " جامعة ستانفورد / Coursera", date: "2025" },
-                { title: " بايثون لعلوم البيانات", provider: " IBM", date: "2024" }
-        ],
+            { title: " تخصص تعلم الآلة", provider: " جامعة ستانفورد / Coursera", date: "2025" },
+            { title: " بايثون لعلوم البيانات", provider: " IBM", date: "2024" }
+            ],
     
-            experience: [
-                { title: "نائب القنصل العام", company: "قنصلية موريتانيا بجدة، السعودية ", date: "2019 – 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية المؤمنة." },
-                { title: "مهندس دولة", company: "تكنولوجيا المعلومات والاتصالات ", date: "سنوات سابقة", desc: "تصميم وصيانة البنى التحتية للشبكات وإدارة الأنظمة البيومترية." }
+          experience: [
+                { title: "نائب القنصل العام", company: "القنصلية العامة لموريتانيا، جدة", date: "2019 — 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية المؤمنة." },
+                { title: "خبير صفقات عمومية", company: "قسم الصفقات والإدارة التجارية", date: "خبرة تخصصية", desc: "لقد توليتُ مسؤولية إدارة الصفقات والمناقصات في مجموعة متنوعة من المشاريع السابقة، مما أكسبني مهارة عالية في التفاوض."},
+                { title: "مهندس دولة", company: "تكنولوجيا المعلومات والاتصالات", date: "سنوات سابقة", desc: "تصميم وتنفيذ البنى التحتية المتقدمة للشبكات وإدارة الأنظمة الأمنية المعقدة و صيانة اجهزة الكمبيوتر." }
             ],
             skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي"],
             projects: [
@@ -440,14 +508,15 @@ header {
             { title: " Spécialisation Machine Learning", provider: " Stanford / Coursera", date: "2025" },
             { title: " Spécialisation Deep Learning", provider: " DeepLearning.AI / Coursera", date: "2025" },
             { title: " Python pour Data Science & IA", provider: " IBM", date: "2024" },
-                { title: " Spécialisation Machine Learning", provider: "Stanford / Coursera", date: "2025" },
-                { title: " Python pour Data Science", provider: " IBM", date: "2024" }
+            { title: " Spécialisation Machine Learning", provider: "Stanford / Coursera", date: "2025" },
+            { title: " Python pour Data Science", provider: " IBM", date: "2024" }
                
             ],
             experience: [
-                { title: "Consul Général Adjoint", company: "Consulat de Mauritanie à Djeddah", date: "2019 – 2024", desc: "Supervision des services d'état civil et délivrance de documents sécurisés." },
-                { title: "Ingénieur d'État", company: "IT & Télécommunications", date: "Années précédentes", desc: "Conception d'infrastructures réseaux et gestion de systèmes biométriques." }
-            ],
+            { title: "Consul Général Adjoint", company: "Consulat Général, Djeddah", date: "2019 — 2024", desc: "Supervision des services d'état civil et délivrance de documents d'identité sécurisés." },
+            { title: "Expert en Passation des Marchés", company: "Division des Marchés", date: "Expertise", desc: "J'ai été responsable de la gestion des transactions et des appels d'offres dans divers projets antérieurs, ce qui m'a permis d'acquérir de solides compétences en négociation." },
+            { title: "Ingénieur d'État", company: "IT & Télécommunications", date: "Années Précédentes", desc: "Conception et mise en œuvre d'infrastructures réseau avancées, gestion de systèmes de sécurité complexes et maintenance informatique."}
+        ],
             skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie Numérique", "Planification Stratégique"],
             projects: [
                 { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement des citoyens à l'étranger." },
@@ -528,13 +597,19 @@ header {
         }, 100);
     }
 
-    function renderExperience(exp) {
-        let html = '';
-        exp.forEach(item => {
-            html += `<div class="exp-item"><span class="exp-title">${item.title}</span><span class="exp-company">${item.company}</span><span class="exp-date">${item.date}</span><p>${item.desc}</p></div>`;
-        });
-        document.getElementById('experience-list').innerHTML = html;
-    }
+   function renderExperience(exp) {
+    let html = '';
+    exp.forEach(e => {
+        html += `
+            <div class="exp-item">
+                <h3>${e.title}</h3>
+                <strong>${e.company}</strong>
+                <small>${e.date}</small>
+                <p>${e.desc}</p>
+            </div>`;
+    });
+    document.getElementById('experience-list').innerHTML = html;
+}
 
     function renderSkills(skills) {
         let html = '';
