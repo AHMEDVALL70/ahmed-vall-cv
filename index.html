@@ -237,14 +237,10 @@ header {
 
     <h2 id="projects-header"></h2>
     <div class="grid-2" id="projects-list"></div>
-    <section id="portfolio">
-    <h2>Technical ML Portfolio (GitHub)</h2>
-    <p style="color: #666; font-size: 1.1em; margin-bottom: 20px;">
-        A collection of end-to-end machine learning projects focused on predictive modeling, computer vision, and data-driven insights using Python.
-    </p>
-    </section>
 
-    <h2 id="tech-portfolio-header"></h2>
+   <h2 id="tech-portfolio-header"></h2>
+    <section id="portfolio">
+    <p data-key="portfolio-desc" style="color: #666; font-size: 1.1em; margin-bottom: 20px;"></p>
     <div id="tech-portfolio-list"></div>
 
     <h2 id="certs-header"></h2>
@@ -312,8 +308,11 @@ header {
             testimonial: "\"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy.\"",
             author: "— Official Commendation from the General Directorate",
             visitor: "Visitors",
+            techHeader: "Technical ML Portfolio (GitHub)",
+            "portfolio-desc": "A collection of end-to-end machine learning projects focused on predictive modeling, computer vision, and data-driven insights using Python.",
             viewBtn: "View on GitHub →",
             dir: "ltr",
+    
             techProjects: [
         { title: "01. Diabetes Prediction", desc: "Implemented a classification model to predict diabetes onset based on clinical diagnostic measurements.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#3498db" },
         { title: "02. Iris Classification", desc: "Classifying flower species using the KNN algorithm and data visualization techniques.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#e74c3c" },
@@ -359,6 +358,8 @@ header {
             testimonial: "\"أظهر أحمد فال كفاءة استثنائية في الربط بين المتطلبات التقنية المعقدة والدبلوماسية الإدارية.\"",
             author: "— إشادة رسمية من الإدارة العامة",
             visitor: "عدد الزوار",
+            techHeader: "المشاريع التقنية (GitHub)",
+            "portfolio-desc": "مجموعة من مشاريع تعلم الآلة المتكاملة التي تركز على النمذجة التنبؤية، والرؤية الحاسوبية، والرؤى المستندة إلى البيانات باستخدام بايثون.",
             viewBtn: "عرض على GitHub ←",
             dir: "rtl",
             techProjects: [
@@ -406,9 +407,11 @@ header {
             testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant les exigences techniques complexes et la diplomatie administrative.\"",
             author: "— Éloge officiel de la Direction Générale",
             visitor: "Visiteurs",
+            techHeader: "Portfolio Technique ML (GitHub)",
+            "portfolio-desc": "Une collection de projets d'apprentissage automatique de bout en bout, axés sur la modélisation prédictive, la vision par ordinateur et les analyses de données avec Python.",
             viewBtn: "Voir sur GitHub →",
             dir: "ltr",
-             techProjects: [
+          techProjects: [
         { title: "01. Prédiction du Diabète", desc: "Modèle de classification pour prédire le diabète basé sur des mesures cliniques.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", color: "#3498db" },
         { title: "02. Classification d'Iris", desc: "Classification des espèces de fleurs via KNN avec visualisation de données.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb", color: "#e74c3c" },
         { title: "03. Intégration Gemini AI", desc: "Connexion d'applications Python avec les modèles d'IA générative de Google.", link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb", color: "#2ecc71" },
@@ -444,6 +447,8 @@ header {
         document.getElementById('status-text').innerText = d.status;
         document.getElementById('job-subtitle').innerText = d.subtitle;
         document.getElementById('v-text').innerText = d.visitor;
+        document.documentElement.lang = lang;
+        document.body.setAttribute('dir', d.dir);
 
         document.getElementById('exp-header').innerHTML = `<i class="fas fa-briefcase"></i> ${d.expHeader}`;
         document.getElementById('projects-header').innerHTML = `<i class="fas fa-tasks"></i> ${d.projectsHeader}`;
@@ -452,8 +457,18 @@ header {
         document.getElementById('skills-header').innerHTML = `<i class="fas fa-microchip"></i> ${d.skillsHeader}`;
         document.getElementById('lang-header').innerHTML = `<i class="fas fa-globe"></i> ${d.langHeader}`;
         document.getElementById('honors-header').innerHTML = `<i class="fas fa-award"></i> ${d.honorsHeader}`;
+        document.getElementById('name-title').innerText = d.name;
+        document.getElementById('bio-text').innerText = d.bio;
+        document.getElementById('status-text').innerText = d.status;
+        document.getElementById('job-subtitle').innerText = d.subtitle;
+        document.getElementById('v-text').innerText = d.visitor;
 
         document.getElementById('testimonial-card').innerHTML = `<p>${d.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${d.author}</small>`;
+        
+        const descElement = document.querySelector('[data-key="portfolio-desc"]');
+        if (descElement) {
+            descElement.innerText = d["portfolio-desc"];
+        }
 
         renderCerts(d.certs);
         renderTechProjects(d.techProjects, d.viewBtn);
@@ -463,7 +478,8 @@ header {
         renderLangBars(lang);
 
         document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+        const activeBtn = document.getElementById('btn-' + lang);
+        if (activeBtn) activeBtn.classList.add('active');
     }
 
     function renderCerts(certs) {
