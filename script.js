@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ahmed Vall Sidina - Professional Portfolio</title>
+    <meta name="description" content="Official Portfolio of Ahmed Vall Jemal Dine Sidina - State Engineer, Diplomat, and Machine Learning Specialist. Showcase of technical projects and professional experience.">
+    <meta name="keywords" content="Ahmed Vall Sidina, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, GitHub Projects">
+    <meta name="author" content="Ahmed Vall Jemal Dine Sidina">
+    
+    <meta property="og:title" content="Ahmed Vall Sidina - Professional Portfolio">
+    <meta property="og:description" content="State Engineer & Machine Learning Practitioner.">
+    <meta property="og:image" content="my-photo.jpg">
+    <meta property="og:url" content="https://github.com/ahmedvallsidina">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --primary: #2c3e50; --secondary: #e67e22; --bg: #f8fafc; --text: #1e293b; 
+            --gold: #c0a16b; --gold-matte: #d1b58c; --card-bg: #ffffff;
+            --border-color: #edf2f7; --status-bg: #dcfce7; --status-text: #15803d;
+            --radio-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
+            --primary: #38bdf8; --secondary: #fb923c; --border-color: #334155;
+            --radio-bg: linear-gradient(135deg, #1e293b 0%, #111827 100%);
+            --status-bg: #064e3b; --status-text: #4ade80;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; color: var(--text); margin: 0; padding: 15px; 
+            background: var(--bg); transition: all 0.3s ease;
+        }
+
+        .container { 
+            max-width: 900px; margin: 80px auto 20px auto; background: var(--card-bg); 
+            padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
+            position: relative;
+        }
+
+        .navbar-fixed {
+            position: fixed; top: 0; left: 0; right: 0; background: var(--card-bg);
+            padding: 12px 25px; display: flex; justify-content: space-between;
+            align-items: center; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .lang-switcher { display: flex; gap: 6px; background: var(--bg); padding: 5px; border-radius: 30px; }
+        .lang-btn {
+            border: none; background: none; color: var(--text); cursor: pointer;
+            padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; transition: 0.3s;
+        }
+        .lang-btn.active { background: var(--primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .theme-switch { cursor: pointer; font-size: 1.5rem; color: var(--primary); transition: transform 0.3s; }
+
+        .header { text-align: center; border-bottom: 4px solid var(--primary); padding-bottom: 30px; margin-bottom: 30px; }
+        .profile-img { 
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover; 
+            border: 6px solid var(--primary); margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 { color: var(--primary); margin: 10px 0; font-size: clamp(24px, 6vw, 32px); font-weight: 800; }
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--status-bg); 
+            color: var(--status-text); padding: 8px 18px; border-radius: 30px; font-size: 0.9em; font-weight: 700; margin-bottom: 15px;
+        }
+
+        h2 { 
+            color: var(--primary); border-inline-start: 6px solid var(--secondary);
+            padding: 12px 20px; margin: 50px 0 25px 0; font-size: 22px; 
+            background: linear-gradient(to right, rgba(44, 62, 80, 0.06), transparent); 
+            border-radius: 4px; display: flex; align-items: center; gap: 15px;
+        }
+        [dir="rtl"] h2 { background: linear-gradient(to left, rgba(44, 62, 80, 0.06), transparent); }
+
+        .exp-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+        .exp-title { font-weight: 700; color: var(--secondary); font-size: 1.2em; display: block;}
+        .exp-company { color: var(--primary); font-weight: 600; display: block; margin: 5px 0; }
+        .exp-date { color: #888; font-size: 0.9em; font-weight: bold; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .info-card { 
+            background: var(--card-bg); padding: 25px; border-radius: 15px; 
+            border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        
+        .project-card { 
+            margin-bottom: 20px; padding: 15px; border-left: 5px solid var(--primary); 
+            background: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .project-card:hover { transform: translateY(-3px); }
+
+        /* ستايل قسم الشهادات */
+        .cert-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg);
+            margin-bottom: 15px;
+        }
+        .cert-icon { font-size: 2rem; color: var(--gold); }
+
+        .progress-bar { background: #e2e8f0; border-radius: 10px; height: 10px; margin-top: 10px; overflow: hidden; }
+        .progress { background: var(--primary); height: 100%; transition: width 1s; }
+
+        .social-btn { 
+            width: 45px; height: 45px; border-radius: 50%; display: inline-flex; 
+            align-items: center; justify-content: center; color: white; margin: 0 5px; transition: 0.3s; 
+        }
+
+        .charity-wrapper { 
+            direction: rtl; border-radius: 20px; padding: 40px 20px; margin-top: 60px; 
+            background: var(--radio-bg); text-align: center; border: 2px solid var(--gold); 
+        }
+        .parents-box { 
+            font-size: 1.4em; color: #1a202c; font-weight: 800; background: #fff; 
+            padding: 35px; border-radius: 15px; margin-bottom: 25px; display: inline-block; 
+            width: 90%; max-width: 550px; border: 1px solid var(--gold-matte);
+        }
+
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
+        .download-btn { 
+            padding: 14px 28px; border-radius: 10px; color: white !important; 
+            text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body data-lang="en">
+
+<nav class="navbar-fixed">
+    <div class="lang-switcher">
+        <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
+        <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
+    </div>
+    <div class="theme-switch" onclick="toggleTheme()"><i id="theme-icon" class="fas fa-moon"></i></div>
+</nav>
+
+<div class="container">
+    <div class="header">
+        <img src="my-photo.jpg" alt="Ahmed Vall" class="profile-img" onerror="this.src='https://via.placeholder.com/180?text=Ahmed+Vall'">
+        <h1 id="name-title">Ahmed Vall Jemal Dine Sidina</h1>
+        <p id="bio-text"></p>
+        <div class="status-badge"><i class="fas fa-briefcase"></i> <span id="status-text"></span></div>
+        <div class="subtitle" id="job-subtitle"></div>
+        
+        <div class="social-header">
+            <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-btn" style="background:#25D366;" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-btn" style="background:var(--primary);"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/ahmedvall.sidina" class="social-btn" style="background:#1877F2;" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/ahmedvallsidina" class="social-btn" style="background:#E4405F;" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/ahmedvallsidina" class="social-btn" style="background:#000;" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+    </div>
+
+    <h2 id="exp-header"></h2>
+    <div id="experience-list"></div>
+
+    <h2 id="projects-header"></h2>
+    <div class="grid-2" id="projects-list"></div>
+
+    <h2 id="certs-header"><i class="fas fa-certificate"></i> Certificates</h2>
+    <div id="certs-list"></div>
+
+    <h2 id="tech-portfolio-header"></h2>
+    <div id="tech-portfolio-list"></div>
+
+    <div class="grid-2" style="margin-top: 30px;">
+        <div class="info-card">
+            <h3 id="skills-header"></h3>
+            <ul id="skills-list"></ul>
+        </div>
+        <div class="info-card">
+            <h3 id="lang-header"></h3>
+            <div id="lang-levels"></div>
+        </div>
+    </div>
+
+    <h2 id="honors-header"></h2>
+    <div style="text-align: center; margin: 25px 0;">
+        <img src="award.jpg" alt="Award" style="max-width: 100%; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+    </div>
+    <div class="info-card" id="testimonial-card"></div>
+
+    <div class="btn-group">
+        <a href="Ahmed-Vall-CV-AR.pdf" class="download-btn" style="background: #2c3e50;"><i class="fas fa-file-pdf"></i> CV (AR)</a>
+        <a href="Ahmed-Vall-CV-EN.pdf" class="download-btn" style="background: #16a085;"><i class="fas fa-file-pdf"></i> CV (EN)</a>
+        <a href="Ahmed-Vall-CV-FR.pdf" class="download-btn" style="background: #1a5f7a;"><i class="fas fa-file-pdf"></i> CV (FR)</a>
+    </div>
+
+    <div class="charity-wrapper">
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 25px;"><i class="fas fa-heart" style="color: #e53e3e;"></i> صَدقة جارية عن الوالدين الكريمين</div>
+        <div class="parents-box">جمال الدين سيدينا و فاطمة بنت سيدي حمود<span class="dua" style="display:block; font-size: 0.7em; margin-top:10px;">رحمهما الله وأسكنهما فسيح جناته ورفعهما في عليين</span></div>
+        <div class="surah-btns" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px;">
+            <button onclick="playMedia('https://server7.mp3quran.net/shur/001.mp3', this)" class="lang-btn">الفاتحة</button>
+            <button onclick="playMedia('https://server7.mp3quran.net/shur/002.mp3', this)" class="lang-btn">البقرة</button>
+            <button onclick="playMedia('https://server7.mp3quran.net/shur/018.mp3', this)" class="lang-btn">الكهف</button>
+            <button onclick="playMedia('https://server7.mp3quran.net/shur/036.mp3', this)" class="lang-btn">يس</button>
+            <button onclick="playMedia('https://server7.mp3quran.net/shur/067.mp3', this)" class="lang-btn">الملك</button>
+            <button onclick="playMedia('https://qurango.net/radio/mix', this)" class="lang-btn" style="background:var(--gold); color:white;">الإذاعة العامة</button>
+        </div>
+        <audio id="smartPlayer" controls style="width: 100%; max-width: 450px; height: 40px; border-radius: 30px; margin-top:20px;"></audio>
+    </div>
+
+    <div class="visitor-counter" style="text-align: center; margin-top: 30px; opacity: 0.6;">
+        <i class="fas fa-eye"></i> <span id="v-text"></span>: <span id="v-count">0</span>
+    </div>
+</div>
+<script>
+    const translations = {
+        en: {
+            name: "Ahmed Vall Jemal Dine Sidina",
+            bio: '"Dedicated Developer & Machine Learning Practitioner specialized in building data-driven solutions. From predictive healthcare models to Generative AI, I bridge the gap between complex code and real-world applications."',
+            status: "Available for Projects",
+            subtitle: "State Engineer | Diplomat | Biometrics Specialist",
+            expHeader: "Professional Experience",
+            projectsHeader: "Major Missions",
+            techHeader: "Technical ML Portfolio",
+            skillsHeader: "Technical Skills",
+            langHeader: "Languages",
+            honorsHeader: "Honors & Testimonials",
+            testimonial: "\"Ahmed Vall has demonstrated exceptional competence in bridging complex technical requirements with administrative diplomacy.\"",
+            author: "— Official Commendation from the General Directorate",
+            visitor: "Visitors",
+            viewBtn: "View on GitHub", /* تم التغيير ليكون أكثر وضوحاً */
+            dir: "ltr",
+            /* 3. تحديث روابط GitHub الحقيقية */
+            techProjects: [
+                { title: "01. Diabetes Prediction", desc: "ML model with Scikit-Learn for health indicators.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. Iris Classification", desc: "Implementing KNN algorithm for flower species classification.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. Gemini AI Integration", desc: "Python connectivity with Google Gemini 1.5 Flash.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. Sentiment Analysis", desc: "NLP tool using TextBlob to categorize customer feedback.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. Currency Tracker", desc: "Financial tool fetching live exchange rates using APIs.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            /* إضافة مصفوفة الشهادات */
+            certs: [
+                { title: "Machine Learning Specialization", provider: "Coursera / Stanford", date: "2025" },
+                { title: "Python for Data Science", provider: "IBM", date: "2024" }
+            ],
+            experience: [
+                { title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah", date: "2019 – 2024", desc: "Supervising civil status services and secure identification document issuance." },
+                { title: "State Engineer", company: "IT & Telecommunications", date: "Previous Years", desc: "Designed and maintained robust network infrastructures and biometric systems." }
+            ],
+            skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "Digital Diplomacy", "Strategic Planning"],
+            projects: [
+                { title: "Biometric Migration", desc: "Modernization of citizen registration systems abroad." },
+                { title: "Secure Infrastructure", desc: "Developing secure connectivity for consular data transmission." }
+            ]
+        },
+        ar: {
+            name: "أحمد فال جمال الدين سيدينا",
+            bio: '"مهندس وممارس في تعلم الآلة، متخصص في بناء الحلول القائمة على البيانات. من النماذج الصحية التنبؤية إلى الذكاء الاصطناعي التوليدي، أقوم بربط الكود المعقد بالتطبيقات الواقعية."',
+            status: "متاح للمشاريع والتعاون الدولي",
+            subtitle: "مهندس دولة | دبلوماسي | خبير نظم بيومترية",
+            expHeader: "الخبرة المهنية",
+            projectsHeader: "المهمات الكبرى",
+            techHeader: "المشاريع التقنية (GitHub)",
+            skillsHeader: "المهارات التقنية",
+            langHeader: "اللغات",
+            honorsHeader: "التكريم والشهادات",
+            testimonial: "\"أظهر أحمد فال كفاءة استثنائية في الربط بين المتطلبات التقنية المعقدة والدبلوماسية الإدارية.\"",
+            author: "— إشادة رسمية من الإدارة العامة",
+            visitor: "عدد الزوار",
+            viewBtn: "عرض الكود على GitHub",
+            dir: "rtl",
+            techProjects: [
+                { title: "01. التنبؤ بالسكري", desc: "نموذج تعلم آلة باستخدام Scikit-Learn للتنبؤ بالمؤشرات الصحية.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. تصنيف فصائل الزهور", desc: "تطبيق خوارزمية KNN لتصنيف فصائل الزهور بدقة.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. دمج ذكاء Gemini", desc: "ربط بايثون بذكاء جوجل الاصطناعي 1.5 Flash لتوليد النصوص.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. تحليل المشاعر", desc: "أداة معالجة لغات طبيعية لتحليل آراء العملاء باستخدام TextBlob.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. متتبع العملات المباشر", desc: "أداة مالية لجلب أسعار الصرف الحقيقية عبر واجهات API.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            certs: [
+                { title: "تخصص تعلم الآلة", provider: "كورسيرا / ستانفورد", date: "2025" },
+                { title: "بايثون لعلوم البيانات", provider: "IBM", date: "2024" }
+            ],
+            experience: [
+                { title: "نائب القنصل العام", company: "قنصلية موريتانيا بجدة، السعودية", date: "2019 – 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية المؤمنة." },
+                { title: "مهندس دولة", company: "تكنولوجيا المعلومات والاتصالات", date: "سنوات سابقة", desc: "تصميم وصيانة البنى التحتية للشبكات وإدارة الأنظمة البيومترية." }
+            ],
+            skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي"],
+            projects: [
+                { title: "تحديث النظام البيومتري", desc: "تطوير أنظمة التسجيل للجالية الموريتانية بالخارج." },
+                { title: "تأمين البيانات القنصلية", desc: "بناء مسارات ربط آمنة لنقل البيانات الحساسة." }
+            ]
+        },
+        fr: {
+            name: "Ahmed Vall Jemal Dine Sidina",
+            bio: '"Développeur dédié et praticien en Machine Learning spécialisé dans les solutions basées sur les données."',
+            status: "Disponible pour projets",
+            subtitle: "Ingénieur d'État | Diplomate | Spécialiste Biométrie",
+            expHeader: "Expérience Professionnelle",
+            projectsHeader: "Missions Majeures",
+            techHeader: "Portfolio GitHub ML",
+            skillsHeader: "Compétences Techniques",
+            langHeader: "Langues",
+            honorsHeader: "Distinctions",
+            testimonial: "\"Ahmed Vall a fait preuve d'une compétence exceptionnelle en conciliant technique et diplomatie.\"",
+            author: "— Éloge officiel",
+            visitor: "Visiteurs",
+            viewBtn: "Voir sur GitHub",
+            dir: "ltr",
+            techProjects: [
+                { title: "01. Prédiction Diabète", desc: "Modèle ML avec Scikit-Learn pour les indicateurs de santé.", link: "https://github.com/ahmedvallsidina/Diabetes-Prediction", color: "#2ecc71" },
+                { title: "02. Classification Iris", desc: "Utilisation de l'algorithme KNN pour la classification.", link: "https://github.com/ahmedvallsidina/Iris-Classification", color: "#3498db" },
+                { title: "03. Intégration Gemini AI", desc: "Connexion Python avec Google Gemini 1.5 Flash.", link: "https://github.com/ahmedvallsidina/Gemini-AI-Integration", color: "#9b59b6" },
+                { title: "04. Analyse de Sentiment", desc: "Outil NLP pour les retours clients via TextBlob.", link: "https://github.com/ahmedvallsidina/Sentiment-Analysis", color: "#e67e22" },
+                { title: "05. Tracker de Devises", desc: "Outil financier via API externe en temps réel.", link: "https://github.com/ahmedvallsidina/Currency-Tracker", color: "#2c3e50" }
+            ],
+            certs: [
+                { title: "Spécialisation Machine Learning", provider: "Coursera / Stanford", date: "2025" },
+                { title: "Python pour Data Science", provider: "IBM", date: "2024" }
+            ],
+            experience: [
+                { title: "Consul Général Adjoint", company: "Consulat de Mauritanie à Djeddah", date: "2019 – 2024", desc: "Supervision des services d'état civil." }
+            ],
+            skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie"],
+            projects: [
+                { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement." }
+            ]
+        }
+    };
+
+    function setLanguage(lang) {
+        const d = translations[lang];
+        document.body.setAttribute('dir', d.dir);
+        document.getElementById('name-title').innerText = d.name;
+        document.getElementById('bio-text').innerText = d.bio;
+        document.getElementById('status-text').innerText = d.status;
+        document.getElementById('job-subtitle').innerText = d.subtitle;
+        document.getElementById('v-text').innerText = d.visitor;
+
+        // SEO: تحديث وصف الصفحة عند تغيير اللغة
+        document.querySelector('meta[name="description"]').setAttribute("content", d.bio);
+
+        document.getElementById('exp-header').innerHTML = `<i class="fas fa-briefcase"></i> ${d.expHeader}`;
+        document.getElementById('projects-header').innerHTML = `<i class="fas fa-tasks"></i> ${d.projectsHeader}`;
+        document.getElementById('tech-portfolio-header').innerHTML = `<i class="fas fa-code"></i> ${d.techHeader}`;
+        document.getElementById('skills-header').innerHTML = `<i class="fas fa-microchip"></i> ${d.skillsHeader}`;
+        document.getElementById('lang-header').innerHTML = `<i class="fas fa-globe"></i> ${d.langHeader}`;
+        document.getElementById('honors-header').innerHTML = `<i class="fas fa-award"></i> ${d.honorsHeader}`;
+
+        document.getElementById('testimonial-card').innerHTML = `<p>${d.testimonial}</p><small style="color:var(--primary); font-weight:bold;">${d.author}</small>`;
+
+        // Render Certificates
+        let certHtml = '';
+        d.certs.forEach(c => {
+            certHtml += `
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <div>
+                    <strong style="display:block;">${c.title}</strong>
+                    <small>${c.provider} • ${c.date}</small>
+                </div>
+            </div>`;
+        });
+        document.getElementById('certs-list').innerHTML = certHtml;
+
+        // Render Technical Projects (GitHub Links)
+        let techHtml = '';
+        d.techProjects.forEach(p => {
+            techHtml += `<div class="project-card" style="border-left-color:${p.color}">
+                <h3>${p.title}</h3><p>${p.desc}</p>
+                <a href="${p.link}" target="_blank" style="color:${p.color}; font-weight:bold;"><i class="fab fa-github"></i> ${d.viewBtn}</a>
+            </div>`;
+        });
+        document.getElementById('tech-portfolio-list').innerHTML = techHtml;
+
+        // Render Experience
+        let expHtml = '';
+        d.experience.forEach(item => {
+            expHtml += `<div class="exp-item"><span class="exp-title">${item.title}</span><span class="exp-company">${item.company}</span><span class="exp-date">${item.date}</span><p>${item.desc}</p></div>`;
+        });
+        document.getElementById('experience-list').innerHTML = expHtml;
+
+        // Render Skills
+        let sHtml = '';
+        d.skills.forEach(s => sHtml += `<li>${s}</li>`);
+        document.getElementById('skills-list').innerHTML = sHtml;
+
+        // Render General Projects
+        let pHtml = '';
+        d.projects.forEach(p => pHtml += `<div class="info-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`);
+        document.getElementById('projects-list').innerHTML = pHtml;
+
+        // Language bars
+        const labels = lang === 'ar' ? ['العربية', 'الفرنسية', 'الإنجليزية'] : (lang === 'fr' ? ['Arabe', 'Français', 'Anglais'] : ['Arabic', 'French', 'English']);
+        document.getElementById('lang-levels').innerHTML = `
+            <div style="margin-bottom:12px">${labels[0]} 100% <div class="progress-bar"><div class="progress" style="width:100%"></div></div></div>
+            <div style="margin-bottom:12px">${labels[1]} 70% <div class="progress-bar"><div class="progress" style="width:70%"></div></div></div>
+            <div>${labels[2]} 50% <div class="progress-bar"><div class="progress" style="width:50%"></div></div></div>`;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+    }
+
+    function toggleTheme() {
+        const body = document.documentElement;
+        const icon = document.getElementById('theme-icon');
+        const isDark = body.getAttribute('data-theme') === 'dark';
+        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    function playMedia(url, btn) {
+        const player = document.getElementById('smartPlayer');
+        player.src = url; player.play();
+        document.querySelectorAll('.surah-btns .lang-btn').forEach(b => b.style.opacity = "0.6");
+        btn.style.opacity = "1";
+    }
+
+    window.onload = () => {
+        setLanguage('en'); 
+        let views = localStorage.getItem('site_v_count') || 500;
+        views = parseInt(views) + 1;
+        localStorage.setItem('site_v_count', views);
+        document.getElementById('v-count').innerText = views;
+    };
+</script>
+</body>
+</html>
