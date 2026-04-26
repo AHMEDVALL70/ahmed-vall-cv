@@ -172,9 +172,72 @@
             width: 42px; height: 42px; border-radius: 50%;
             display: inline-flex; align-items: center; justify-content: center;
             color: white; font-size: 1rem; transition: all 0.25s;
-            text-decoration: none;
+            text-decoration: none; position: relative;
         }
         .social-icon:hover { transform: translateY(-4px) scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .social-icon::after {
+            content: attr(data-tooltip);
+            position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.75); color: white;
+            padding: 3px 8px; border-radius: 6px; font-size: 0.72rem;
+            white-space: nowrap; pointer-events: none;
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .social-icon:hover::after { opacity: 1; }
+
+        /* ─── CERTIFICATES GALLERY ─── */
+        .gallery-section {
+            background: var(--card-bg); border-radius: 20px;
+            border: 1px solid var(--border); padding: 32px;
+        }
+        .gallery-upload-area {
+            border: 2px dashed var(--border); border-radius: 14px;
+            padding: 32px; text-align: center; cursor: pointer;
+            transition: all 0.25s; margin-bottom: 24px;
+            background: var(--cream);
+        }
+        .gallery-upload-area:hover { border-color: var(--teal); background: rgba(26,107,114,0.04); }
+        .gallery-upload-area i { font-size: 2.5rem; color: var(--teal); margin-bottom: 12px; display: block; }
+        .gallery-upload-area p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+        .gallery-upload-area span { color: var(--teal); font-weight: 700; }
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            position: relative; border-radius: 12px; overflow: hidden;
+            border: 1px solid var(--border); aspect-ratio: 4/3;
+            background: var(--cream); cursor: pointer;
+            transition: all 0.25s;
+        }
+        .gallery-item:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .gallery-item .gallery-label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white; padding: 8px 10px; font-size: 0.78rem; font-weight: 600;
+        }
+        .gallery-item .gallery-delete {
+            position: absolute; top: 6px; right: 6px;
+            background: rgba(220,50,50,0.85); color: white;
+            border: none; border-radius: 50%; width: 24px; height: 24px;
+            cursor: pointer; font-size: 0.7rem; display: none;
+            align-items: center; justify-content: center;
+        }
+        .gallery-item:hover .gallery-delete { display: flex; }
+        .gallery-empty { text-align: center; color: var(--text-muted); padding: 20px; font-size: 0.9rem; }
+        /* Lightbox */
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 500;
+            background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 24px;
+            background: none; border: none; color: white;
+            font-size: 2rem; cursor: pointer;
+        }
 
         .cv-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .cv-btn {
@@ -511,12 +574,12 @@
         <p class="hero-bio" id="bio-text"></p>
 
         <div class="social-row">
-            <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-icon" style="background:#25D366;" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-icon" style="background:var(--teal);" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.facebook.com/ahmedvall.sidina" class="social-icon" style="background:#1877F2;" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/ahmedvallsidina" class="social-icon" style="background:#E4405F;" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/ahmedvallsidina" class="social-icon" style="background:#000;" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://github.com/AHMEDVALL70" class="social-icon" style="background:#333;" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-icon" style="background:#25D366;" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-icon" style="background:var(--teal);" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/ahmedvall.sidina" class="social-icon" style="background:#1877F2;" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/ahmedvallsidina" class="social-icon" style="background:#E4405F;" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/ahmedvallsidina" class="social-icon" style="background:#000;" target="_blank" data-tooltip="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/AHMEDVALL70" class="social-icon" style="background:#333;" target="_blank" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
         </div>
 
         <div class="cv-btns">
@@ -591,6 +654,34 @@
         <img src="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/award.jpg" alt="Award" class="award-img" onerror="this.style.display='none'">
         <div class="testimonial" id="testimonial-card"></div>
     </section>
+
+    <!-- Certificates Gallery -->
+    <section class="section">
+        <div class="section-label">
+            <h2><i class="fas fa-images"></i> <span id="gallery-header">Certificates & Documents Gallery</span></h2>
+            <div class="section-label-line"></div>
+        </div>
+        <div class="gallery-section">
+            <div class="gallery-upload-area" onclick="document.getElementById('gallery-file-input').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p><span>Click to upload</span> certificates, awards, or official documents</p>
+                <p style="font-size:0.78rem; margin-top:6px;">PNG, JPG, PDF previews supported</p>
+            </div>
+            <input type="file" id="gallery-file-input" accept="image/*,.pdf" multiple style="display:none" onchange="handleGalleryUpload(event)">
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-empty" id="gallery-empty">
+                    <i class="fas fa-folder-open" style="font-size:2rem; color:var(--border); display:block; margin-bottom:8px;"></i>
+                    No documents uploaded yet. Click above to add your certificates!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <img id="lightbox-img" src="" alt="Certificate">
+    </div>
 
     <!-- Charity -->
     <div class="charity-section">
@@ -806,6 +897,8 @@ function setLanguage(lang) {
     document.getElementById('honors-header').innerText = d.honorsHeader;
     document.getElementById('portfolio-desc').innerText = d.portfolioDesc;
     document.getElementById('v-text').innerText = d.visitor;
+    const galleryTitles = { en:"Certificates & Documents Gallery", ar:"معرض الشهادات والوثائق", fr:"Galerie de Certificats & Documents" };
+    document.getElementById('gallery-header').innerText = galleryTitles[lang] || galleryTitles.en;
 
     document.getElementById('testimonial-card').innerHTML =
         `<p>${d.testimonial}</p><div class="testimonial-author">${d.testimonialAuthor}</div>`;
@@ -939,6 +1032,7 @@ window.addEventListener('load', () => {
     localStorage.setItem('site_v_count', v);
     document.getElementById('v-count').innerText = v;
     observeElements();
+    renderGallery();
 });
 
 // ─── PROJECT FILTER ───
@@ -971,22 +1065,107 @@ function applyFilter(tag, lang) {
 }
 
 // ─── AI ASSISTANT ───
+// ─── CERTIFICATES GALLERY ───
+let galleryItems = JSON.parse(localStorage.getItem('av_gallery') || '[]');
+
+function renderGallery() {
+    const grid = document.getElementById('gallery-grid');
+    const empty = document.getElementById('gallery-empty');
+    if (galleryItems.length === 0) {
+        grid.innerHTML = `<div class="gallery-empty" id="gallery-empty">
+            <i class="fas fa-folder-open" style="font-size:2rem; color:var(--border); display:block; margin-bottom:8px;"></i>
+            No documents uploaded yet. Click above to add your certificates!
+        </div>`;
+        return;
+    }
+    grid.innerHTML = galleryItems.map((item, i) => `
+        <div class="gallery-item" onclick="openLightbox('${item.src}')">
+            <img src="${item.src}" alt="${item.name}">
+            <div class="gallery-label">${item.name}</div>
+            <button class="gallery-delete" onclick="event.stopPropagation(); deleteGalleryItem(${i})">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>`).join('');
+}
+
+function handleGalleryUpload(e) {
+    const files = Array.from(e.target.files);
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            galleryItems.push({ name: file.name.replace(/\.[^.]+$/, ''), src: ev.target.result });
+            localStorage.setItem('av_gallery', JSON.stringify(galleryItems));
+            renderGallery();
+        };
+        reader.readAsDataURL(file);
+    });
+    e.target.value = '';
+}
+
+function deleteGalleryItem(i) {
+    if (confirm('Remove this item?')) {
+        galleryItems.splice(i, 1);
+        localStorage.setItem('av_gallery', JSON.stringify(galleryItems));
+        renderGallery();
+    }
+}
+
+function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+}
+
+// ─── AI ASSISTANT (Smart local fallback) ───
+const aiKnowledge = {
+    experience: `Ahmed Vall has 3 main roles:\n1️⃣ Deputy Consul General - Mauritanian Consulate, Jeddah (2019-2024)\n2️⃣ Head of Division - ANRPTS National Biometric Agency (2011-2019)\n3️⃣ Procurement Officer & Committee Member - HIV/AIDS Project & ANRPTS (2005-2011)`,
+    projects: `Ahmed Vall has 9 ML projects:\n🏠 Real Estate Price Predictor (KSA)\n🩺 Diabetes Prediction\n🔍 Sentiment Analyzer (NLP)\n🔢 Handwritten Digit Classifier (CNN)\n🛡️ Secure Identity Simulation\n📉 Exchange Rate Tracker\n👤 Face Detection (OpenCV)\n🤖 Spam Mail Classifier\n📋 Civil Status Management`,
+    skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Generative AI\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Digital Diplomacy & Strategic Planning`,
+    contact: `📧 Email: ahmedvalljemaldine@gmail.com\n💬 WhatsApp: +974 7473 6271\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina\n📘 Facebook: ahmedvall.sidina`,
+    education: `🎓 State Engineer Degree BAC+5 - Electronics & Digital Development (1998)\n📊 Machine Learning Specialization - Stanford/Coursera (2025)\n🧠 Deep Learning Specialization - DeepLearning.AI (2025)\n🐍 Python for Data Science - IBM (2024)\n💼 Business Administration Diploma (2024)`,
+    languages: `Ahmed Vall speaks:\n🇲🇷 Arabic — Native (100%)\n🇫🇷 French — Professional (70%)\n🇬🇧 English — Intermediate (50%)`,
+    location: `📍 Currently based in Uganda (Kampala)`,
+    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5), former diplomat, and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital diplomacy with cutting-edge AI skills.`
+};
+
+const arKnowledge = {
+    experience: `لدى أحمد فال 3 مناصب رئيسية:\n1️⃣ نائب القنصل العام - القنصلية الموريتانية، جدة (2019-2024)\n2️⃣ رئيس قطاع - الوكالة الوطنية ANRPTS (2011-2019)\n3️⃣ مسؤول الصفقات وعضو اللجنة - مشروع مكافحة السيدا والوكالة (2005-2011)`,
+    projects: `لديه 9 مشاريع في تعلم الآلة:\n🏠 توقع أسعار العقارات السعودية\n🩺 التنبؤ بالسكري\n🔍 تحليل المشاعر (NLP)\n🔢 التعرف على الأرقام (CNN)\n🛡️ محاكاة الهوية المؤمنة\n📉 تتبع أسعار الصرف\n👤 التعرف على الوجوه\n🤖 تصنيف البريد المزعج\n📋 إدارة الحالة المدنية`,
+    skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الدبلوماسية الرقمية والتخطيط`,
+    contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n💬 واتساب: 97474736271+\n🐙 GitHub: github.com/AHMEDVALL70`,
+    education: `🎓 مهندس دولة BAC+5 - إلكترونيات (1998)\n📊 تخصص تعلم الآلة - Stanford/Coursera (2025)\n🧠 تعلم عميق - DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات - IBM (2024)`,
+    languages: `يتحدث أحمد فال:\n🇲🇷 العربية — اللغة الأم (100%)\n🇫🇷 الفرنسية — مهني (70%)\n🇬🇧 الإنجليزية — متوسط (50%)`,
+    about: `أحمد فال جمال الدين سيدينا مهندس دولة ودبلوماسي سابق ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والدبلوماسية الرقمية مع مهارات ذكاء اصطناعي متقدمة.`
+};
+
+function getAIResponse(msg) {
+    const lang = document.documentElement.lang || 'en';
+    const kb = lang === 'ar' ? arKnowledge : aiKnowledge;
+    const m = msg.toLowerCase();
+    if (m.match(/experi|work|job|career|خبر|عمل|وظيف|منصب|consul|anrpts|sida|صفقة/))
+        return kb.experience;
+    if (m.match(/project|ml|machine|learn|مشروع|ذكاء|تعلم|نموذج|diabetes|estate|sentiment|face/))
+        return kb.projects;
+    if (m.match(/skill|tech|python|know|مهار|تقن|برمج/))
+        return kb.skills;
+    if (m.match(/contact|email|phone|whatsapp|reach|تواصل|اتصال|بريد|هاتف/))
+        return kb.contact;
+    if (m.match(/educat|degree|cert|study|course|تعليم|شهادة|دراس|stanford|coursera|ibm/))
+        return kb.education;
+    if (m.match(/language|arabic|french|english|لغ|عرب|فرنس|إنجليز/))
+        return kb.languages;
+    if (m.match(/location|where|country|ugand|mauritania|أين|موقع|دول|أوغند|موريتان/))
+        return lang === 'ar' ? '📍 يقيم حالياً في أوغندا (كمبالا)' : aiKnowledge.location;
+    if (m.match(/who|about|introduc|tell me|من هو|عرفني|احمد|أحمد/))
+        return kb.about;
+    return lang === 'ar'
+        ? '🤔 يمكنني الإجابة عن: الخبرة، المشاريع، المهارات، التعليم، التواصل، اللغات. ماذا تريد أن تعرف؟'
+        : '🤔 I can answer about: Experience, Projects, Skills, Education, Contact, Languages. What would you like to know?';
+}
+
 let aiOpen = false;
-const profileContext = `You are an AI assistant for Ahmed Vall Jemal Dine Sidina's portfolio website.
-Answer questions about him based on this info:
-- Full name: Ahmed Vall Jemal Dine Sidina (أحمد فال جمال الدين سيدينا)
-- State Engineer (BAC+5) in Electronics & Digital Development (1998)
-- Former Deputy Consul General of Mauritania in Jeddah (2019-2024)
-- Head of Division at ANRPTS - National Agency for Population Registry & Secure Documents (2011-2019)
-- Procurement Officer & Committee Member at HIV/AIDS Project & ANRPTS (2005-2011)
-- Machine Learning Specialist: completed Stanford ML, DeepLearning.AI Deep Learning, IBM Python for Data Science courses (2024-2025)
-- 9 ML projects: Real estate prediction, Diabetes prediction, Sentiment analysis, Handwritten digit classifier, Secure identity simulation, Exchange rate analysis, Face detection, Spam classifier, Civil status management
-- Skills: Python, Scikit-learn, TensorFlow, OpenCV, NLP, Biometrics, Cisco Networking, Cybersecurity, Digital Diplomacy
-- Languages: Arabic (native), French (professional), English (intermediate)
-- Location: Uganda (currently)
-- Contact: ahmedvalljemaldine@gmail.com | WhatsApp: +97474736271
-- GitHub: https://github.com/AHMEDVALL70
-Keep answers concise, friendly, and professional. Answer in the same language the user writes in.`;
 
 function toggleAI() {
     aiOpen = !aiOpen;
@@ -999,35 +1178,19 @@ function askSuggestion(btn) {
     sendAI();
 }
 
-async function sendAI() {
+function sendAI() {
     const input = document.getElementById('ai-input');
     const msg = input.value.trim();
     if (!msg) return;
     input.value = '';
-
     const msgs = document.getElementById('ai-messages');
     msgs.innerHTML += `<div class="ai-msg user">${msg}</div>`;
-    msgs.innerHTML += `<div class="ai-msg bot loading" id="ai-loading">...</div>`;
     msgs.scrollTop = msgs.scrollHeight;
-
-    try {
-        const res = await fetch("https://api.anthropic.com/v1/messages", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                model: "claude-sonnet-4-20250514",
-                max_tokens: 300,
-                system: profileContext,
-                messages: [{ role: "user", content: msg }]
-            })
-        });
-        const data = await res.json();
-        const reply = data.content?.[0]?.text || "Sorry, I couldn't answer that.";
-        document.getElementById('ai-loading').outerHTML = `<div class="ai-msg bot">${reply}</div>`;
-    } catch(e) {
-        document.getElementById('ai-loading').outerHTML = `<div class="ai-msg bot">Connection error. Please try again.</div>`;
-    }
-    msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(() => {
+        const reply = getAIResponse(msg);
+        msgs.innerHTML += `<div class="ai-msg bot">${reply.replace(/\n/g,'<br>')}</div>`;
+        msgs.scrollTop = msgs.scrollHeight;
+    }, 400);
 }
 </script>
 </body>
