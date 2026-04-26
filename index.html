@@ -377,6 +377,79 @@
         /* ─── VISITOR ─── */
         .visitor { text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 0.85rem; }
 
+        /* ─── FILTER BUTTONS ─── */
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .filter-btn {
+            border: 1px solid var(--border); background: var(--cream);
+            color: var(--text-muted); cursor: pointer; padding: 7px 18px;
+            border-radius: 20px; font-size: 0.83rem; font-weight: 600;
+            transition: all 0.22s; font-family: 'DM Sans', sans-serif;
+        }
+        .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+        .filter-btn.active { background: var(--teal); color: white; border-color: var(--teal); }
+
+        /* ─── AI ASSISTANT ─── */
+        .ai-fab {
+            position: fixed; bottom: 30px; right: 30px; z-index: 200;
+            width: 58px; height: 58px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--gold));
+            border: none; cursor: pointer; color: white; font-size: 1.4rem;
+            box-shadow: 0 8px 30px rgba(26,107,114,0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; animation: fabPulse 3s infinite;
+        }
+        @keyframes fabPulse { 0%,100%{box-shadow:0 8px 30px rgba(26,107,114,0.4)} 50%{box-shadow:0 8px 40px rgba(26,107,114,0.7)} }
+        .ai-fab:hover { transform: scale(1.1); }
+        .ai-panel {
+            position: fixed; bottom: 100px; right: 30px; z-index: 200;
+            width: 340px; background: var(--card-bg);
+            border-radius: 20px; border: 1px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            display: none; flex-direction: column; overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .ai-panel.open { display: flex; }
+        .ai-panel-header {
+            background: linear-gradient(135deg, var(--teal), var(--gold));
+            padding: 16px 20px; color: white;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .ai-panel-header span { font-weight: 700; font-size: 0.95rem; }
+        .ai-close { background: none; border: none; color: white; cursor: pointer; font-size: 1.1rem; }
+        .ai-messages {
+            padding: 16px; height: 240px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .ai-msg { padding: 10px 14px; border-radius: 14px; font-size: 0.88rem; line-height: 1.5; max-width: 90%; }
+        .ai-msg.bot { background: var(--cream); color: var(--text-main); align-self: flex-start; }
+        .ai-msg.user { background: var(--teal); color: white; align-self: flex-end; }
+        .ai-msg.loading { opacity: 0.6; font-style: italic; }
+        .ai-input-row {
+            padding: 12px 16px; border-top: 1px solid var(--border);
+            display: flex; gap: 8px;
+        }
+        .ai-input {
+            flex: 1; border: 1px solid var(--border); border-radius: 20px;
+            padding: 8px 14px; font-size: 0.88rem; background: var(--cream);
+            color: var(--text-main); outline: none; font-family: 'DM Sans', sans-serif;
+        }
+        .ai-send {
+            background: var(--teal); color: white; border: none;
+            border-radius: 50%; width: 36px; height: 36px;
+            cursor: pointer; font-size: 0.9rem; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ai-send:hover { background: var(--teal-light); }
+        .ai-suggestions { padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .ai-suggest-btn {
+            background: var(--cream); border: 1px solid var(--border);
+            border-radius: 14px; padding: 4px 10px; font-size: 0.78rem;
+            cursor: pointer; color: var(--text-muted); transition: 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .ai-suggest-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
         /* ─── ANIMATIONS ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -481,7 +554,8 @@
             <h2><i class="fas fa-code"></i> <span id="tech-portfolio-header">Technical ML Portfolio</span></h2>
             <div class="section-label-line"></div>
         </div>
-        <p id="portfolio-desc" style="color:var(--text-muted); margin-bottom:28px; font-size:0.96rem; line-height:1.7;"></p>
+        <p id="portfolio-desc" style="color:var(--text-muted); margin-bottom:20px; font-size:0.96rem; line-height:1.7;"></p>
+        <div class="filter-bar" id="filter-bar"></div>
         <div class="projects-grid" id="tech-portfolio-list"></div>
     </section>
 
@@ -541,6 +615,31 @@
     </div>
 </div>
 
+<!-- ─── AI ASSISTANT ─── -->
+<button class="ai-fab" onclick="toggleAI()" title="Ask me anything!">
+    <i class="fas fa-robot"></i>
+</button>
+
+<div class="ai-panel" id="ai-panel">
+    <div class="ai-panel-header">
+        <span>🤖 <span id="ai-title">Ask about Ahmed Vall</span></span>
+        <button class="ai-close" onclick="toggleAI()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="ai-messages" id="ai-messages">
+        <div class="ai-msg bot" id="ai-welcome">👋 Hi! I'm Ahmed Vall's AI assistant. Ask me anything about his experience, skills, or projects!</div>
+    </div>
+    <div class="ai-suggestions" id="ai-suggestions">
+        <button class="ai-suggest-btn" onclick="askSuggestion(this)">Experience?</button>
+        <button class="ai-suggest-btn" onclick="askSuggestion(this)">ML Projects?</button>
+        <button class="ai-suggest-btn" onclick="askSuggestion(this)">Skills?</button>
+        <button class="ai-suggest-btn" onclick="askSuggestion(this)">Contact?</button>
+    </div>
+    <div class="ai-input-row">
+        <input class="ai-input" id="ai-input" placeholder="Ask a question..." onkeydown="if(event.key==='Enter') sendAI()">
+        <button class="ai-send" onclick="sendAI()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
 <script>
 const T = {
     en: {
@@ -564,7 +663,8 @@ const T = {
         langNames: ["Arabic", "French", "English"],
         experience: [
             { title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah", date: "2019 — 2024", desc: "Supervising civil status services and issuing secure biometric identity documents. Managing consular affairs and digital diplomacy for the Mauritanian diaspora." },
-            { title: "Head of Division", company: "National Agency for Population Registry & Secure Documents (ANRPTS)", date: "2011 — 2019", desc: "Overseeing the operations of the national biometric registry center. Managing civil status services including national ID cards, passports, and visa issuance. Ensuring data security and accuracy across the national population database." }
+            { title: "Head of Division", company: "National Agency for Population Registry & Secure Documents (ANRPTS)", date: "2011 — 2019", desc: "Overseeing the operations of the national biometric registry center. Managing civil status services including national ID cards, passports, and visa issuance. Ensuring data security and accuracy across the national population database." },
+            { title: "Procurement Officer & Committee Member", company: "HIV/AIDS Control Project & ANRPTS", date: "2005 — 2011", desc: "Managing procurement operations within the HIV/AIDS Control Project. Member of the Procurement Committee at the National Agency for Population Registry and Secure Documents (ANRPTS), ensuring compliance with national and international procurement standards." }
         ],
         projects: [
             { title: "Biometric Migration", desc: "Modernization of citizen registration systems abroad." },
@@ -611,7 +711,8 @@ const T = {
         langNames: ["العربية", "الفرنسية", "الإنجليزية"],
         experience: [
             { title: "نائب القنصل العام", company: "القنصلية العامة لموريتانيا، جدة", date: "2019 — 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية البيومترية المؤمنة. إدارة الشؤون القنصلية والدبلوماسية الرقمية للجالية الموريتانية." },
-            { title: "رئيس قطاع", company: "الوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2011 — 2019", desc: "الإشراف على عمليات مركز السجل البيومتري الوطني. إدارة خدمات الحالة المدنية بما فيها إصدار بطاقات الهوية وجوازات السفر والتأشيرات. ضمان دقة البيانات وأمان قاعدة السكان الوطنية." }
+            { title: "رئيس قطاع", company: "الوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2011 — 2019", desc: "الإشراف على عمليات مركز السجل البيومتري الوطني. إدارة خدمات الحالة المدنية بما فيها إصدار بطاقات الهوية وجوازات السفر والتأشيرات. ضمان دقة البيانات وأمان قاعدة السكان الوطنية." },
+            { title: "مسؤول الصفقات وعضو لجنة الصفقات", company: "مشروع مكافحة السيدا والوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2005 — 2011", desc: "مسؤول عن إدارة عمليات الصفقات في مشروع مكافحة السيدا. عضو في لجنة الصفقات بالوكالة الوطنية لسجل السكان والوثائق المؤمنة، مع ضمان الامتثال للمعايير الوطنية والدولية للمشتريات." }
         ],
         projects: [
             { title: "تحديث النظام البيومتري", desc: "تطوير أنظمة التسجيل للجالية الموريتانية بالخارج." },
@@ -658,7 +759,8 @@ const T = {
         langNames: ["Arabe", "Français", "Anglais"],
         experience: [
             { title: "Consul Général Adjoint", company: "Consulat Général de Mauritanie, Jeddah", date: "2019 — 2024", desc: "Supervision des services de l'état civil et délivrance de titres d'identité biométriques sécurisés. Gestion des affaires consulaires et de la diplomatie numérique." },
-            { title: "Chef de Division", company: "Agence Nationale du Registre des Populations (ANRPTS)", date: "2011 — 2019", desc: "Supervision du registre biométrique national. Gestion de l'état civil et délivrance de passeports et visas. Garantie de la sécurité et de l'exactitude des données biométriques." }
+            { title: "Chef de Division", company: "Agence Nationale du Registre des Populations (ANRPTS)", date: "2011 — 2019", desc: "Supervision du registre biométrique national. Gestion de l'état civil et délivrance de passeports et visas. Garantie de la sécurité et de l'exactitude des données biométriques." },
+            { title: "Responsable des Marchés & Membre du Comité", company: "Projet de lutte contre le SIDA & ANRPTS", date: "2005 — 2011", desc: "Responsable de la gestion des opérations de passation de marchés dans le cadre du projet de lutte contre le SIDA. Membre du Comité des Marchés de l'Agence Nationale du Registre des Populations et des Titres Sécurisés (ANRPTS), veillant au respect des normes nationales et internationales en matière de marchés publics." }
         ],
         projects: [
             { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement des citoyens à l'étranger." },
@@ -730,6 +832,7 @@ function setLanguage(lang) {
             <div class="project-desc">${p.desc}</div>
             <span class="project-link">${d.viewBtn}</span>
         </a>`).join('');
+    applyFilter('all', lang);
 
     // Certs
     document.getElementById('certs-list').innerHTML = d.certs.map(c => `
@@ -760,6 +863,26 @@ function setLanguage(lang) {
     // Lang buttons
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
+
+    // Filter bar
+    currentLang = lang;
+    currentFilter = 'all';
+    renderFilterBar(lang);
+
+    // AI assistant language
+    const aiTitles = { en: "Ask about Ahmed Vall", ar: "اسألني عن أحمد فال", fr: "Demandez sur Ahmed Vall" };
+    const aiPlaceholders = { en: "Ask a question...", ar: "اكتب سؤالك...", fr: "Posez une question..." };
+    const aiWelcome = { en: "👋 Hi! I'm Ahmed Vall's AI assistant. Ask me anything about his experience, skills, or projects!", ar: "👋 مرحباً! أنا المساعد الذكي لأحمد فال. اسألني عن خبرته ومهاراته ومشاريعه!", fr: "👋 Bonjour! Je suis l'assistant IA d'Ahmed Vall. Posez-moi toute question sur son expérience!" };
+    const aiSuggestions = {
+        en: ["Experience?","ML Projects?","Skills?","Contact?"],
+        ar: ["الخبرة؟","المشاريع؟","المهارات؟","التواصل؟"],
+        fr: ["Expérience?","Projets ML?","Compétences?","Contact?"]
+    };
+    document.getElementById('ai-title').textContent = aiTitles[lang] || aiTitles.en;
+    document.getElementById('ai-input').placeholder = aiPlaceholders[lang] || aiPlaceholders.en;
+    document.getElementById('ai-welcome').textContent = aiWelcome[lang] || aiWelcome.en;
+    document.getElementById('ai-suggestions').innerHTML = (aiSuggestions[lang]||aiSuggestions.en)
+        .map(s => `<button class="ai-suggest-btn" onclick="askSuggestion(this)">${s}</button>`).join('');
 
     // Trigger scroll animations
     setTimeout(observeElements, 100);
@@ -817,6 +940,95 @@ window.addEventListener('load', () => {
     document.getElementById('v-count').innerText = v;
     observeElements();
 });
+
+// ─── PROJECT FILTER ───
+const projectTags = {
+    en: { all:"All", nlp:"NLP", vision:"Computer Vision", finance:"Finance", health:"Healthcare", admin:"Admin" },
+    ar: { all:"الكل", nlp:"معالجة اللغة", vision:"رؤية حاسوبية", finance:"مالية", health:"صحة", admin:"إدارة" },
+    fr: { all:"Tous", nlp:"NLP", vision:"Vision IA", finance:"Finance", health:"Santé", admin:"Admin" }
+};
+const projectCategories = ["all","health","nlp","vision","admin","finance","vision","nlp","admin"];
+
+let currentFilter = "all";
+let currentLang = "en";
+
+function renderFilterBar(lang) {
+    const tags = projectTags[lang] || projectTags.en;
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = Object.entries(tags).map(([k,v]) =>
+        `<button class="filter-btn ${k===currentFilter?'active':''}" onclick="applyFilter('${k}','${lang}')">${v}</button>`
+    ).join('');
+}
+
+function applyFilter(tag, lang) {
+    currentFilter = tag;
+    renderFilterBar(lang || currentLang);
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, i) => {
+        const cat = projectCategories[i] || 'all';
+        card.style.display = (tag === 'all' || cat === tag) ? 'flex' : 'none';
+    });
+}
+
+// ─── AI ASSISTANT ───
+let aiOpen = false;
+const profileContext = `You are an AI assistant for Ahmed Vall Jemal Dine Sidina's portfolio website.
+Answer questions about him based on this info:
+- Full name: Ahmed Vall Jemal Dine Sidina (أحمد فال جمال الدين سيدينا)
+- State Engineer (BAC+5) in Electronics & Digital Development (1998)
+- Former Deputy Consul General of Mauritania in Jeddah (2019-2024)
+- Head of Division at ANRPTS - National Agency for Population Registry & Secure Documents (2011-2019)
+- Procurement Officer & Committee Member at HIV/AIDS Project & ANRPTS (2005-2011)
+- Machine Learning Specialist: completed Stanford ML, DeepLearning.AI Deep Learning, IBM Python for Data Science courses (2024-2025)
+- 9 ML projects: Real estate prediction, Diabetes prediction, Sentiment analysis, Handwritten digit classifier, Secure identity simulation, Exchange rate analysis, Face detection, Spam classifier, Civil status management
+- Skills: Python, Scikit-learn, TensorFlow, OpenCV, NLP, Biometrics, Cisco Networking, Cybersecurity, Digital Diplomacy
+- Languages: Arabic (native), French (professional), English (intermediate)
+- Location: Uganda (currently)
+- Contact: ahmedvalljemaldine@gmail.com | WhatsApp: +97474736271
+- GitHub: https://github.com/AHMEDVALL70
+Keep answers concise, friendly, and professional. Answer in the same language the user writes in.`;
+
+function toggleAI() {
+    aiOpen = !aiOpen;
+    document.getElementById('ai-panel').classList.toggle('open', aiOpen);
+    if (aiOpen) document.getElementById('ai-input').focus();
+}
+
+function askSuggestion(btn) {
+    document.getElementById('ai-input').value = btn.textContent;
+    sendAI();
+}
+
+async function sendAI() {
+    const input = document.getElementById('ai-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+
+    const msgs = document.getElementById('ai-messages');
+    msgs.innerHTML += `<div class="ai-msg user">${msg}</div>`;
+    msgs.innerHTML += `<div class="ai-msg bot loading" id="ai-loading">...</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+
+    try {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                model: "claude-sonnet-4-20250514",
+                max_tokens: 300,
+                system: profileContext,
+                messages: [{ role: "user", content: msg }]
+            })
+        });
+        const data = await res.json();
+        const reply = data.content?.[0]?.text || "Sorry, I couldn't answer that.";
+        document.getElementById('ai-loading').outerHTML = `<div class="ai-msg bot">${reply}</div>`;
+    } catch(e) {
+        document.getElementById('ai-loading').outerHTML = `<div class="ai-msg bot">Connection error. Please try again.</div>`;
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+}
 </script>
 </body>
 </html>
