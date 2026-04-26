@@ -760,15 +760,8 @@
             <div class="section-label-line"></div>
         </div>
         <div class="gallery-section">
-            <div class="gallery-upload-area" onclick="document.getElementById('gallery-file-input').click()">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p><span>Click to upload</span> certificates, awards, or official documents</p>
-                <p style="font-size:0.78rem; margin-top:6px;">PNG, JPG, PDF previews supported</p>
-            </div>
-            <input type="file" id="gallery-file-input" accept="image/*,.pdf" multiple style="display:none" onchange="handleGalleryUpload(event)">
-
             <!-- شهادات ثابتة من GitHub -->
-            <div style="margin-bottom:20px;">
+            <div style="margin-bottom:8px;">
                 <h4 style="color:var(--text-muted); font-size:0.85rem; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
                     <i class="fas fa-lock" style="color:var(--gold);"></i> Official Documents — View Only
                 </h4>
@@ -789,13 +782,6 @@
                         </div>
                         <span class="pdf-view-btn"><i class="fas fa-eye"></i> View</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="gallery-grid" id="gallery-grid">
-                <div class="gallery-empty" id="gallery-empty">
-                    <i class="fas fa-folder-open" style="font-size:2rem; color:var(--border); display:block; margin-bottom:8px;"></i>
-                    No documents uploaded yet. Click above to add your certificates!
                 </div>
             </div>
         </div>
