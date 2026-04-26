@@ -229,15 +229,61 @@
         /* Lightbox */
         .lightbox {
             display: none; position: fixed; inset: 0; z-index: 500;
-            background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+            flex-direction: column;
         }
         .lightbox.open { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; }
-        .lightbox-close {
-            position: absolute; top: 20px; right: 24px;
-            background: none; border: none; color: white;
-            font-size: 2rem; cursor: pointer;
+        .lightbox-img-wrap {
+            position: relative; max-width: 88vw; max-height: 82vh;
+            user-select: none; -webkit-user-select: none;
         }
+        .lightbox-img-wrap img {
+            max-width: 88vw; max-height: 82vh;
+            border-radius: 12px; display: block;
+            pointer-events: none; /* منع السحب */
+            -webkit-user-drag: none;
+        }
+        /* طبقة شفافة فوق الصورة تمنع التفاعل */
+        .lightbox-shield {
+            position: absolute; inset: 0; z-index: 10;
+            background: transparent; cursor: default;
+            border-radius: 12px;
+        }
+        /* علامة مائية */
+        .lightbox-watermark {
+            position: absolute; inset: 0; z-index: 11;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none; border-radius: 12px; overflow: hidden;
+        }
+        .lightbox-watermark span {
+            color: rgba(255,255,255,0.18);
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            font-weight: 900; letter-spacing: 0.1em;
+            transform: rotate(-30deg);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            white-space: nowrap; font-family: 'Playfair Display', serif;
+            position: absolute;
+        }
+        .lightbox-watermark span:nth-child(1) { top: 20%; left: 10%; }
+        .lightbox-watermark span:nth-child(2) { top: 50%; left: 30%; }
+        .lightbox-watermark span:nth-child(3) { top: 75%; left: 55%; }
+        .lightbox-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; max-width: 88vw; padding: 12px 4px; margin-top: 10px;
+        }
+        .lightbox-doc-name { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+        .lightbox-protected {
+            display: flex; align-items: center; gap: 6px;
+            color: var(--gold); font-size: 0.82rem; font-weight: 600;
+        }
+        .lightbox-close {
+            position: absolute; top: 16px; right: 20px;
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            font-size: 1.2rem; cursor: pointer; border-radius: 50%;
+            width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s; z-index: 20;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
         .cv-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .cv-btn {
@@ -678,9 +724,21 @@
     </section>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
         <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-        <img id="lightbox-img" src="" alt="Certificate">
+        <div class="lightbox-img-wrap">
+            <img id="lightbox-img" src="" alt="Certificate" draggable="false">
+            <div class="lightbox-shield" oncontextmenu="return false;"></div>
+            <div class="lightbox-watermark">
+                <span>Ahmed Vall Sidina</span>
+                <span>Ahmed Vall Sidina</span>
+                <span>Ahmed Vall Sidina</span>
+            </div>
+        </div>
+        <div class="lightbox-bar">
+            <span class="lightbox-doc-name" id="lightbox-name"></span>
+            <span class="lightbox-protected"><i class="fas fa-lock"></i> View Only — Protected</span>
+        </div>
     </div>
 
     <!-- Charity -->
@@ -1079,8 +1137,8 @@ function renderGallery() {
         return;
     }
     grid.innerHTML = galleryItems.map((item, i) => `
-        <div class="gallery-item" onclick="openLightbox('${item.src}')">
-            <img src="${item.src}" alt="${item.name}">
+        <div class="gallery-item" onclick="openLightbox('${item.src}', '${item.name}')">
+            <img src="${item.src}" alt="${item.name}" draggable="false" oncontextmenu="return false;">
             <div class="gallery-label">${item.name}</div>
             <button class="gallery-delete" onclick="event.stopPropagation(); deleteGalleryItem(${i})">
                 <i class="fas fa-trash"></i>
@@ -1110,13 +1168,30 @@ function deleteGalleryItem(i) {
     }
 }
 
-function openLightbox(src) {
+function openLightbox(src, name) {
     document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-name').textContent = name || '';
     document.getElementById('lightbox').classList.add('open');
 }
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
 }
+function handleLightboxClick(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+// ─── PROTECTION ───
+document.addEventListener('contextmenu', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) e.preventDefault();
+});
+document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox').classList.contains('open');
+    if (lb && (
+        (e.ctrlKey && ['s','p','c','u','a'].includes(e.key.toLowerCase())) ||
+        e.key === 'PrintScreen' || e.key === 'F12'
+    )) e.preventDefault();
+});
 
 // ─── AI ASSISTANT (Smart local fallback) ───
 const aiKnowledge = {
