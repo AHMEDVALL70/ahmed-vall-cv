@@ -269,15 +269,9 @@
         }
         .pdf-modal-close:hover { background: rgba(255,255,255,0.2); }
         .pdf-modal-body { flex: 1; position: relative; overflow: hidden; }
-        .pdf-modal-body iframe {
-            width: 100%; height: 100%; border: none;
-            pointer-events: auto;
-        }
-        /* طبقة تمنع التحميل عبر شريط الأدوات */
-        .pdf-shield {
-            position: absolute; top: 0; left: 0; right: 0; height: 40px;
-            z-index: 10; background: transparent;
-        }
+        .pdf-modal-body iframe { width: 100%; height: 100%; border: none; pointer-events: auto; }
+        .pdf-shield { position: absolute; top: 0; left: 0; right: 0; height: 40px; z-index: 10; background: transparent; }
+
         /* Lightbox */
         .lightbox {
             display: none; position: fixed; inset: 0; z-index: 500;
@@ -292,16 +286,9 @@
         .lightbox-img-wrap img {
             max-width: 88vw; max-height: 82vh;
             border-radius: 12px; display: block;
-            pointer-events: none; /* منع السحب */
-            -webkit-user-drag: none;
+            pointer-events: none; -webkit-user-drag: none;
         }
-        /* طبقة شفافة فوق الصورة تمنع التفاعل */
-        .lightbox-shield {
-            position: absolute; inset: 0; z-index: 10;
-            background: transparent; cursor: default;
-            border-radius: 12px;
-        }
-        /* علامة مائية */
+        .lightbox-shield { position: absolute; inset: 0; z-index: 10; background: transparent; cursor: default; border-radius: 12px; }
         .lightbox-watermark {
             position: absolute; inset: 0; z-index: 11;
             display: flex; align-items: center; justify-content: center;
@@ -324,10 +311,7 @@
             width: 100%; max-width: 88vw; padding: 12px 4px; margin-top: 10px;
         }
         .lightbox-doc-name { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
-        .lightbox-protected {
-            display: flex; align-items: center; gap: 6px;
-            color: var(--gold); font-size: 0.82rem; font-weight: 600;
-        }
+        .lightbox-protected { display: flex; align-items: center; gap: 6px; color: var(--gold); font-size: 0.82rem; font-weight: 600; }
         .lightbox-close {
             position: absolute; top: 16px; right: 20px;
             background: rgba(255,255,255,0.1); border: none; color: white;
@@ -357,9 +341,7 @@
             display: flex; align-items: center; gap: 16px;
             margin-bottom: 40px;
         }
-        .section-label-line {
-            height: 1px; flex: 1; background: var(--border);
-        }
+        .section-label-line { height: 1px; flex: 1; background: var(--border); }
         .section-label h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem; font-weight: 700;
@@ -433,7 +415,7 @@
         }
         .project-card:hover .project-link { gap: 10px; }
 
-        /* Accent border top per card */
+        /* Accent border top per card — cycles through 3 colors for 10 cards */
         .project-card:nth-child(3n+1) { border-top: 4px solid var(--gold); }
         .project-card:nth-child(3n+2) { border-top: 4px solid var(--teal); }
         .project-card:nth-child(3n+3) { border-top: 4px solid var(--rust); }
@@ -491,10 +473,7 @@
         .mission-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
         /* ─── HONORS ─── */
-        .award-img {
-            width: 100%; border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1); margin-bottom: 24px;
-        }
+        .award-img { width: 100%; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); margin-bottom: 24px; }
         .testimonial {
             background: linear-gradient(135deg, var(--cream), var(--card-bg));
             border-radius: 16px; border: 1px solid var(--border);
@@ -585,7 +564,6 @@
         .ai-msg { padding: 10px 14px; border-radius: 14px; font-size: 0.88rem; line-height: 1.5; max-width: 90%; }
         .ai-msg.bot { background: var(--cream); color: var(--text-main); align-self: flex-start; }
         .ai-msg.user { background: var(--teal); color: white; align-self: flex-end; }
-        .ai-msg.loading { opacity: 0.6; font-style: italic; }
         .ai-input-row {
             padding: 12px 16px; border-top: 1px solid var(--border);
             display: flex; gap: 8px;
@@ -760,7 +738,6 @@
             <div class="section-label-line"></div>
         </div>
         <div class="gallery-section">
-            <!-- شهادات ثابتة من GitHub -->
             <div style="margin-bottom:8px;">
                 <h4 style="color:var(--text-muted); font-size:0.85rem; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
                     <i class="fas fa-lock" style="color:var(--gold);"></i> Official Documents — View Only
@@ -872,6 +849,23 @@
 </div>
 
 <script>
+// ─────────────────────────────────────────────────────────────
+// PROJECT CATEGORIES — 10 projects total
+// Order: health, nlp, digits, admin, finance, vision, nlp, admin, nlp, nlp
+// ─────────────────────────────────────────────────────────────
+const projectCategories = [
+    "health",   // 01 - Diabetes
+    "nlp",      // 02 - Sentiment Analyzer
+    "vision",   // 03 - Handwritten Digits (CNN = computer vision)
+    "admin",    // 04 - Secure Identity Simulation
+    "finance",  // 05 - Exchange Rate Analysis
+    "vision",   // 06 - Face Detection
+    "nlp",      // 07 - Spam Mail Classifier
+    "admin",    // 08 - Civil Status Management
+    "finance",  // 09 - Saudi Real Estate
+    "nlp"       // 10 - Arabic Sentiment Analysis ✅ NEW
+];
+
 const T = {
     en: {
         name: "Ahmed Vall Jemal Dine Sidina",
@@ -895,22 +889,23 @@ const T = {
         experience: [
             { title: "Deputy Consul General", company: "Consulate General of Mauritania, Jeddah", date: "2019 — 2024", desc: "Supervising civil status services and issuing secure biometric identity documents. Managing consular affairs and digital diplomacy for the Mauritanian diaspora." },
             { title: "Head of Division", company: "National Agency for Population Registry & Secure Documents (ANRPTS)", date: "2011 — 2019", desc: "Overseeing the operations of the national biometric registry center. Managing civil status services including national ID cards, passports, and visa issuance. Ensuring data security and accuracy across the national population database." },
-            { title: "Procurement Officer & Committee Member", company: "HIV/AIDS Control Project & ANRPTS", date: "2005 — 2011", desc: "Managing procurement operations within the HIV/AIDS Control Project. Member of the Procurement Committee at the National Agency for Population Registry and Secure Documents (ANRPTS), ensuring compliance with national and international procurement standards." }
+            { title: "Procurement Officer & Committee Member", company: "HIV/AIDS Control Project & ANRPTS", date: "2005 — 2011", desc: "Managing procurement operations within the HIV/AIDS Control Project. Member of the Procurement Committee at ANRPTS, ensuring compliance with national and international procurement standards." }
         ],
         projects: [
             { title: "Biometric Migration", desc: "Modernization of citizen registration systems abroad." },
             { title: "Secure Infrastructure", desc: "Developing secure connectivity for consular data transmission." }
         ],
         techProjects: [
-            { num:"01", icon:"🏠", title:"Saudi Real Estate Predictor", desc:"Predicting property prices in the KSA market using Random Forest.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"02", icon:"🩺", title:"Diabetes Prediction", desc:"Classification model to predict diabetes based on clinical data.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
-            { num:"03", icon:"🔍", title:"Sentiment Analyzer", desc:"NLP analysis of customer reviews with interactive visualization.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
-            { num:"04", icon:"🔢", title:"Handwritten Digit Classifier", desc:"CNN neural network identifying handwritten digits from images.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
-            { num:"05", icon:"🛡️", title:"Secure Identity Simulation", desc:"Biometric and secure document management system simulation.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
-            { num:"06", icon:"📉", title:"Exchange Rate Analysis", desc:"Statistical analysis of currency fluctuations in the Ugandan market.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
-            { num:"07", icon:"👤", title:"Face Detection System", desc:"Real-time biometric recognition and face tracking using OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
-            { num:"08", icon:"🤖", title:"Spam Mail Classifier", desc:"ML model to filter unwanted emails automatically.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
-            { num:"09", icon:"📋", title:"Civil Status Management", desc:"Digital system for managing official records and identity titles.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" }
+            { num:"01", icon:"🩺", title:"Diabetes Prediction", desc:"Classification model to predict diabetes based on clinical data using Machine Learning.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
+            { num:"02", icon:"🔍", title:"Sentiment Analyzer", desc:"NLP analysis of customer reviews with interactive visualization.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
+            { num:"03", icon:"🔢", title:"Handwritten Digit Classifier", desc:"CNN neural network identifying handwritten digits from images.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
+            { num:"04", icon:"🛡️", title:"Secure Identity Simulation", desc:"Biometric and secure document management system simulation.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
+            { num:"05", icon:"📉", title:"Exchange Rate Analysis", desc:"Statistical analysis of currency fluctuations in the Ugandan market.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
+            { num:"06", icon:"👤", title:"Face Detection System", desc:"Real-time biometric recognition and face tracking using OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
+            { num:"07", icon:"🤖", title:"Spam Mail Classifier", desc:"ML model to filter unwanted emails automatically.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"08", icon:"📋", title:"Civil Status Management", desc:"Digital system for managing official records and identity titles.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
+            { num:"09", icon:"🏠", title:"Saudi Real Estate Predictor", desc:"Predicting property prices in the KSA market using Random Forest & Label Encoding.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
+            { num:"10", icon:"🧠", title:"Arabic Sentiment Analysis", desc:"NLP model classifying Arabic text into positive or negative emotions using Machine Learning & Prompt Engineering.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv" }
         ],
         certs: [
             { title: "State Engineer Degree (BAC + 5)", provider: "Electronics & Digital Development", date: "1998" },
@@ -919,7 +914,7 @@ const T = {
             { title: "Deep Learning Specialization", provider: "DeepLearning.AI / Coursera", date: "2025" },
             { title: "Python for Data Science & AI", provider: "IBM", date: "2024" }
         ],
-        skills: ["PC Repair & Troubleshooting", "Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "Digital Diplomacy", "Strategic Planning"]
+        skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "Digital Diplomacy", "Strategic Planning", "Public Procurement", "NLP & Computer Vision"]
     },
     ar: {
         name: "أحمد فال جمال الدين سيدينا",
@@ -943,22 +938,23 @@ const T = {
         experience: [
             { title: "نائب القنصل العام", company: "القنصلية العامة لموريتانيا، جدة", date: "2019 — 2024", desc: "الإشراف على خدمات الحالة المدنية وإصدار وثائق الهوية البيومترية المؤمنة. إدارة الشؤون القنصلية والدبلوماسية الرقمية للجالية الموريتانية." },
             { title: "رئيس قطاع", company: "الوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2011 — 2019", desc: "الإشراف على عمليات مركز السجل البيومتري الوطني. إدارة خدمات الحالة المدنية بما فيها إصدار بطاقات الهوية وجوازات السفر والتأشيرات. ضمان دقة البيانات وأمان قاعدة السكان الوطنية." },
-            { title: "مسؤول الصفقات وعضو لجنة الصفقات", company: "مشروع مكافحة السيدا والوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2005 — 2011", desc: "مسؤول عن إدارة عمليات الصفقات في مشروع مكافحة السيدا. عضو في لجنة الصفقات بالوكالة الوطنية لسجل السكان والوثائق المؤمنة، مع ضمان الامتثال للمعايير الوطنية والدولية للمشتريات." }
+            { title: "مسؤول الصفقات وعضو لجنة الصفقات", company: "مشروع مكافحة السيدا والوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS)", date: "2005 — 2011", desc: "مسؤول عن إدارة عمليات الصفقات في مشروع مكافحة السيدا. عضو في لجنة الصفقات بالوكالة الوطنية لسجل السكان مع ضمان الامتثال للمعايير الوطنية والدولية." }
         ],
         projects: [
             { title: "تحديث النظام البيومتري", desc: "تطوير أنظمة التسجيل للجالية الموريتانية بالخارج." },
             { title: "تأمين البيانات القنصلية", desc: "بناء مسارات ربط آمنة لنقل البيانات الحساسة." }
         ],
         techProjects: [
-            { num:"01", icon:"🏠", title:"توقع العقارات السعودي", desc:"نموذج للتنبؤ بأسعار العقارات باستخدام Random Forest.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"02", icon:"🩺", title:"التنبؤ بالسكري", desc:"نموذج تصنيف طبي للتنبؤ بالإصابة بالسكري.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
-            { num:"03", icon:"🔍", title:"تحليل المشاعر", desc:"تحليل لغوي لآراء العملاء باستخدام NLP.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
-            { num:"04", icon:"🔢", title:"التعرف على الأرقام", desc:"شبكة عصبية للتعرف على الأرقام المكتوبة بخط اليد.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
-            { num:"05", icon:"🛡️", title:"محاكاة الهوية المؤمنة", desc:"نظام لإدارة الهوية البيومترية والوثائق المؤمنة.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
-            { num:"06", icon:"📉", title:"تحليل أسعار الصرف", desc:"تحليل إحصائي لتقلبات العملة في السوق الأوغندي.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
-            { num:"07", icon:"👤", title:"التعرف على الوجوه", desc:"نظام رصد الوجوه في الوقت الفعلي باستخدام OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
-            { num:"08", icon:"🤖", title:"تصنيف البريد المزعج", desc:"نموذج تعلم آلي لفلترة الرسائل غير المرغوبة.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
-            { num:"09", icon:"📋", title:"إدارة الحالة المدنية", desc:"نظام رقمي لإدارة سجلات الهوية الرسمية.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" }
+            { num:"01", icon:"🩺", title:"التنبؤ بمرض السكري", desc:"نموذج تصنيف طبي للتنبؤ بالإصابة بالسكري باستخدام تعلم الآلة.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
+            { num:"02", icon:"🔍", title:"تحليل المشاعر", desc:"تحليل لغوي لآراء العملاء باستخدام NLP مع تصور تفاعلي.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
+            { num:"03", icon:"🔢", title:"التعرف على الأرقام المكتوبة بخط اليد", desc:"شبكة عصبية CNN للتعرف على الأرقام المكتوبة بخط اليد.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
+            { num:"04", icon:"🛡️", title:"محاكاة الهوية المؤمنة", desc:"نظام لإدارة الهوية البيومترية والوثائق المؤمنة.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
+            { num:"05", icon:"📉", title:"تحليل أسعار الصرف", desc:"تحليل إحصائي لتقلبات العملة في السوق الأوغندي.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
+            { num:"06", icon:"👤", title:"التعرف على الوجوه", desc:"نظام رصد الوجوه في الوقت الفعلي باستخدام OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
+            { num:"07", icon:"🤖", title:"تصنيف البريد المزعج", desc:"نموذج تعلم آلي لفلترة الرسائل غير المرغوبة تلقائياً.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"08", icon:"📋", title:"إدارة الحالة المدنية", desc:"نظام رقمي لإدارة سجلات الهوية الرسمية.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
+            { num:"09", icon:"🏠", title:"توقع أسعار العقارات السعودية", desc:"نموذج تنبؤي باستخدام Random Forest و Label Encoding لتحليل دقيق لأسعار السوق.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
+            { num:"10", icon:"🧠", title:"تحليل مشاعر النصوص العربية", desc:"نموذج NLP يصنّف النصوص العربية إلى مشاعر إيجابية وسلبية باستخدام تعلم الآلة وهندسة البرامج.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv" }
         ],
         certs: [
             { title: "شهادة مهندس دولة (BAC + 5)", provider: "تخصص الإلكترونيات والتطوير الرقمي", date: "1998" },
@@ -967,7 +963,7 @@ const T = {
             { title: "تخصص التعلم العميق", provider: "DeepLearning.AI / Coursera", date: "2025" },
             { title: "بايثون لعلوم البيانات والذكاء الاصطناعي", provider: "IBM", date: "2024" }
         ],
-        skills: ["إصلاح الحاسوب وتشخيص الأعطال", "الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي"]
+        skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي", "الصفقات العمومية", "NLP والرؤية الحاسوبية"]
     },
     fr: {
         name: "Ahmed Vall Jemal Dine Sidina",
@@ -991,22 +987,23 @@ const T = {
         experience: [
             { title: "Consul Général Adjoint", company: "Consulat Général de Mauritanie, Jeddah", date: "2019 — 2024", desc: "Supervision des services de l'état civil et délivrance de titres d'identité biométriques sécurisés. Gestion des affaires consulaires et de la diplomatie numérique." },
             { title: "Chef de Division", company: "Agence Nationale du Registre des Populations (ANRPTS)", date: "2011 — 2019", desc: "Supervision du registre biométrique national. Gestion de l'état civil et délivrance de passeports et visas. Garantie de la sécurité et de l'exactitude des données biométriques." },
-            { title: "Responsable des Marchés & Membre du Comité", company: "Projet de lutte contre le SIDA & ANRPTS", date: "2005 — 2011", desc: "Responsable de la gestion des opérations de passation de marchés dans le cadre du projet de lutte contre le SIDA. Membre du Comité des Marchés de l'Agence Nationale du Registre des Populations et des Titres Sécurisés (ANRPTS), veillant au respect des normes nationales et internationales en matière de marchés publics." }
+            { title: "Responsable des Marchés & Membre du Comité", company: "Projet de lutte contre le SIDA & ANRPTS", date: "2005 — 2011", desc: "Responsable de la gestion des opérations de passation de marchés. Membre du Comité des Marchés de l'ANRPTS, veillant au respect des normes nationales et internationales en matière de marchés publics." }
         ],
         projects: [
             { title: "Migration Biométrique", desc: "Modernisation des systèmes d'enregistrement des citoyens à l'étranger." },
             { title: "Infrastructure Sécurisée", desc: "Développement de connectivité sécurisée pour les données consulaires." }
         ],
         techProjects: [
-            { num:"01", icon:"🏠", title:"Prédicteur Immobilier KSA", desc:"Prédiction des prix immobiliers via Random Forest.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"02", icon:"🩺", title:"Prédiction du Diabète", desc:"Modèle de classification basé sur des données cliniques.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
-            { num:"03", icon:"🔍", title:"Analyse de Sentiment", desc:"Analyse NLP des avis clients avec visualisation.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
-            { num:"04", icon:"🔢", title:"Reconnaissance de Chiffres", desc:"Réseaux CNN pour les chiffres manuscrits.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
-            { num:"05", icon:"🛡️", title:"Simulation d'Identité Sécurisée", desc:"Système de simulation de gestion biométrique.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
-            { num:"06", icon:"📉", title:"Analyse des Taux de Change", desc:"Analyse statistique des fluctuations monétaires.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
-            { num:"07", icon:"👤", title:"Reconnaissance Faciale", desc:"Détection de visage en temps réel via OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
-            { num:"08", icon:"🤖", title:"Filtre Anti-Spam", desc:"Modèle ML pour filtrer les courriels indésirables.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
-            { num:"09", icon:"📋", title:"Gestion d'État Civil", desc:"Système numérique de registres officiels.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" }
+            { num:"01", icon:"🩺", title:"Prédiction du Diabète", desc:"Modèle de classification basé sur des données cliniques via Machine Learning.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb" },
+            { num:"02", icon:"🔍", title:"Analyse de Sentiment", desc:"Analyse NLP des avis clients avec visualisation interactive.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
+            { num:"03", icon:"🔢", title:"Reconnaissance de Chiffres Manuscrits", desc:"Réseau CNN pour identifier les chiffres manuscrits depuis des images.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
+            { num:"04", icon:"🛡️", title:"Simulation d'Identité Sécurisée", desc:"Système de simulation de gestion biométrique et de documents sécurisés.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Gemini_AI_Integration_03.ipynb" },
+            { num:"05", icon:"📉", title:"Analyse des Taux de Change", desc:"Analyse statistique des fluctuations monétaires sur le marché ougandais.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
+            { num:"06", icon:"👤", title:"Détection Faciale en Temps Réel", desc:"Reconnaissance biométrique et suivi de visage via OpenCV.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Iris_Classification_02.ipynb" },
+            { num:"07", icon:"🤖", title:"Filtre Anti-Spam", desc:"Modèle ML pour filtrer automatiquement les courriels indésirables.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"08", icon:"📋", title:"Gestion d'État Civil Numérique", desc:"Système numérique de gestion des registres officiels d'identité.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
+            { num:"09", icon:"🏠", title:"Prédicteur Immobilier KSA", desc:"Prédiction des prix immobiliers via Random Forest & Label Encoding.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
+            { num:"10", icon:"🧠", title:"Analyse de Sentiment Arabe", desc:"Modèle NLP classifiant les textes arabes en émotions positives ou négatives via Machine Learning & Prompt Engineering.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv" }
         ],
         certs: [
             { title: "Diplôme d'Ingénieur d'État (BAC + 5)", provider: "Électronique & Développement Numérique", date: "1998" },
@@ -1015,9 +1012,19 @@ const T = {
             { title: "Spécialisation Deep Learning", provider: "DeepLearning.AI / Coursera", date: "2025" },
             { title: "Python pour Data Science & IA", provider: "IBM", date: "2024" }
         ],
-        skills: ["Maintenance Matériel & Logiciel", "Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie Numérique", "Planification Stratégique"]
+        skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Diplomatie Numérique", "Planification Stratégique", "Marchés Publics", "NLP & Vision par Ordinateur"]
     }
 };
+
+// ─── PROJECT FILTER TAGS ───
+const projectTags = {
+    en: { all:"All", nlp:"NLP", vision:"Computer Vision", finance:"Finance", health:"Healthcare", admin:"Admin" },
+    ar: { all:"الكل", nlp:"معالجة اللغة", vision:"رؤية حاسوبية", finance:"مالية", health:"صحة", admin:"إدارة" },
+    fr: { all:"Tous", nlp:"NLP", vision:"Vision IA", finance:"Finance", health:"Santé", admin:"Admin" }
+};
+
+let currentFilter = "all";
+let currentLang = "en";
 
 function setLanguage(lang) {
     const d = T[lang] || T.en;
@@ -1037,6 +1044,7 @@ function setLanguage(lang) {
     document.getElementById('honors-header').innerText = d.honorsHeader;
     document.getElementById('portfolio-desc').innerText = d.portfolioDesc;
     document.getElementById('v-text').innerText = d.visitor;
+
     const galleryTitles = { en:"Certificates & Documents Gallery", ar:"معرض الشهادات والوثائق", fr:"Galerie de Certificats & Documents" };
     document.getElementById('gallery-header').innerText = galleryTitles[lang] || galleryTitles.en;
 
@@ -1056,7 +1064,7 @@ function setLanguage(lang) {
     document.getElementById('projects-list').innerHTML = d.projects.map(p => `
         <div class="mission-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`).join('');
 
-    // Tech Projects
+    // Tech Projects (10 projects)
     document.getElementById('tech-portfolio-list').innerHTML = d.techProjects.map((p, i) => `
         <a class="project-card" href="${p.link}" target="_blank" style="transition-delay:${i*0.06}s">
             <div class="project-num"># ${p.num}</div>
@@ -1065,6 +1073,7 @@ function setLanguage(lang) {
             <div class="project-desc">${p.desc}</div>
             <span class="project-link">${d.viewBtn}</span>
         </a>`).join('');
+
     applyFilter('all', lang);
 
     // Certs
@@ -1088,7 +1097,6 @@ function setLanguage(lang) {
             <div class="lang-bar-track"><div class="lang-bar-fill" style="width:0%" data-w="${langLevels[i]}%"></div></div>
         </div>`).join('');
 
-    // Animate bars
     setTimeout(() => {
         document.querySelectorAll('.lang-bar-fill').forEach(b => b.style.width = b.dataset.w);
     }, 100);
@@ -1097,19 +1105,22 @@ function setLanguage(lang) {
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
 
-    // Filter bar
     currentLang = lang;
     currentFilter = 'all';
     renderFilterBar(lang);
 
     // AI assistant language
-    const aiTitles = { en: "Ask about Ahmed Vall", ar: "اسألني عن أحمد فال", fr: "Demandez sur Ahmed Vall" };
-    const aiPlaceholders = { en: "Ask a question...", ar: "اكتب سؤالك...", fr: "Posez une question..." };
-    const aiWelcome = { en: "👋 Hi! I'm Ahmed Vall's AI assistant. Ask me anything about his experience, skills, or projects!", ar: "👋 مرحباً! أنا المساعد الذكي لأحمد فال. اسألني عن خبرته ومهاراته ومشاريعه!", fr: "👋 Bonjour! Je suis l'assistant IA d'Ahmed Vall. Posez-moi toute question sur son expérience!" };
+    const aiTitles = { en:"Ask about Ahmed Vall", ar:"اسألني عن أحمد فال", fr:"Demandez sur Ahmed Vall" };
+    const aiPlaceholders = { en:"Ask a question...", ar:"اكتب سؤالك...", fr:"Posez une question..." };
+    const aiWelcome = {
+        en:"👋 Hi! I'm Ahmed Vall's AI assistant. Ask me anything about his experience, skills, or projects!",
+        ar:"👋 مرحباً! أنا المساعد الذكي لأحمد فال. اسألني عن خبرته ومهاراته ومشاريعه!",
+        fr:"👋 Bonjour! Je suis l'assistant IA d'Ahmed Vall. Posez-moi toute question sur son expérience!"
+    };
     const aiSuggestions = {
-        en: ["Experience?","ML Projects?","Skills?","Contact?"],
-        ar: ["الخبرة؟","المشاريع؟","المهارات؟","التواصل؟"],
-        fr: ["Expérience?","Projets ML?","Compétences?","Contact?"]
+        en:["Experience?","ML Projects?","Skills?","Contact?"],
+        ar:["الخبرة؟","المشاريع؟","المهارات؟","التواصل؟"],
+        fr:["Expérience?","Projets ML?","Compétences?","Contact?"]
     };
     document.getElementById('ai-title').textContent = aiTitles[lang] || aiTitles.en;
     document.getElementById('ai-input').placeholder = aiPlaceholders[lang] || aiPlaceholders.en;
@@ -1117,12 +1128,29 @@ function setLanguage(lang) {
     document.getElementById('ai-suggestions').innerHTML = (aiSuggestions[lang]||aiSuggestions.en)
         .map(s => `<button class="ai-suggest-btn" onclick="askSuggestion(this)">${s}</button>`).join('');
 
-    // Trigger scroll animations
     setTimeout(observeElements, 100);
 
-    // Update typewriter roles
     currentRoles = d.roles;
     roleIndex = 0; charIndex = 0; isDeleting = false;
+}
+
+// ─── FILTER ───
+function renderFilterBar(lang) {
+    const tags = projectTags[lang] || projectTags.en;
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = Object.entries(tags).map(([k,v]) =>
+        `<button class="filter-btn ${k===currentFilter?'active':''}" onclick="applyFilter('${k}','${lang}')">${v}</button>`
+    ).join('');
+}
+
+function applyFilter(tag, lang) {
+    currentFilter = tag;
+    renderFilterBar(lang || currentLang);
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, i) => {
+        const cat = projectCategories[i] || 'all';
+        card.style.display = (tag === 'all' || cat === tag) ? 'flex' : 'none';
+    });
 }
 
 // ─── SCROLL OBSERVER ───
@@ -1164,90 +1192,22 @@ function playMedia(url, btn) {
     btn.classList.add('playing');
 }
 
-// ─── INIT ───
-window.addEventListener('load', () => {
-    setLanguage('en');
-    setTimeout(typeEffect, 800);
-    let v = parseInt(localStorage.getItem('site_v_count') || 500) + 1;
-    localStorage.setItem('site_v_count', v);
-    document.getElementById('v-count').innerText = v;
-    observeElements();
-    renderGallery();
-});
-
-// ─── PROJECT FILTER ───
-const projectTags = {
-    en: { all:"All", nlp:"NLP", vision:"Computer Vision", finance:"Finance", health:"Healthcare", admin:"Admin" },
-    ar: { all:"الكل", nlp:"معالجة اللغة", vision:"رؤية حاسوبية", finance:"مالية", health:"صحة", admin:"إدارة" },
-    fr: { all:"Tous", nlp:"NLP", vision:"Vision IA", finance:"Finance", health:"Santé", admin:"Admin" }
-};
-const projectCategories = ["all","health","nlp","vision","admin","finance","vision","nlp","admin"];
-
-let currentFilter = "all";
-let currentLang = "en";
-
-function renderFilterBar(lang) {
-    const tags = projectTags[lang] || projectTags.en;
-    const bar = document.getElementById('filter-bar');
-    bar.innerHTML = Object.entries(tags).map(([k,v]) =>
-        `<button class="filter-btn ${k===currentFilter?'active':''}" onclick="applyFilter('${k}','${lang}')">${v}</button>`
-    ).join('');
-}
-
-function applyFilter(tag, lang) {
-    currentFilter = tag;
-    renderFilterBar(lang || currentLang);
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card, i) => {
-        const cat = projectCategories[i] || 'all';
-        card.style.display = (tag === 'all' || cat === tag) ? 'flex' : 'none';
-    });
-}
-
-// ─── AI ASSISTANT ───
-// ─── CERTIFICATES GALLERY ───
+// ─── GALLERY ───
 let galleryItems = JSON.parse(localStorage.getItem('av_gallery') || '[]');
 
 function renderGallery() {
     const grid = document.getElementById('gallery-grid');
-    const empty = document.getElementById('gallery-empty');
+    if (!grid) return;
     if (galleryItems.length === 0) {
-        grid.innerHTML = `<div class="gallery-empty" id="gallery-empty">
-            <i class="fas fa-folder-open" style="font-size:2rem; color:var(--border); display:block; margin-bottom:8px;"></i>
-            No documents uploaded yet. Click above to add your certificates!
-        </div>`;
+        grid.innerHTML = `<div class="gallery-empty"><i class="fas fa-folder-open" style="font-size:2rem; color:var(--border); display:block; margin-bottom:8px;"></i>No documents uploaded yet.</div>`;
         return;
     }
     grid.innerHTML = galleryItems.map((item, i) => `
         <div class="gallery-item" onclick="openLightbox('${item.src}', '${item.name}')">
             <img src="${item.src}" alt="${item.name}" draggable="false" oncontextmenu="return false;">
             <div class="gallery-label">${item.name}</div>
-            <button class="gallery-delete" onclick="event.stopPropagation(); deleteGalleryItem(${i})">
-                <i class="fas fa-trash"></i>
-            </button>
+            <button class="gallery-delete" onclick="event.stopPropagation(); deleteGalleryItem(${i})"><i class="fas fa-trash"></i></button>
         </div>`).join('');
-}
-
-function handleGalleryUpload(e) {
-    const files = Array.from(e.target.files);
-    files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            galleryItems.push({ name: file.name.replace(/\.[^.]+$/, ''), src: ev.target.result });
-            localStorage.setItem('av_gallery', JSON.stringify(galleryItems));
-            renderGallery();
-        };
-        reader.readAsDataURL(file);
-    });
-    e.target.value = '';
-}
-
-function deleteGalleryItem(i) {
-    if (confirm('Remove this item?')) {
-        galleryItems.splice(i, 1);
-        localStorage.setItem('av_gallery', JSON.stringify(galleryItems));
-        renderGallery();
-    }
 }
 
 function openLightbox(src, name) {
@@ -1264,7 +1224,6 @@ function handleLightboxClick(e) {
 }
 
 function openPDF(url, title) {
-    // نعرض PDF عبر Google Docs Viewer لمنع التحميل المباشر
     const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
     document.getElementById('pdf-iframe').src = viewerUrl;
     document.getElementById('pdf-modal-title').textContent = title;
@@ -1277,60 +1236,41 @@ function closePDF() {
     document.body.style.overflow = '';
 }
 
-// ─── PROTECTION ───
-document.addEventListener('contextmenu', e => {
-    if (document.getElementById('lightbox').classList.contains('open')) e.preventDefault();
-});
-document.addEventListener('keydown', e => {
-    const lb = document.getElementById('lightbox').classList.contains('open');
-    if (lb && (
-        (e.ctrlKey && ['s','p','c','u','a'].includes(e.key.toLowerCase())) ||
-        e.key === 'PrintScreen' || e.key === 'F12'
-    )) e.preventDefault();
-});
-
-// ─── AI ASSISTANT (Smart local fallback) ───
+// ─── AI ASSISTANT ───
 const aiKnowledge = {
-    experience: `Ahmed Vall has 3 main roles:\n1️⃣ Deputy Consul General - Mauritanian Consulate, Jeddah (2019-2024)\n2️⃣ Head of Division - ANRPTS National Biometric Agency (2011-2019)\n3️⃣ Procurement Officer & Committee Member - HIV/AIDS Project & ANRPTS (2005-2011)`,
-    projects: `Ahmed Vall has 9 ML projects:\n🏠 Real Estate Price Predictor (KSA)\n🩺 Diabetes Prediction\n🔍 Sentiment Analyzer (NLP)\n🔢 Handwritten Digit Classifier (CNN)\n🛡️ Secure Identity Simulation\n📉 Exchange Rate Tracker\n👤 Face Detection (OpenCV)\n🤖 Spam Mail Classifier\n📋 Civil Status Management`,
-    skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Generative AI\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Digital Diplomacy & Strategic Planning`,
+    experience: `Ahmed Vall has 3 main roles:\n1️⃣ Deputy Consul General — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Head of Division — ANRPTS National Biometric Agency (2011–2019)\n3️⃣ Procurement Officer & Committee Member — HIV/AIDS Project & ANRPTS (2005–2011)`,
+    projects: `Ahmed Vall has 10 ML projects:\n🩺 Diabetes Prediction\n🔍 Sentiment Analyzer (NLP)\n🔢 Handwritten Digit Classifier (CNN)\n🛡️ Secure Identity Simulation\n📉 Exchange Rate Tracker\n👤 Face Detection (OpenCV)\n🤖 Spam Mail Classifier\n📋 Civil Status Management\n🏠 Saudi Real Estate Predictor\n🧠 Arabic Sentiment Analysis (NEW)`,
+    skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Prompt Engineering\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Public Procurement & Digital Diplomacy`,
     contact: `📧 Email: ahmedvalljemaldine@gmail.com\n💬 WhatsApp: +974 7473 6271\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina\n📘 Facebook: ahmedvall.sidina`,
-    education: `🎓 State Engineer Degree BAC+5 - Electronics & Digital Development (1998)\n📊 Machine Learning Specialization - Stanford/Coursera (2025)\n🧠 Deep Learning Specialization - DeepLearning.AI (2025)\n🐍 Python for Data Science - IBM (2024)\n💼 Business Administration Diploma (2024)`,
+    education: `🎓 State Engineer BAC+5 — Electronics & Digital Development (1998)\n📊 Machine Learning Specialization — Stanford/Coursera (2025)\n🧠 Deep Learning Specialization — DeepLearning.AI (2025)\n🐍 Python for Data Science — IBM (2024)\n💼 Business Administration Diploma (2024)`,
     languages: `Ahmed Vall speaks:\n🇲🇷 Arabic — Native (100%)\n🇫🇷 French — Professional (70%)\n🇬🇧 English — Intermediate (50%)`,
     location: `📍 Currently based in Uganda (Kampala)`,
-    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5), former diplomat, and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital diplomacy with cutting-edge AI skills.`
+    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5), former diplomat, and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital diplomacy with cutting-edge AI skills including 10 published ML projects.`
 };
 
 const arKnowledge = {
-    experience: `لدى أحمد فال 3 مناصب رئيسية:\n1️⃣ نائب القنصل العام - القنصلية الموريتانية، جدة (2019-2024)\n2️⃣ رئيس قطاع - الوكالة الوطنية ANRPTS (2011-2019)\n3️⃣ مسؤول الصفقات وعضو اللجنة - مشروع مكافحة السيدا والوكالة (2005-2011)`,
-    projects: `لديه 9 مشاريع في تعلم الآلة:\n🏠 توقع أسعار العقارات السعودية\n🩺 التنبؤ بالسكري\n🔍 تحليل المشاعر (NLP)\n🔢 التعرف على الأرقام (CNN)\n🛡️ محاكاة الهوية المؤمنة\n📉 تتبع أسعار الصرف\n👤 التعرف على الوجوه\n🤖 تصنيف البريد المزعج\n📋 إدارة الحالة المدنية`,
-    skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الدبلوماسية الرقمية والتخطيط`,
+    experience: `لدى أحمد فال 3 مناصب رئيسية:\n1️⃣ نائب القنصل العام — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ رئيس قطاع — الوكالة الوطنية ANRPTS (2011–2019)\n3️⃣ مسؤول الصفقات وعضو اللجنة — مشروع مكافحة السيدا والوكالة (2005–2011)`,
+    projects: `لديه 10 مشاريع في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🔍 تحليل المشاعر (NLP)\n🔢 التعرف على الأرقام (CNN)\n🛡️ محاكاة الهوية المؤمنة\n📉 تتبع أسعار الصرف\n👤 التعرف على الوجوه\n🤖 تصنيف البريد المزعج\n📋 إدارة الحالة المدنية\n🏠 توقع أسعار العقارات السعودية\n🧠 تحليل مشاعر النصوص العربية (جديد)`,
+    skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق، هندسة البرامج\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الصفقات العمومية والدبلوماسية الرقمية`,
     contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n💬 واتساب: 97474736271+\n🐙 GitHub: github.com/AHMEDVALL70`,
-    education: `🎓 مهندس دولة BAC+5 - إلكترونيات (1998)\n📊 تخصص تعلم الآلة - Stanford/Coursera (2025)\n🧠 تعلم عميق - DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات - IBM (2024)`,
+    education: `🎓 مهندس دولة BAC+5 — إلكترونيات (1998)\n📊 تخصص تعلم الآلة — Stanford/Coursera (2025)\n🧠 تعلم عميق — DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات — IBM (2024)`,
     languages: `يتحدث أحمد فال:\n🇲🇷 العربية — اللغة الأم (100%)\n🇫🇷 الفرنسية — مهني (70%)\n🇬🇧 الإنجليزية — متوسط (50%)`,
-    about: `أحمد فال جمال الدين سيدينا مهندس دولة ودبلوماسي سابق ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والدبلوماسية الرقمية مع مهارات ذكاء اصطناعي متقدمة.`
+    about: `أحمد فال جمال الدين سيدينا مهندس دولة ودبلوماسي سابق ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والدبلوماسية الرقمية مع 10 مشاريع منشورة في مجال الذكاء الاصطناعي.`
 };
 
 function getAIResponse(msg) {
     const lang = document.documentElement.lang || 'en';
     const kb = lang === 'ar' ? arKnowledge : aiKnowledge;
     const m = msg.toLowerCase();
-    if (m.match(/experi|work|job|career|خبر|عمل|وظيف|منصب|consul|anrpts|sida|صفقة/))
-        return kb.experience;
-    if (m.match(/project|ml|machine|learn|مشروع|ذكاء|تعلم|نموذج|diabetes|estate|sentiment|face/))
-        return kb.projects;
-    if (m.match(/skill|tech|python|know|مهار|تقن|برمج/))
-        return kb.skills;
-    if (m.match(/contact|email|phone|whatsapp|reach|تواصل|اتصال|بريد|هاتف/))
-        return kb.contact;
-    if (m.match(/educat|degree|cert|study|course|تعليم|شهادة|دراس|stanford|coursera|ibm/))
-        return kb.education;
-    if (m.match(/language|arabic|french|english|لغ|عرب|فرنس|إنجليز/))
-        return kb.languages;
+    if (m.match(/experi|work|job|career|خبر|عمل|وظيف|منصب|consul|anrpts|sida|صفقة/)) return kb.experience;
+    if (m.match(/project|ml|machine|learn|مشروع|ذكاء|تعلم|نموذج|diabetes|estate|sentiment|face|arabic|عربي/)) return kb.projects;
+    if (m.match(/skill|tech|python|know|مهار|تقن|برمج/)) return kb.skills;
+    if (m.match(/contact|email|phone|whatsapp|reach|تواصل|اتصال|بريد|هاتف/)) return kb.contact;
+    if (m.match(/educat|degree|cert|study|course|تعليم|شهادة|دراس|stanford|coursera|ibm/)) return kb.education;
+    if (m.match(/language|arabic|french|english|لغ|عرب|فرنس|إنجليز/)) return kb.languages;
     if (m.match(/location|where|country|ugand|mauritania|أين|موقع|دول|أوغند|موريتان/))
         return lang === 'ar' ? '📍 يقيم حالياً في أوغندا (كمبالا)' : aiKnowledge.location;
-    if (m.match(/who|about|introduc|tell me|من هو|عرفني|احمد|أحمد/))
-        return kb.about;
+    if (m.match(/who|about|introduc|tell me|من هو|عرفني|احمد|أحمد/)) return kb.about;
     return lang === 'ar'
         ? '🤔 يمكنني الإجابة عن: الخبرة، المشاريع، المهارات، التعليم، التواصل، اللغات. ماذا تريد أن تعرف؟'
         : '🤔 I can answer about: Experience, Projects, Skills, Education, Contact, Languages. What would you like to know?';
@@ -1363,6 +1303,27 @@ function sendAI() {
         msgs.scrollTop = msgs.scrollHeight;
     }, 400);
 }
+
+// ─── PROTECTION ───
+document.addEventListener('contextmenu', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) e.preventDefault();
+});
+document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox').classList.contains('open');
+    if (lb && ((e.ctrlKey && ['s','p','c','u','a'].includes(e.key.toLowerCase())) || e.key === 'PrintScreen' || e.key === 'F12'))
+        e.preventDefault();
+});
+
+// ─── INIT ───
+window.addEventListener('load', () => {
+    setLanguage('en');
+    setTimeout(typeEffect, 800);
+    let v = parseInt(localStorage.getItem('site_v_count') || 500) + 1;
+    localStorage.setItem('site_v_count', v);
+    document.getElementById('v-count').innerText = v;
+    observeElements();
+    renderGallery();
+});
 </script>
 </body>
 </html>
