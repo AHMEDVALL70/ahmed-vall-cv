@@ -399,10 +399,10 @@
             border: 1px solid var(--border);
             padding: 24px; display: flex; flex-direction: column; gap: 12px;
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0; transform: translateY(20px);
+            /* ✅ FIX: إزالة opacity:0 و transform حتى تظهر البطاقات فوراً */
+            opacity: 1; transform: translateY(0);
             text-decoration: none; color: inherit;
         }
-        .project-card.visible { opacity: 1; transform: translateY(0); }
         .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
         .project-num { font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; }
         .project-icon { font-size: 2rem; line-height: 1; }
@@ -415,10 +415,24 @@
         }
         .project-card:hover .project-link { gap: 10px; }
 
-        /* Accent border top per card — cycles through 3 colors for 10 cards */
+        /* Accent border top per card */
         .project-card:nth-child(3n+1) { border-top: 4px solid var(--gold); }
         .project-card:nth-child(3n+2) { border-top: 4px solid var(--teal); }
         .project-card:nth-child(3n+3) { border-top: 4px solid var(--rust); }
+
+        /* ─── SCROLL ANIMATION للبطاقات ─── */
+        .project-card.animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s ease;
+        }
+        .project-card.animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project-card.animate-on-scroll.visible:hover {
+            transform: translateY(-8px);
+        }
 
         /* ─── CERTS ─── */
         .certs-list { display: flex; flex-direction: column; gap: 14px; }
@@ -850,8 +864,7 @@
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// PROJECT CATEGORIES — 10 projects total
-// Order: health, nlp, digits, admin, finance, vision, nlp, admin, nlp, nlp
+// PROJECT CATEGORIES — 11 projects total
 // ─────────────────────────────────────────────────────────────
 const projectCategories = [
     "health",   // 01 - Diabetes
@@ -1068,9 +1081,9 @@ function setLanguage(lang) {
     document.getElementById('projects-list').innerHTML = d.projects.map(p => `
         <div class="mission-card"><h3>${p.title}</h3><p>${p.desc}</p></div>`).join('');
 
-    // Tech Projects (10 projects)
+    // ✅ FIX: رسم المشاريع بدون opacity:0 — كلها ظاهرة فوراً بنفس التنسيق
     document.getElementById('tech-portfolio-list').innerHTML = d.techProjects.map((p, i) => `
-        <a class="project-card" href="${p.link}" target="_blank" style="transition-delay:${i*0.06}s">
+        <a class="project-card animate-on-scroll" href="${p.link}" target="_blank" data-index="${i}">
             <div class="project-num"># ${p.num}</div>
             <div class="project-icon">${p.icon}</div>
             <div class="project-title">${p.title}</div>
@@ -1132,7 +1145,10 @@ function setLanguage(lang) {
     document.getElementById('ai-suggestions').innerHTML = (aiSuggestions[lang]||aiSuggestions.en)
         .map(s => `<button class="ai-suggest-btn" onclick="askSuggestion(this)">${s}</button>`).join('');
 
-    setTimeout(observeElements, 100);
+    // ✅ FIX: تشغيل observer بعد رسم البطاقات مباشرة
+    setTimeout(() => {
+        observeElements();
+    }, 50);
 
     currentRoles = d.roles;
     roleIndex = 0; charIndex = 0; isDeleting = false;
@@ -1153,16 +1169,49 @@ function applyFilter(tag, lang) {
     const cards = document.querySelectorAll('.project-card');
     cards.forEach((card, i) => {
         const cat = projectCategories[i] || 'all';
-        card.style.display = (tag === 'all' || cat === tag) ? 'flex' : 'none';
+        if (tag === 'all' || cat === tag) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
 
-// ─── SCROLL OBSERVER ───
+// ─── SCROLL OBSERVER — يعطي كل البطاقات تأثير الظهور بالتساوي ───
 function observeElements() {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+    // exp items
+    const expObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                expObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.exp-item').forEach(el => {
+        el.classList.remove('visible');
+        expObserver.observe(el);
+    });
+
+    // ✅ project cards — كلها تحصل على نفس المعاملة بالضبط
+    const cardObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                // تأخير بسيط حسب الترتيب لتأثير cascade جميل
+                const idx = parseInt(e.target.dataset.index) || 0;
+                setTimeout(() => {
+                    e.target.classList.add('visible');
+                }, idx * 60);
+                cardObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.project-card.animate-on-scroll').forEach(el => {
+        el.classList.remove('visible');
+        cardObserver.observe(el);
+    });
 }
 
 // ─── TYPEWRITER ───
@@ -1243,8 +1292,7 @@ function closePDF() {
 // ─── AI ASSISTANT ───
 const aiKnowledge = {
     experience: `Ahmed Vall has 3 main roles:\n1️⃣ Deputy Consul General — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Head of Division — ANRPTS National Biometric Agency (2011–2019)\n3️⃣ Procurement Officer & Committee Member — HIV/AIDS Project & ANRPTS (2005–2011)`,
-    projects: `Ahmed Vall has 11 ML projects:\n🩺 Diabetes Prediction\n🔍 Sentiment Analyzer (NLP)\n🔢 Handwritten Digit Classifier (CNN)\n🛡️ Secure Identity Simulation\n📉 Exchange Rate Tracker\n👤 Face Detection (OpenCV)\n🤖 Spam Mail Classifier\n📋 Civil Status Management\n🏠 Saudi Real Estate Predictor\n🧠 Arabic Sentiment Analysis
-🛂 Procurement Fraud Detection (NEW)`,
+    projects: `Ahmed Vall has 11 ML projects:\n🩺 Diabetes Prediction\n🌸 Iris Classification\n🤖 Gemini AI Integration\n🔍 Sentiment Analyzer (NLP)\n💱 Exchange Rate Tracker\n🏠 Saudi Real Estate Predictor\n🤖 Spam Mail Classifier\n🔢 Handwritten Digit Classifier (CNN)\n📊 Crypto Price Predictor\n🧠 Arabic Sentiment Analysis\n🛂 Procurement Fraud Detection`,
     skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Prompt Engineering\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Public Procurement & Digital Diplomacy`,
     contact: `📧 Email: ahmedvalljemaldine@gmail.com\n💬 WhatsApp: +974 7473 6271\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina\n📘 Facebook: ahmedvall.sidina`,
     education: `🎓 State Engineer BAC+5 — Electronics & Digital Development (1998)\n📊 Machine Learning Specialization — Stanford/Coursera (2025)\n🧠 Deep Learning Specialization — DeepLearning.AI (2025)\n🐍 Python for Data Science — IBM (2024)\n💼 Business Administration Diploma (2024)`,
@@ -1255,8 +1303,7 @@ const aiKnowledge = {
 
 const arKnowledge = {
     experience: `لدى أحمد فال 3 مناصب رئيسية:\n1️⃣ نائب القنصل العام — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ رئيس قطاع — الوكالة الوطنية ANRPTS (2011–2019)\n3️⃣ مسؤول الصفقات وعضو اللجنة — مشروع مكافحة السيدا والوكالة (2005–2011)`,
-    projects: `لديه 11 مشروعاً في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🔍 تحليل المشاعر (NLP)\n🔢 التعرف على الأرقام (CNN)\n🛡️ محاكاة الهوية المؤمنة\n📉 تتبع أسعار الصرف\n👤 التعرف على الوجوه\n🤖 تصنيف البريد المزعج\n📋 إدارة الحالة المدنية\n🏠 توقع أسعار العقارات السعودية\n🧠 تحليل مشاعر النصوص العربية
-🛂 كشف الاحتيال في الصفقات العمومية (جديد)`,
+    projects: `لديه 11 مشروعاً في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🌸 تصنيف الأيريس\n🤖 تكامل Gemini AI\n🔍 تحليل المشاعر (NLP)\n💱 تتبع أسعار الصرف\n🏠 توقع أسعار العقارات السعودية\n🤖 تصنيف البريد المزعج\n🔢 التعرف على الأرقام (CNN)\n📊 التنبؤ بأسعار العملات الرقمية\n🧠 تحليل مشاعر النصوص العربية\n🛂 كشف الاحتيال في الصفقات العمومية`,
     skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق، هندسة البرامج\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الصفقات العمومية والدبلوماسية الرقمية`,
     contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n💬 واتساب: 97474736271+\n🐙 GitHub: github.com/AHMEDVALL70`,
     education: `🎓 مهندس دولة BAC+5 — إلكترونيات (1998)\n📊 تخصص تعلم الآلة — Stanford/Coursera (2025)\n🧠 تعلم عميق — DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات — IBM (2024)`,
@@ -1327,7 +1374,6 @@ window.addEventListener('load', () => {
     let v = parseInt(localStorage.getItem('site_v_count') || 500) + 1;
     localStorage.setItem('site_v_count', v);
     document.getElementById('v-count').innerText = v;
-    observeElements();
     renderGallery();
 });
 </script>
