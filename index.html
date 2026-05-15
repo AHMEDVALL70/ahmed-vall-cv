@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Vall Jemal Dine Sidina — Engineer · Diplomat · AI Specialist</title>
-    <meta name="description" content="Official Portfolio of Ahmed Vall Jemal Dine Sidina — State Engineer, Diplomat, and Machine Learning Specialist from Mauritania.">
+    <title>Ahmed Vall Jemal Dine Sidina — State Engineer · AI & ML Specialist</title>
+    <meta name="description" content="Ahmed Vall Jemal Dine Sidina — State Engineer & ML Specialist with 25+ years in biometrics and digital transformation. Based in Doha, Qatar. AI projects on GitHub.">
     <meta name="keywords" content="Ahmed Vall Jemal Dine Sidina, AHMEDVALL70, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, Diplomat">
     <meta name="author" content="Ahmed Vall Jemal Dine Sidina">
 
     <!-- ✅ تحسين: Open Graph tags للمشاركة في واتساب ولينكدإن -->
     <meta property="og:title" content="Ahmed Vall Jemal Dine Sidina — Engineer · Diplomat · AI Specialist">
-    <meta property="og:description" content="State Engineer, Diplomat & Machine Learning Specialist from Mauritania. 25+ years experience in biometric systems, civil registry & AI.">
+    <meta property="og:description" content="State Engineer & ML Specialist · 25+ years · Doha, Qatar · Biometrics, digital transformation & AI projects.">
     <meta property="og:image" content="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/my-photo.jpg">
     <meta property="og:url" content="https://ahmedvall70.github.io/ahmed-vall-cv/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ahmed Vall Jemal Dine Sidina — Engineer · Diplomat · AI">
-    <meta name="twitter:description" content="State Engineer, Diplomat & ML Specialist from Mauritania.">
+    <meta name="twitter:description" content="State Engineer & ML Specialist · Doha, Qatar · 25+ years · AI & biometrics.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/my-photo.jpg">
 
     <!-- ✅ Favicon -->
@@ -26,6 +26,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmed Vall Jemal Dine Sidina",
+        "jobTitle": "State Engineer, AI & ML Specialist",
+        "address": { "@type": "PostalAddress", "addressLocality": "Doha", "addressCountry": "QA" },
+        "email": "ahmedvalljemaldine@gmail.com",
+        "telephone": "+97474736271",
+        "url": "https://ahmedvall70.github.io/ahmed-vall-cv/",
+        "sameAs": [
+            "https://www.linkedin.com/in/ahmed-vall-sidina",
+            "https://github.com/AHMEDVALL70",
+            "https://x.com/ahmedvallsidina"
+        ]
+    }
+    </script>
 
     <style>
         :root {
@@ -104,6 +122,16 @@
             font-size: 1.25rem; font-weight: 600;
             color: var(--gold); letter-spacing: 0.04em;
         }
+        .nav-center {
+            display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+        }
+        .nav-links { display: flex; align-items: center; gap: 18px; }
+        .nav-links a {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--muted); text-decoration: none; letter-spacing: 0.08em;
+            text-transform: uppercase; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-light); }
         .nav-right { display: flex; align-items: center; gap: 12px; }
         .lang-group { display: flex; gap: 4px; background: var(--cream); padding: 4px; border-radius: 30px; }
         .lang-btn {
@@ -246,25 +274,14 @@
         }
         .pill.native { border-color: rgba(74,158,224,0.45); color: var(--gold-light); }
 
-        /* ✅ تحسين: بطاقات الإحصاء */
-        .stats-row {
-            display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-            margin: 4px 0;
+        .hero-stats-line {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--muted); letter-spacing: 0.12em;
+            margin: 8px 0 20px; padding: 10px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
         }
-        .stat-card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 0; padding: 14px 18px; text-align: center;
-            min-width: 90px; transition: all 0.25s;
-        }
-        .stat-card:hover { border-color: rgba(74,158,224,0.45); background: rgba(74,158,224,0.08); transform: none; box-shadow: none; }
-        .stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem; font-weight: 600;
-            color: var(--gold-light);
-            line-height: 1.1; margin-bottom: 4px;
-            -webkit-text-fill-color: unset; background: none;
-        }
-        .stat-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+        .hero-stats-line span { color: var(--gold-light); }
 
         .social-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
         [dir="rtl"] .social-row { justify-content: flex-end; }
@@ -430,7 +447,7 @@
         @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
 
         .info-card {
-            background: var(--card-bg); border-radius: 16px;
+            background: var(--card-bg); border-radius: 0;
             border: 1px solid var(--border); padding: 28px;
         }
         .info-card h3 {
@@ -587,25 +604,26 @@
         .filter-btn {
             border: 1px solid var(--border); background: var(--cream);
             color: var(--text-muted); cursor: pointer; padding: 7px 18px;
-            border-radius: 20px; font-size: 0.83rem; font-weight: 600;
-            transition: all 0.22s; font-family: 'DM Sans', sans-serif;
+            border-radius: 0; font-size: 0.83rem; font-weight: 600;
+            transition: all 0.22s; font-family: 'DM Mono', monospace;
         }
         .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
         .filter-btn.active { background: var(--teal); color: white; border-color: var(--teal); }
 
         /* ─── CHARITY ─── */
         .charity-section {
-            background: var(--card-bg); border-radius: 20px;
-            border: 2px solid var(--gold); padding: 50px 40px;
-            text-align: center; direction: rtl; margin-top: 80px;
+            background: var(--card-bg); border-radius: 0;
+            border: 1px solid var(--line); border-left: 3px solid var(--gold);
+            padding: 50px 40px; text-align: center; direction: rtl; margin-top: 80px;
         }
+        [dir="rtl"] .charity-section { border-left: none; border-right: 3px solid var(--gold); }
         .charity-title { font-size: 1.1rem; font-weight: 700; color: var(--gold); margin-bottom: 24px; }
         .parents-box {
             font-family: 'Noto Kufi Arabic', sans-serif;
             font-size: 1.35rem; font-weight: 900;
             color: var(--text-main); line-height: 1.8;
-            background: var(--cream); padding: 30px;
-            border-radius: 16px; border: 1px solid rgba(201,168,76,0.3);
+            background: rgba(74,158,224,0.06); padding: 30px;
+            border-radius: 0; border: 1px solid var(--line);
             max-width: 520px; margin: 0 auto 24px;
         }
         .parents-dua { font-size: 0.82rem; font-weight: 400; color: var(--text-muted); margin-top: 10px; display: block; }
@@ -613,7 +631,7 @@
         .surah-btn {
             border: 1px solid var(--border); background: var(--cream);
             color: var(--text-main); cursor: pointer; padding: 7px 18px;
-            border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+            border-radius: 0; font-size: 0.85rem; font-weight: 600;
             transition: all 0.2s; font-family: 'Noto Kufi Arabic', sans-serif;
         }
         .surah-btn:hover, .surah-btn.playing { background: var(--teal); color: white; border-color: var(--teal); }
@@ -627,8 +645,21 @@
             display: flex; align-items: center; justify-content: center; gap: 6px;
         }
         .visitor-count {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem; font-weight: 700; color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem; font-weight: 700; color: var(--gold-light);
+        }
+
+        .site-footer {
+            text-align: center; padding: 48px 30px 100px;
+            border-top: 1px solid var(--line); margin-top: 20px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--muted); letter-spacing: 0.06em; line-height: 2;
+        }
+        .site-footer a { color: var(--gold-light); text-decoration: none; }
+        .site-footer a:hover { color: var(--gold); }
+        .site-footer .footer-name {
+            font-family: 'Cormorant Garamond', serif; font-size: 14px;
+            color: var(--text-main); display: block; margin-top: 8px;
         }
 
         /* ✅ تحسين: زر نسخ البريد */
@@ -651,19 +682,21 @@
         /* ─── AI ASSISTANT ─── */
         .ai-fab {
             position: fixed; bottom: 30px; right: 30px; z-index: 200;
-            width: 58px; height: 58px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--teal), var(--gold));
-            border: none; cursor: pointer; color: white; font-size: 1.4rem;
-            box-shadow: 0 8px 30px rgba(26,107,114,0.4);
+            width: 52px; height: 52px; border-radius: 0;
+            background: rgba(74,158,224,0.12);
+            border: 1px solid rgba(74,158,224,0.45);
+            cursor: pointer; color: var(--gold-light); font-size: 1.3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
             display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; animation: fabPulse 3s infinite;
+            transition: all 0.3s;
         }
-        @keyframes fabPulse { 0%,100%{box-shadow:0 8px 30px rgba(26,107,114,0.4)} 50%{box-shadow:0 8px 40px rgba(26,107,114,0.7)} }
+        [dir="rtl"] .ai-fab { right: auto; left: 30px; }
+        [dir="rtl"] .ai-panel { right: auto; left: 30px; }
         .ai-fab:hover { transform: scale(1.1); }
         .ai-panel {
-            position: fixed; bottom: 100px; right: 30px; z-index: 200;
-            width: 340px; background: var(--card-bg);
-            border-radius: 20px; border: 1px solid var(--border);
+            position: fixed; bottom: 95px; right: 30px; z-index: 200;
+            width: 340px; background: var(--deep-mid);
+            border-radius: 0; border: 1px solid var(--line);
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             display: none; flex-direction: column; overflow: hidden;
             animation: slideUp 0.3s ease;
@@ -750,10 +783,19 @@
             font-size: 16px; font-weight: 600; color: var(--text-main);
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .geo-ring { animation: none !important; }
+        }
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; }
             .hero-right { min-height: 280px; order: -1; }
             .hero-left { padding: 40px 24px 60px; }
+            .nav-center { display: none; }
         }
         @media (max-width: 600px) {
             nav { padding: 12px 16px; }
@@ -769,6 +811,11 @@
 <!-- ─── NAV ─── -->
 <nav>
     <div class="nav-logo">AV.</div>
+    <div class="nav-center nav-links">
+        <a href="#section-experience" id="nav-exp">Experience</a>
+        <a href="#section-projects" id="nav-projects">Projects</a>
+        <a href="#section-contact" id="nav-contact">Contact</a>
+    </div>
     <div class="nav-right">
         <div class="lang-group">
             <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
@@ -798,26 +845,6 @@
             <a href="mailto:ahmedvalljemaldine@gmail.com"><i class="fas fa-envelope"></i> ahmedvalljemaldine@gmail.com</a>
         </div>
 
-        <div class="lang-pills" id="hero-lang-pills"></div>
-
-        <div class="stats-row" id="stats-row">
-            <div class="stat-card">
-                <div class="stat-num">25+</div>
-                <div class="stat-label" id="stat-years">Years Experience</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">12</div>
-                <div class="stat-label" id="stat-projects">ML Projects</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">3</div>
-                <div class="stat-label" id="stat-langs">Languages</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">3</div>
-                <div class="stat-label" id="stat-countries">Countries</div>
-            </div>
-        </div>
 
         <div class="social-row" aria-label="Social networks">
             <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-icon" target="_blank" rel="noopener" data-tooltip="WhatsApp · +974 7473 6271" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -832,6 +859,8 @@
             <a href="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/Ahmed-Vall-CV-EN.pdf" class="cv-btn cv-btn-primary" download target="_blank"><i class="fas fa-file-pdf"></i> CV (EN)</a>
             <a href="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/Ahmed-Vall-CV-FR.pdf" class="cv-btn cv-btn-secondary" download target="_blank"><i class="fas fa-file-pdf"></i> CV (FR)</a>
         </div>
+
+        <p class="hero-stats-line" id="hero-stats-line">25+ Years Experience · 12 ML Projects · 3 Languages</p>
     </div>
 
     <div class="hero-right">
@@ -862,7 +891,7 @@
     </section>
 
     <!-- Experience -->
-    <section class="section">
+    <section class="section" id="section-experience">
         <div class="section-label">
             <h2><i class="fas fa-briefcase"></i> <span id="exp-header">Professional Experience</span></h2>
             <div class="section-label-line"></div>
@@ -880,7 +909,7 @@
     </section>
 
     <!-- Tech Portfolio -->
-    <section class="section">
+    <section class="section" id="section-projects">
         <div class="section-label">
             <h2><i class="fas fa-code"></i> <span id="tech-portfolio-header">Technical ML Portfolio</span></h2>
             <div class="section-label-line"></div>
@@ -1018,6 +1047,18 @@
     </div>
 </div>
 
+
+<!-- ─── FOOTER / CONTACT ─── -->
+<footer class="site-footer" id="section-contact">
+    <p id="footer-line1">Based in Doha, Qatar · Open to collaborations</p>
+    <p>
+        <a href="mailto:ahmedvalljemaldine@gmail.com" onclick="copyEmail(event)">ahmedvalljemaldine@gmail.com</a>
+        · <a href="tel:+97474736271">+974 7473 6271</a>
+    </p>
+    <p id="footer-line2">© 2026 Ahmed Vall Jemal Dine Sidina · All rights reserved</p>
+    <span class="footer-name" id="footer-name">Ahmed Vall Jemal Dine Sidina</span>
+</footer>
+
 <!-- Copy Toast -->
 <div class="copy-toast" id="copy-toast">✓ Email copied!</div>
 
@@ -1058,6 +1099,13 @@ const T = {
         roles: ["State Engineer", "AI & ML Specialist", "IT & Digital Transformation Leader", "Former Diplomat"],
         status: "Available for Projects",
         contactLocation: "Doha, Qatar",
+        navExp: "Experience",
+        navProjects: "Projects",
+        navContact: "Contact",
+        heroStatsLine: '25+ <span>Years Experience</span> · 12 <span>ML Projects</span> · 3 <span>Languages</span>',
+        footerLine1: "Based in Doha, Qatar · Open to collaborations",
+        footerLine2: "© 2026 Ahmed Vall Jemal Dine Sidina · All rights reserved",
+        copyToast: "✓ Email copied!",
         eyebrow: "State Engineer · AI Specialist",
         langPills: ["Arabic — Native", "French — Fluent", "English — Intermediate"],
         expertiseHeader: "Areas of Expertise",
@@ -1185,7 +1233,7 @@ const T = {
             { num:"04", icon:"🔍", title:"Sentiment Analyzer", desc:"Inspired by diplomatic reporting needs — NLP analysis of customer reviews to extract sentiment patterns with interactive TextBlob visualization.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
             { num:"05", icon:"💱", title:"Exchange Rate Tracker", desc:"Statistical analysis and forecasting of currency exchange fluctuations using Python and time-series techniques.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
             { num:"06", icon:"🏠", title:"Saudi Real Estate Predictor", desc:"Drawing on years in Saudi Arabia — predicting property prices in the KSA market using Random Forest & Label Encoding.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"07", icon:"📧", title:"Spam Mail Classifier", desc:"Addressing a universal communication challenge — ML model to automatically filter unwanted emails using NLP and text classification.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"07", icon:"📧", title:"Spam Mail Classifier", desc:"Addressing a universal communication challenge — ML model to automatically filter unwanted emails using NLP and text classification.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Spam_Mail_Classifier_07.ipynb" },
             { num:"08", icon:"🔢", title:"Handwritten Digit Classifier", desc:"Exploring computer vision fundamentals — CNN neural network trained to identify handwritten digits from images with high accuracy.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
             { num:"09", icon:"📊", title:"Crypto Price Predictor", desc:"Applying deep learning to financial markets — LSTM recurrent neural network for time-series cryptocurrency price prediction.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"Arabic Sentiment Analysis", desc:"Bridging language and AI — NLP model classifying Arabic text into positive or negative emotions, combining ML and Prompt Engineering for Arabic-language contexts.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
@@ -1206,6 +1254,13 @@ const T = {
         roles: ["مهندس دولة", "مختص ذكاء اصطناعي", "قائد تحول رقمي", "دبلوماسي سابق"],
         status: "متاح للمشاريع والتعاون الدولي",
         contactLocation: "الدوحة، قطر",
+        navExp: "الخبرة",
+        navProjects: "المشاريع",
+        navContact: "التواصل",
+        heroStatsLine: '+25 <span>سنة خبرة</span> · 12 <span>مشروع ML</span> · 3 <span>لغات</span>',
+        footerLine1: "مقيم في الدوحة، قطر · متاح للتعاون والمشاريع",
+        footerLine2: "© 2026 أحمد فال جمال الدين سيدينا · جميع الحقوق محفوظة",
+        copyToast: "✓ تم نسخ البريد!",
         eyebrow: "مهندس دولة · مختص ذكاء اصطناعي",
         langPills: ["العربية — اللغة الأم", "الفرنسية — بطلاقة", "الإنجليزية — متوسط"],
         expertiseHeader: "مجالات التخصص",
@@ -1333,7 +1388,7 @@ const T = {
             { num:"04", icon:"🔍", title:"تحليل المشاعر", desc:"مستوحى من الحاجة إلى التحليل الدبلوماسي — نموذج NLP لتحليل آراء العملاء واستخراج أنماط المشاعر مع تصور تفاعلي باستخدام TextBlob.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
             { num:"05", icon:"💱", title:"تتبع أسعار الصرف", desc:"تحليل إحصائي وتنبؤي لتقلبات أسعار صرف العملات باستخدام بايثون وتقنيات السلاسل الزمنية.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
             { num:"06", icon:"🏠", title:"توقع أسعار العقارات السعودية", desc:"مستفيداً من سنوات الإقامة في المملكة العربية السعودية — نموذج تنبؤي بأسعار العقارات باستخدام Random Forest و Label Encoding.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"07", icon:"📧", title:"تصنيف البريد المزعج", desc:"معالجة تحدٍّ تواصلي عالمي — نموذج تعلم آلي لفلترة الرسائل غير المرغوبة تلقائياً باستخدام NLP وتصنيف النصوص.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"07", icon:"📧", title:"تصنيف البريد المزعج", desc:"معالجة تحدٍّ تواصلي عالمي — نموذج تعلم آلي لفلترة الرسائل غير المرغوبة تلقائياً باستخدام NLP وتصنيف النصوص.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Spam_Mail_Classifier_07.ipynb" },
             { num:"08", icon:"🔢", title:"التعرف على الأرقام المكتوبة بخط اليد", desc:"استكشاف أساسيات الرؤية الحاسوبية — شبكة عصبية CNN مدرّبة للتعرف على الأرقام المكتوبة بخط اليد بدقة عالية.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
             { num:"09", icon:"📊", title:"التنبؤ بأسعار العملات الرقمية", desc:"تطبيق التعلم العميق على الأسواق المالية — نموذج LSTM للشبكات العصبية التكرارية للتنبؤ بأسعار العملات الرقمية عبر الزمن.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"تحليل مشاعر النصوص العربية", desc:"جسر بين اللغة والذكاء الاصطناعي — نموذج NLP يصنّف النصوص العربية إلى مشاعر إيجابية وسلبية، يجمع بين تعلم الآلة وهندسة البرامج للسياق العربي.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
@@ -1354,6 +1409,13 @@ const T = {
         roles: ["Ingénieur d'État", "Spécialiste IA & ML", "Leader Transformation Numérique", "Ancien Diplomate"],
         status: "Disponible pour projets et collaboration",
         contactLocation: "Doha, Qatar",
+        navExp: "Expérience",
+        navProjects: "Projets",
+        navContact: "Contact",
+        heroStatsLine: '25+ <span>ans d\'expérience</span> · 12 <span>projets ML</span> · 3 <span>langues</span>',
+        footerLine1: "Basé à Doha, Qatar · Ouvert aux collaborations",
+        footerLine2: "© 2026 Ahmed Vall Jemal Dine Sidina · Tous droits réservés",
+        copyToast: "✓ Email copié !",
         eyebrow: "Ingénieur d'État · Spécialiste IA",
         langPills: ["Arabe — Langue maternelle", "Français — Courant", "Anglais — Intermédiaire"],
         expertiseHeader: "Domaines d'Expertise",
@@ -1481,7 +1543,7 @@ const T = {
             { num:"04", icon:"🔍", title:"Analyse de Sentiment", desc:"Inspiré par les besoins d'analyse diplomatique — NLP des avis clients pour extraire des patterns de sentiment avec visualisation interactive via TextBlob.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb" },
             { num:"05", icon:"💱", title:"Suivi des Taux de Change", desc:"Analyse statistique et prédictive des fluctuations des taux de change avec Python et séries temporelles.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Currency_Tracker_05.ipynb" },
             { num:"06", icon:"🏠", title:"Prédicteur Immobilier KSA", desc:"Fruit des années passées en Arabie Saoudite — prédiction des prix immobiliers via Random Forest & Label Encoding pour une analyse précise du marché.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Saudi_RealEstate_Price_Predictor_06.ipynb" },
-            { num:"07", icon:"📧", title:"Filtre Anti-Spam", desc:"Réponse à un défi de communication universel — modèle ML pour filtrer automatiquement les courriels indésirables via NLP et classification de texte.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_Project_07.ipynb" },
+            { num:"07", icon:"📧", title:"Filtre Anti-Spam", desc:"Réponse à un défi de communication universel — modèle ML pour filtrer automatiquement les courriels indésirables via NLP et classification de texte.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Spam_Mail_Classifier_07.ipynb" },
             { num:"08", icon:"🔢", title:"Reconnaissance de Chiffres Manuscrits", desc:"Exploration des fondamentaux de la vision par ordinateur — réseau CNN entraîné à identifier des chiffres manuscrits depuis des images avec haute précision.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Handwritten_Digits_Project_08.ipynb" },
             { num:"09", icon:"📊", title:"Prédiction de Prix Crypto", desc:"Application du deep learning aux marchés financiers — modèle LSTM (réseau récurrent) pour la prédiction des prix de cryptomonnaies en série temporelle.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"Analyse de Sentiment Arabe", desc:"Pont entre langue et IA — modèle NLP classifiant les textes arabes en émotions positives ou négatives, combinant ML et Prompt Engineering pour le contexte arabophone.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
@@ -1519,12 +1581,20 @@ function setLanguage(lang) {
     document.getElementById('bio-text').innerText = d.bio;
     const eyebrowEl = document.getElementById('eyebrow-text');
     if (eyebrowEl && d.eyebrow) eyebrowEl.innerText = d.eyebrow;
-    const pillsEl = document.getElementById('hero-lang-pills');
-    if (pillsEl && d.langPills) {
-        pillsEl.innerHTML = d.langPills.map((label, i) =>
-            `<span class="pill${i === 0 ? ' native' : ''}">${label}</span>`
-        ).join('');
-    }
+    const navExp = document.getElementById('nav-exp');
+    const navProj = document.getElementById('nav-projects');
+    const navContact = document.getElementById('nav-contact');
+    if (navExp && d.navExp) navExp.innerText = d.navExp;
+    if (navProj && d.navProjects) navProj.innerText = d.navProjects;
+    if (navContact && d.navContact) navContact.innerText = d.navContact;
+    const statsLine = document.getElementById('hero-stats-line');
+    if (statsLine && d.heroStatsLine) statsLine.innerHTML = d.heroStatsLine;
+    const footerLine1 = document.getElementById('footer-line1');
+    const footerLine2 = document.getElementById('footer-line2');
+    const footerName = document.getElementById('footer-name');
+    if (footerLine1 && d.footerLine1) footerLine1.innerText = d.footerLine1;
+    if (footerLine2 && d.footerLine2) footerLine2.innerText = d.footerLine2;
+    if (footerName) footerName.innerText = d.name;
     const expertiseEl = document.getElementById('expertise-grid');
     if (expertiseEl && d.expertise) {
         expertiseEl.innerHTML = d.expertise.map(e => `<div class="expertise-card"><h3>${e}</h3></div>`).join('');
@@ -1543,12 +1613,6 @@ function setLanguage(lang) {
     document.getElementById('honors-header').innerText = d.honorsHeader;
     document.getElementById('portfolio-desc').innerText = d.portfolioDesc;
     document.getElementById('v-text').innerText = d.visitor;
-
-    // Stats labels
-    document.getElementById('stat-years').innerText = d.statYears;
-    document.getElementById('stat-projects').innerText = d.statProjects;
-    document.getElementById('stat-langs').innerText = d.statLangs;
-    document.getElementById('stat-countries').innerText = d.statCountries;
 
     // Docs labels
     document.getElementById('docs-label').innerText = d.docsLabel;
@@ -1624,6 +1688,7 @@ function setLanguage(lang) {
     document.getElementById('btn-' + lang).classList.add('active');
 
     currentLang = lang;
+    try { localStorage.setItem('site_lang', lang); } catch (_) {}
     currentFilter = 'all';
     renderFilterBar(lang);
 
@@ -1710,8 +1775,17 @@ function typeEffect() {
 // ─── THEME ───
 function toggleTheme() {
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    document.documentElement.setAttribute('data-theme', isLight ? '' : 'light');
+    const next = isLight ? '' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
     document.getElementById('theme-icon').className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    try { localStorage.setItem('site_theme', next || 'dark'); } catch (_) {}
+}
+
+function applyTheme(theme) {
+    const light = theme === 'light';
+    document.documentElement.setAttribute('data-theme', light ? 'light' : '');
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.className = light ? 'fas fa-moon' : 'fas fa-sun';
 }
 
 // ─── AUDIO ───
@@ -1755,8 +1829,8 @@ function copyEmail(e) {
     e.preventDefault();
     navigator.clipboard.writeText('ahmedvalljemaldine@gmail.com').then(() => {
         const toast = document.getElementById('copy-toast');
-        const msgs = { en: '✓ Email copied!', ar: '✓ تم نسخ البريد!', fr: '✓ Email copié!' };
-        toast.textContent = msgs[currentLang] || msgs.en;
+        const d = T[currentLang] || T.en;
+        toast.textContent = d.copyToast || '✓ Email copied!';
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2500);
     }).catch(() => {
@@ -1870,7 +1944,15 @@ document.addEventListener('keydown', e => {
 
 // ─── INIT ───
 window.addEventListener('load', () => {
-    setLanguage('en');
+    let savedLang = 'en';
+    let savedTheme = 'dark';
+    try {
+        savedLang = localStorage.getItem('site_lang') || 'en';
+        savedTheme = localStorage.getItem('site_theme') || 'dark';
+    } catch (_) {}
+    if (!T[savedLang]) savedLang = 'en';
+    applyTheme(savedTheme);
+    setLanguage(savedLang);
     setTimeout(typeEffect, 800);
     loadVisitorCount();
 });
