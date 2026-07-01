@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Vall Jemal Dine Sidina — State Engineer · AI & ML Specialist</title>
     <meta name="description" content="Ahmed Vall Jemal Dine Sidina — State Engineer & ML Specialist with 25+ years in biometrics and digital transformation. Based in Doha, Qatar. AI projects on GitHub.">
-    <meta name="keywords" content="Ahmed Vall Jemal Dine Sidina, AHMEDVALL70, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, Diplomat">
+    <meta name="keywords" content="Ahmed Vall Jemal Dine Sidina, AHMEDVALL70, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, AI">
     <meta name="author" content="Ahmed Vall Jemal Dine Sidina">
 
     <!-- ✅ تحسين: Open Graph tags للمشاركة في واتساب ولينكدإن -->
-    <meta property="og:title" content="Ahmed Vall Jemal Dine Sidina — Engineer · Diplomat · AI Specialist">
+    <meta property="og:title" content="Ahmed Vall Jemal Dine Sidina — State Engineer · AI & ML Specialist">
     <meta property="og:description" content="State Engineer & ML Specialist · 25+ years · Doha, Qatar · Biometrics, digital transformation & AI projects.">
     <meta property="og:image" content="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/my-photo.jpg">
     <meta property="og:url" content="https://ahmedvall70.github.io/ahmed-vall-cv/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ahmed Vall Jemal Dine Sidina — Engineer · Diplomat · AI">
+    <meta name="twitter:title" content="Ahmed Vall Jemal Dine Sidina — State Engineer · AI & ML Specialist">
     <meta name="twitter:description" content="State Engineer & ML Specialist · Doha, Qatar · 25+ years · AI & biometrics.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/my-photo.jpg">
 
@@ -39,6 +39,8 @@
         "url": "https://ahmedvall70.github.io/ahmed-vall-cv/",
         "sameAs": [
             "https://www.linkedin.com/in/ahmed-vall-sidina",
+            "https://www.kaggle.com/AHMEDVALL70",
+            "https://ahmedvall70.github.io/ahmed-vall-cv/",
             "https://github.com/AHMEDVALL70",
             "https://x.com/ahmedvallsidina"
         ]
@@ -302,6 +304,17 @@
             opacity: 0; transition: opacity 0.2s;
         }
         .social-icon:hover::after { opacity: 1; }
+
+        .pro-links {
+            display: flex; flex-wrap: wrap; gap: 6px 14px;
+            margin-bottom: 18px; font-size: 0.88rem;
+        }
+        .pro-links a {
+            color: var(--gold-light); text-decoration: none;
+            border-bottom: 1px solid transparent; transition: all 0.2s;
+        }
+        .pro-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+        [dir="rtl"] .pro-links { justify-content: flex-end; }
 
         .cv-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .cv-btn {
@@ -845,22 +858,25 @@
             <a href="mailto:ahmedvalljemaldine@gmail.com"><i class="fas fa-envelope"></i> ahmedvalljemaldine@gmail.com</a>
         </div>
 
+        <div class="pro-links" id="pro-links" aria-label="Professional profiles"></div>
 
         <div class="social-row" aria-label="Social networks">
             <a href="https://api.whatsapp.com/send?phone=97474736271" class="social-icon" target="_blank" rel="noopener" data-tooltip="WhatsApp · +974 7473 6271" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="https://www.linkedin.com/in/ahmed-vall-sidina" class="social-icon" target="_blank" rel="noopener" data-tooltip="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.kaggle.com/AHMEDVALL70" class="social-icon" target="_blank" rel="noopener" data-tooltip="Kaggle" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+            <a href="https://ahmedvall70.github.io/ahmed-vall-cv/" class="social-icon" target="_blank" rel="noopener" data-tooltip="Portfolio Website" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
             <a href="https://x.com/ahmedvallsidina" class="social-icon" target="_blank" rel="noopener" data-tooltip="X" aria-label="X"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.instagram.com/ahmedvallsidina" class="social-icon" target="_blank" rel="noopener" data-tooltip="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/ahmedvall.sidina" class="social-icon" target="_blank" rel="noopener" data-tooltip="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
 
         <div class="cv-btns">
-            <a href="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/Ahmed-Vall-CV-AR.pdf" class="cv-btn cv-btn-secondary" download target="_blank"><i class="fas fa-file-pdf"></i> CV (AR)</a>
-            <a href="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/Ahmed-Vall-CV-EN.pdf" class="cv-btn cv-btn-primary" download target="_blank"><i class="fas fa-file-pdf"></i> CV (EN)</a>
-            <a href="https://raw.githubusercontent.com/AHMEDVALL70/ahmed-vall-cv/main/Ahmed-Vall-CV-FR.pdf" class="cv-btn cv-btn-secondary" download target="_blank"><i class="fas fa-file-pdf"></i> CV (FR)</a>
+            <a href="Ahmed-Vall-CV-AR.pdf" class="cv-btn cv-btn-secondary" download><i class="fas fa-file-pdf"></i> CV (AR)</a>
+            <a href="Ahmed-Vall-CV-EN.pdf" class="cv-btn cv-btn-primary" download><i class="fas fa-file-pdf"></i> CV (EN)</a>
+            <a href="Ahmed-Vall-CV-FR.pdf" class="cv-btn cv-btn-secondary" download><i class="fas fa-file-pdf"></i> CV (FR)</a>
         </div>
 
-        <p class="hero-stats-line" id="hero-stats-line">25+ Years Experience · 12 ML Projects · 3 Languages</p>
+        <p class="hero-stats-line" id="hero-stats-line">25+ Years Experience · 13 ML Projects · 3 Languages</p>
     </div>
 
     <div class="hero-right">
@@ -1090,27 +1106,33 @@
 <script>
 // ─── DATA ───
 const projectCategories = [
-    "health","vision","nlp","nlp","finance","finance","nlp","vision","finance","nlp","admin","admin"
+    "health","vision","nlp","nlp","finance","finance","nlp","vision","finance","nlp","admin","admin","finance"
 ];
 
 const T = {
     en: {
         name: "Ahmed Vall Jemal Dine Sidina",
-        roles: ["State Engineer", "AI & ML Specialist", "IT & Digital Transformation Leader", "Former Diplomat"],
+        roles: ["State Engineer", "AI & Machine Learning Specialist", "Digital Transformation & IT Leader"],
         status: "Available for Projects",
         contactLocation: "Doha, Qatar",
         navExp: "Experience",
         navProjects: "Projects",
         navContact: "Contact",
-        heroStatsLine: '25+ <span>Years Experience</span> · 12 <span>ML Projects</span> · 3 <span>Languages</span>',
+        heroStatsLine: '25+ <span>Years Experience</span> · 13 <span>ML Projects</span> · 3 <span>Languages</span>',
         footerLine1: "Based in Doha, Qatar · Open to collaborations",
         footerLine2: "© 2026 Ahmed Vall Jemal Dine Sidina · All rights reserved",
         copyToast: "✓ Email copied!",
-        eyebrow: "State Engineer · AI Specialist",
+        eyebrow: "State Engineer · AI & Machine Learning Specialist",
+        proLinks: [
+            { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
+            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
+            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+        ],
         langPills: ["Arabic — Native", "French — Fluent", "English — Intermediate"],
         expertiseHeader: "Areas of Expertise",
-        expertise: ["AI & Machine Learning", "Data Science", "Biometric Systems", "Digital Transformation", "IT Operations Management", "Public Procurement", "Cybersecurity", "Computer Vision & NLP", "Strategic Planning", "Government Systems"],
-        bio: "Results-driven State Engineer (BAC+5) and former diplomat with 25+ years leading biometric systems, IT operations, and digital transformation across government sectors — now specializing in machine learning and AI-driven solutions. Based in Doha, Qatar.",
+        expertise: ["Artificial Intelligence & Machine Learning (AI/ML)", "Data Science & Statistical Analysis", "Biometric Systems & Civil Registry Records", "Digital & Cybersecurity Transformation Leadership", "Governance Operations & IT Management", "Public Procurement & International Contract Negotiation", "Computer Engineering, Networking & Systems Maintenance", "Natural Language Processing (NLP) & Strategic Planning"],
+        bio: "A State Engineer with over 25 years of strategic leadership experience managing biometric systems, technical operations, and digital transformation initiatives within the public sector. Combines deep administrative and governance expertise with advanced technical proficiency in machine learning, data science, and AI-powered solutions, backed by a strong track record of managing public procurement and cross-functional teams to build smart, secure infrastructure.",
         expHeader: "Professional Experience",
         projectsHeader: "Major Missions",
         techHeader: "Technical ML Portfolio (GitHub)",
@@ -1134,27 +1156,27 @@ const T = {
         langNames: ["Arabic", "French", "English"],
         experience: [
             {
-                title: "Deputy Consul General",
-                company: "Consulate General of Mauritania — Jeddah, Saudi Arabia",
+                title: "Civil Status Center Director (National Agency for Population Registry and Secure Documents)",
+                company: "Consulate General of Mauritania — Jeddah, Kingdom of Saudi Arabia",
                 date: "2019 — 2024",
-                desc: "Led consular affairs and digital diplomacy for the Mauritanian diaspora in Saudi Arabia.",
+                desc: "Led the full digital transformation of consular operations and government documentation systems.",
                 achievements: [
-                    "Led digital transformation of consular operations and documentation systems",
-                    "Directed biometric identity issuance and civil registry services",
-                    "Coordinated high-level administrative processes with government entities",
-                    "Managed and optimized performance of multidisciplinary teams"
+                    "Led the full digital transformation of consular operations and government documentation systems",
+                    "Directly oversaw the issuance of smart biometric IDs and digital civil registry services to ensure accuracy and security",
+                    "Coordinated high-level administrative operations and sovereign procurement with various government entities",
+                    "Managed, directed, and improved the performance of cross-functional technical and administrative teams"
                 ]
             },
             {
-                title: "Director of Secure Document Authentication",
-                company: "National Agency for Population Registry & Secure Documents (ANRPTS) — Mauritania",
+                title: "Secure Documents Authentication Manager – ANRPTS",
+                company: "Mauritania",
                 date: "2015 — 2019",
-                desc: "Directed national biometric registry and secure document systems at ANRPTS.",
+                desc: "Managed the comprehensive national biometric registry and highly sensitive secure document systems.",
                 achievements: [
-                    "Directed national biometric registry and secure document systems",
-                    "Oversaw passport, ID, visa, and residency issuance operations",
-                    "Managed IT infrastructure and technical operations teams",
-                    "Implemented quality assurance frameworks for secure production"
+                    "Managed the comprehensive national biometric registry and highly sensitive secure document systems",
+                    "Provided technical oversight and authentication auditing for passports, electronic IDs, visas, and residence permits",
+                    "Managed and developed IT infrastructure, server protection, and technical operations teams",
+                    "Implemented governance frameworks and enforced strict quality assurance for secure digital output"
                 ]
             },
             {
@@ -1163,29 +1185,40 @@ const T = {
                 date: "2016 — 2018",
                 desc: "Member of the procurement committee evaluating national contracts.",
                 achievements: [
-                    "Evaluated and approved procurement contracts",
-                    "Ensured compliance with governance and transparency standards"
+                    "Conducted technical and financial evaluation and approval of major technical and sovereign procurement contracts",
+                    "Ensured full compliance with local and international governance standards, transparency, and risk mitigation"
                 ]
             },
             {
                 title: "Public Procurement Officer",
-                company: "National HIV/AIDS Control Program — Mauritania",
+                company: "National AIDS Control Program — Mauritania",
                 date: "2005 — 2011",
-                desc: "Managed public procurement lifecycle for the national HIV/AIDS control program.",
+                desc: "Managed the complete logistical and technical procurement cycle for the national program.",
                 achievements: [
-                    "Managed procurement lifecycle and contract negotiations",
-                    "Coordinated with international partners including World Bank entities",
-                    "Ensured regulatory and financial compliance"
+                    "Managed the complete logistical and technical procurement cycle and negotiated complex contracts",
+                    "Coordinated directly and ensured compliance with international partners, including World Bank entities and affiliated organizations",
+                    "Ensured regulatory, legal, and financial compliance in managing allocated budgets"
                 ]
             },
             {
                 title: "Secretary General",
-                company: "Al-Mabrouk Municipality — Mauritania",
+                company: "Mbrouk Municipality — Mauritania",
                 date: "2006 — 2011",
-                desc: "Directed municipal administrative and financial operations.",
+                desc: "Managed and directed the municipality's senior administrative and financial operations.",
                 achievements: [
-                    "Directed administrative and financial operations",
-                    "Supervised public service delivery and governance processes"
+                    "Managed and directed the municipality's senior administrative and financial operations",
+                    "Oversaw public service delivery and local governance processes"
+                ]
+            },
+            {
+                title: "IT Center Supervisor & Maintenance Engineer",
+                company: "Dar Al Computer — Mauritania",
+                date: "2002 — 2005",
+                desc: "Provided technical and operational oversight of IT centers across multiple cities.",
+                achievements: [
+                    "Provided technical and operational oversight of the company's IT centers across 7 major cities",
+                    "Managed and designed network infrastructure and maintained critical systems and servers",
+                    "Delivered advanced technical training for staff and emerging government projects"
                 ]
             },
             {
@@ -1194,19 +1227,8 @@ const T = {
                 date: "2003 — 2008",
                 desc: "Delivered IT training and technical implementation for regional programs.",
                 achievements: [
-                    "Delivered IT training and system implementation",
-                    "Supported regional development and training programs"
-                ]
-            },
-            {
-                title: "IT Center Supervisor & Maintenance Engineer",
-                company: "Dar Al-Computer — Mauritania",
-                date: "2002 — 2005",
-                desc: "Supervised IT centers and network infrastructure across multiple cities.",
-                achievements: [
-                    "Supervised IT centers across 7 cities",
-                    "Managed network infrastructure and system maintenance",
-                    "Delivered technical training for government projects"
+                    "Provided professional training on software solutions and implementation of modern digital systems for institutions",
+                    "Supported and guided regional development and training programs and digital capacity-building"
                 ]
             },
             {
@@ -1238,34 +1260,45 @@ const T = {
             { num:"09", icon:"📊", title:"Crypto Price Predictor", desc:"Applying deep learning to financial markets — LSTM recurrent neural network for time-series cryptocurrency price prediction.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"Arabic Sentiment Analysis", desc:"Bridging language and AI — NLP model classifying Arabic text into positive or negative emotions, combining ML and Prompt Engineering for Arabic-language contexts.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
             { num:"11", icon:"🛂", title:"Procurement Fraud Detection", desc:"Rooted in 20+ years of public procurement experience — AI system using Isolation Forest to detect anomalies and suspicious contracts in government tenders.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Procurement_Fraud_Detection_11.ipynb" },
-            { num:"12", icon:"📋", title:"ATS CV Optimizer", desc:"Combining 25+ years of HR & recruitment experience with AI — system analyzing CV compatibility with job descriptions using TF-IDF & Cosine Similarity to help candidates beat Applicant Tracking Systems.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" }
+            { num:"12", icon:"📋", title:"ATS CV Optimizer", desc:"Combining 25+ years of HR & recruitment experience with AI — system analyzing CV compatibility with job descriptions using TF-IDF & Cosine Similarity to help candidates beat Applicant Tracking Systems.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" },
+            { num:"13", icon:"🏠", title:"PropAI – Qatar Real Estate Valuation Platform", desc:"Full-stack AI-powered web app for real estate analysis in Qatar — featuring live market dashboards, smart property search with automated price prediction, and an intelligent chat advisor powered by Claude AI.", link:"https://ahmedvall70.github.io/AhmedVall_PropAI/" }
         ],
         certs: [
             { title: "State Engineer Degree (BAC + 5)", provider: "Electronics & Digital Development · 5-Year Program", date: "1992–1997" },
-            { title: "Diploma in Business Administration", provider: "United Academy for Training Management", date: "2021" },
+            { title: "Certified Python Coder Badge", provider: "Kaggle Global Platform", date: "June 2026" },
+            { title: "Agent of Discord Developer Badge", provider: "Kaggle × Google", date: "June 2026" },
+            { title: "Code Uploader Badge", provider: "Kaggle Global Platform", date: "June 2026" },
+            { title: "Kaggle Community Member", provider: "Kaggle Global Platform", date: "March 2026" },
             { title: "Machine Learning Specialization", provider: "Stanford / Coursera", date: "2025" },
             { title: "Deep Learning Specialization", provider: "DeepLearning.AI / Coursera", date: "2025" },
-            { title: "Python for Data Science & AI", provider: "IBM", date: "2024" }
+            { title: "Python for Data Science & AI Certificate", provider: "IBM", date: "2024" },
+            { title: "Professional Business Administration Diploma", provider: "United Academy for Training and Management", date: "2021" }
         ],
         skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "IT Center Management", "Digital Diplomacy", "Strategic Planning", "Public Procurement", "Contract Negotiation", "NLP & Computer Vision", "TensorFlow", "Scikit-learn", "OpenCV", "Data Analysis", "Digital Transformation", "IT Operations"]
     },
     ar: {
         name: "أحمد فال جمال الدين سيدينا",
-        roles: ["مهندس دولة", "مختص ذكاء اصطناعي", "قائد تحول رقمي", "دبلوماسي سابق"],
+        roles: ["مهندس دولة", "مختص الذكاء الاصطناعي وتعلم الآلة", "قائد التحول الرقمي وتقنية المعلومات"],
         status: "متاح للمشاريع والتعاون الدولي",
         contactLocation: "الدوحة، قطر",
         navExp: "الخبرة",
         navProjects: "المشاريع",
         navContact: "التواصل",
-        heroStatsLine: '+25 <span>سنة خبرة</span> · 12 <span>مشروع ML</span> · 3 <span>لغات</span>',
+        heroStatsLine: '+25 <span>سنة خبرة</span> · 13 <span>مشروع ML</span> · 3 <span>لغات</span>',
         footerLine1: "مقيم في الدوحة، قطر · متاح للتعاون والمشاريع",
         footerLine2: "© 2026 أحمد فال جمال الدين سيدينا · جميع الحقوق محفوظة",
         copyToast: "✓ تم نسخ البريد!",
-        eyebrow: "مهندس دولة · مختص ذكاء اصطناعي",
+        eyebrow: "مهندس دولة · مختص الذكاء الاصطناعي وتعلم الآلة",
+        proLinks: [
+            { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
+            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
+            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+        ],
         langPills: ["العربية — اللغة الأم", "الفرنسية — بطلاقة", "الإنجليزية — متوسط"],
         expertiseHeader: "مجالات التخصص",
-        expertise: ["الذكاء الاصطناعي وتعلم الآلة", "علوم البيانات", "الأنظمة البيومترية", "التحول الرقمي", "عمليات تقنية المعلومات", "الصفقات العمومية", "الأمن السيبراني", "الرؤية الحاسوبية ومعالجة اللغة", "التخطيط الاستراتيجي", "الأنظمة الحكومية"],
-        bio: "مهندس دولة (BAC+5) ودبلوماسي سابق، يمتلك أكثر من 25 سنة في قيادة الأنظمة البيومترية وعمليات تقنية المعلومات والتحول الرقمي في القطاع الحكومي — ويتخصص اليوم في تعلم الآلة والحلول الذكية. مقيم في الدوحة، قطر.",
+        expertise: ["الذكاء الاصطناعي وتعلم الآلة (AI/ML)", "علوم البيانات والتحليل الإحصائي", "الأنظمة البيومترية وسجلات السكان المدنية", "قيادة التحول الرقمي والأمن السيبراني", "إدارة العمليات وتقنية المعلومات للحوكمة", "المشتريات العامة والتفاوض على العقود الدولية", "هندسة الحاسوب والشبكات وصيانة الأنظمة", "معالجة اللغة الطبيعية (NLP) والتخطيط الاستراتيجي"],
+        bio: "مهندس دولة يتمتع بخبرة قيادية واستراتيجية تزيد على 25 عاماً في إدارة الأنظمة البيومترية، العمليات التقنية، ومبادرات التحول الرقمي في القطاع الحكومي. يجمع بين العمق الإداري الحوكمي والخبرة التقنية المتقدمة المتخصصة في التعلم الآلي، وعلوم البيانات، والحلول المدعومة بالذكاء الاصطناعي، مع سجل حافل بالنجاح في إدارة المشتريات العامة والفرق متعددة التخصصات لبناء بنية تحتية ذكية وآمنة.",
         expHeader: "الخبرة المهنية",
         projectsHeader: "المهمات الكبرى",
         techHeader: "المشاريع التقنية (GitHub)",
@@ -1289,79 +1322,79 @@ const T = {
         langNames: ["العربية", "الفرنسية", "الإنجليزية"],
         experience: [
             {
-                title: "نائب القنصل العام",
+                title: "مدير مركز الحالة المدنية (الوكالة الوطنية لسجل السكان والوثائق المؤمنة)",
                 company: "القنصلية العامة لموريتانيا — جدة، المملكة العربية السعودية",
                 date: "2019 — 2024",
-                desc: "قيادة الشؤون القنصلية والدبلوماسية الرقمية للجالية الموريتانية في المملكة العربية السعودية.",
+                desc: "قيادة التحول الرقمي الكامل للعمليات القنصلية وأنظمة التوثيق الحكومية.",
                 achievements: [
-                    "قيادة التحول الرقمي للعمليات القنصلية وأنظمة الوثائق",
-                    "الإشراف على إصدار الهوية البيومترية وخدمات السجل المدني",
-                    "التنسيق في الإجراءات الإدارية رفيعة المستوى مع الجهات الحكومية",
-                    "إدارة وتحسين أداء فرق متعددة التخصصات"
+                    "قيادة التحول الرقمي الكامل للعمليات القنصلية وأنظمة التوثيق الحكومية",
+                    "الإشراف المباشر على إصدار الهويات البيومترية الذكية وخدمات السجل المدني الرقمي لضمان الدقة والأمان",
+                    "تنسيق العمليات الإدارية الرفيعة والمشتريات السيادية مع الجهات الحكومية المختلفة",
+                    "إدارة وتوجيه وتحسين أداء الفرق التقنية والإدارية متعددة التخصصات"
                 ]
             },
             {
-                title: "مدير مصادقة الوثائق المؤمنة",
-                company: "الوكالة الوطنية لسجل السكان والوثائق المؤمنة (ANRPTS) — موريتانيا",
+                title: "مدير المصادقة على الوثائق المؤمنة – ANRPTS",
+                company: "موريتانيا",
                 date: "2015 — 2019",
-                desc: "إدارة السجل البيومتري الوطني ومنظومة الوثائق المؤمنة.",
+                desc: "إدارة السجل البيومتري الوطني الشامل وأنظمة الوثائق المؤمنة عالية الحساسية.",
                 achievements: [
-                    "توجيه السجل البيومتري الوطني ومنظومة الوثائق المؤمنة",
-                    "الإشراف على إصدار الجوازات وبطاقات الهوية والتأشيرات والإقامة",
-                    "إدارة البنية التحتية لتقنية المعلومات وفرق العمليات التقنية",
-                    "تطبيق أطر ضمان الجودة في الإنتاج الآمن للوثائق"
+                    "إدارة السجل البيومتري الوطني الشامل وأنظمة الوثائق المؤمنة عالية الحساسية",
+                    "الإشراف الفني والتدقيق على المصادقة لإصدار جوازات السفر والهويات الإلكترونية والتأشيرات وتصاريح الإقامة",
+                    "إدارة وتطوير البنية التحتية لتقنية المعلومات وحماية السيرفرات وفرق العمليات التقنية",
+                    "تطبيق أطر الحوكمة وضمان الجودة الصارمة للإنتاج الرقمي الآمن"
                 ]
             },
             {
-                title: "عضو لجنة الصفقات (CIMAC)",
-                company: "الوكالة الوطنية لسجل السكان والوثائق المؤمنة — موريتانيا",
+                title: "عضو لجنة المشتريات (CIMAC)",
+                company: "ANRPTS — موريتانيا",
                 date: "2016 — 2018",
                 desc: "عضو في لجنة تقييم الصفقات والعقود الوطنية.",
                 achievements: [
-                    "تقييم الصفقات والموافقة عليها",
-                    "ضمان الامتثال لمعايير الحوكمة والشفافية"
+                    "التقييم الفني والمالي والموافقة على عقود المشتريات التقنية والسيادية الكبرى",
+                    "ضمان الامتثال التام لمعايير الحوكمة المحلية والدولية والشفافية ومكافحة المخاطر"
                 ]
             },
             {
-                title: "مسؤول الصفقات العمومية",
-                company: "البرنامج الوطني لمكافحة السيدا — موريتانيا",
+                title: "مسؤول المشتريات العامة",
+                company: "البرنامج الوطني لمكافحة الإيدز — موريتانيا",
                 date: "2005 — 2011",
-                desc: "إدارة دورة حياة الصفقات العمومية في البرنامج الوطني لمكافحة السيدا.",
+                desc: "إدارة دورة المشتريات اللوجستية والتقنية الكاملة للبرنامج الوطني.",
                 achievements: [
-                    "إدارة دورة الصفقات والتفاوض على العقود",
-                    "التنسيق مع الشركاء الدوليين بما في ذلك جهات البنك الدولي",
-                    "ضمان الامتثال التنظيمي والمالي"
+                    "إدارة دورة المشتريات اللوجستية والتقنية الكاملة والتفاوض على العقود المعقدة",
+                    "التنسيق المباشر والامتثال مع الشركاء الدوليين بما في ذلك كيانات البنك الدولي والمنظمات التابعة له",
+                    "ضمان الامتثال التنظيمي والقانوني والمالي في إدارة الميزانيات المخصصة"
                 ]
             },
             {
                 title: "الأمين العام",
-                company: "بلدية المبروك — موريتانيا",
+                company: "بلدية المربوك — موريتانيا",
                 date: "2006 — 2011",
-                desc: "توجيه العمليات الإدارية والمالية البلدية.",
+                desc: "إدارة وتوجيه العمليات الإدارية والمالية العليا للبلدية.",
                 achievements: [
-                    "توجيه العمليات الإدارية والمالية",
-                    "الإشراف على تقديم الخدمات العمومية وعمليات الحوكمة"
+                    "إدارة وتوجيه العمليات الإدارية والمالية العليا للبلدية",
+                    "الإشراف على تقديم الخدمات العامة وعمليات الحوكمة المحلية"
                 ]
             },
             {
-                title: "مدرب تقني ومهندس صيانة",
+                title: "مشرف مراكز تقنية المعلومات ومهندس صيانة",
+                company: "دار الكمبيوتر — موريتانيا",
+                date: "2002 — 2005",
+                desc: "الإشراف التقني والتشغيلي على مراكز تقنية المعلومات في عدة مدن.",
+                achievements: [
+                    "الإشراف التقني والتشغيلي على مراكز تقنية المعلومات التابعة للشركة في 7 مدن رئيسية",
+                    "إدارة وتصميم البنية التحتية للشبكات وصيانة الأنظمة والخوادم الحيوية",
+                    "تقديم التدريب التقني المتقدم للموظفين والمشاريع الحكومية الناشئة"
+                ]
+            },
+            {
+                title: "مدرب تقنية المعلومات ومهندس صيانة",
                 company: "ستار تكنولوجيز و بيرفكت كونسلت — موريتانيا",
                 date: "2003 — 2008",
                 desc: "تقديم التدريب التقني وتنفيذ الأنظمة للبرامج الإقليمية.",
                 achievements: [
-                    "تقديم التدريب التقني وتنفيذ الأنظمة",
-                    "دعم برامج التنمية والتدريب الإقليمية"
-                ]
-            },
-            {
-                title: "مشرف مراكز الحاسوب ومهندس صيانة",
-                company: "دار الكمبيوتر — موريتانيا",
-                date: "2002 — 2005",
-                desc: "الإشراف على مراكز الحاسوب والبنية التحتية للشبكات في عدة مدن.",
-                achievements: [
-                    "الإشراف على مراكز الحاسوب في 7 مدن",
-                    "إدارة البنية التحتية للشبكات وصيانة الأنظمة",
-                    "تقديم التدريب التقني لمشاريع حكومية"
+                    "تقديم التدريب الاحترافي على حلول البرمجيات وتطبيق الأنظمة الرقمية الحديثة للمؤسسات",
+                    "دعم وتوجيه برامج التنمية والتدريب الإقليمية وبناء القدرات الرقمية"
                 ]
             },
             {
@@ -1393,34 +1426,45 @@ const T = {
             { num:"09", icon:"📊", title:"التنبؤ بأسعار العملات الرقمية", desc:"تطبيق التعلم العميق على الأسواق المالية — نموذج LSTM للشبكات العصبية التكرارية للتنبؤ بأسعار العملات الرقمية عبر الزمن.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"تحليل مشاعر النصوص العربية", desc:"جسر بين اللغة والذكاء الاصطناعي — نموذج NLP يصنّف النصوص العربية إلى مشاعر إيجابية وسلبية، يجمع بين تعلم الآلة وهندسة البرامج للسياق العربي.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
             { num:"11", icon:"🛂", title:"كشف الاحتيال في الصفقات العمومية", desc:"مستند إلى أكثر من 20 سنة في إبرام الصفقات العمومية — نظام ذكاء اصطناعي يستخدم Isolation Forest لكشف الشذوذ والعقود المشبوهة في المناقصات الحكومية.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Procurement_Fraud_Detection_11.ipynb" },
-            { num:"12", icon:"📋", title:"محسّن السيرة الذاتية ATS", desc:"يجمع بين 25+ سنة من خبرة الموارد البشرية والتوظيف والذكاء الاصطناعي — نظام يحلل توافق السيرة الذاتية مع إعلانات الوظائف باستخدام TF-IDF ومقاربة جيب التمام للتغلب على أنظمة ATS.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" }
+            { num:"12", icon:"📋", title:"محسّن السيرة الذاتية ATS", desc:"يجمع بين 25+ سنة من خبرة الموارد البشرية والتوظيف والذكاء الاصطناعي — نظام يحلل توافق السيرة الذاتية مع إعلانات الوظائف باستخدام TF-IDF ومقاربة جيب التمام للتغلب على أنظمة ATS.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" },
+            { num:"13", icon:"🏠", title:"PropAI – منصة التقييم العقاري الذكي في قطر", desc:"تطبيق ويب متكامل مدعوم بالذكاء الاصطناعي لتحليل سوق العقارات القطري — يضم لوحة تحكم حية، محرك بحث ذكي مع توقع الأسعار آلياً، ومستشار دردشة مدعوم بـ Claude AI.", link:"https://ahmedvall70.github.io/AhmedVall_PropAI/" }
         ],
         certs: [
             { title: "شهادة مهندس دولة (BAC + 5)", provider: "الإلكترونيات والتطوير الرقمي · برنامج 5 سنوات", date: "1992–1997" },
-            { title: "دبلوم في إدارة الأعمال", provider: "الأكاديمية المتحدة لإدارة التدريب", date: "2021" },
+            { title: "شارة مربمج بايثون معتمد", provider: "منصة Kaggle العالمية", date: "يونيو 2026" },
+            { title: "شارة مطور ووكيل ديسكورد الذكي", provider: "Kaggle بالتعاون مع Google", date: "يونيو 2026" },
+            { title: "شارة رفع الأكواد (Code Uploader)", provider: "منصة Kaggle العالمية", date: "يونيو 2026" },
+            { title: "عضو مجتمع كاجل للذكاء الاصطناعي", provider: "منصة Kaggle العالمية", date: "مارس 2026" },
             { title: "تخصص تعلم الآلة", provider: "Stanford / Coursera", date: "2025" },
-            { title: "تخصص التعلم العميق", provider: "DeepLearning.AI / Coursera", date: "2025" },
-            { title: "بايثون لعلوم البيانات والذكاء الاصطناعي", provider: "IBM", date: "2024" }
+            { title: "تخصص التعلم العميق", provider: "DeepLearning.AI", date: "2025" },
+            { title: "شهادة بايثون لعلوم البيانات والذكاء الاصطناعي", provider: "IBM", date: "2024" },
+            { title: "دبلوم إدارة الأعمال الاحترافي", provider: "الأكاديمية المتحدة للتدريب والإدارة", date: "2021" }
         ],
         skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "إدارة مراكز الكمبيوتر", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي", "الصفقات العمومية", "إبرام العقود والتفاوض", "NLP والرؤية الحاسوبية", "TensorFlow", "Scikit-learn", "OpenCV", "تحليل البيانات", "التحول الرقمي", "عمليات تقنية المعلومات"]
     },
     fr: {
         name: "Ahmed Vall Jemal Dine Sidina",
-        roles: ["Ingénieur d'État", "Spécialiste IA & ML", "Leader Transformation Numérique", "Ancien Diplomate"],
+        roles: ["Ingénieur d'État", "Spécialiste en IA & Machine Learning", "Leader en Transformation Numérique et IT"],
         status: "Disponible pour projets et collaboration",
         contactLocation: "Doha, Qatar",
         navExp: "Expérience",
         navProjects: "Projets",
         navContact: "Contact",
-        heroStatsLine: '25+ <span>ans d\'expérience</span> · 12 <span>projets ML</span> · 3 <span>langues</span>',
+        heroStatsLine: '25+ <span>ans d\'expérience</span> · 13 <span>projets ML</span> · 3 <span>langues</span>',
         footerLine1: "Basé à Doha, Qatar · Ouvert aux collaborations",
         footerLine2: "© 2026 Ahmed Vall Jemal Dine Sidina · Tous droits réservés",
         copyToast: "✓ Email copié !",
-        eyebrow: "Ingénieur d'État · Spécialiste IA",
+        eyebrow: "Ingénieur d'État · Spécialiste en IA & Machine Learning",
+        proLinks: [
+            { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
+            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
+            { label: "Portfolio", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+        ],
         langPills: ["Arabe — Langue maternelle", "Français — Courant", "Anglais — Intermédiaire"],
         expertiseHeader: "Domaines d'Expertise",
-        expertise: ["IA & Machine Learning", "Science des Données", "Systèmes Biométriques", "Transformation Numérique", "Opérations IT", "Marchés Publics", "Cybersécurité", "Vision par Ordinateur & NLP", "Planification Stratégique", "Systèmes Gouvernementaux"],
-        bio: "Ingénieur d'État (BAC+5) et ancien diplomate, avec plus de 25 ans à la tête de systèmes biométriques, d'opérations IT et de transformations numériques dans le secteur public — spécialisé aujourd'hui en Machine Learning et solutions IA. Basé à Doha, Qatar.",
+        expertise: ["Intelligence Artificielle & Apprentissage Automatique (IA/ML)", "Science des Données & Analyse Statistique", "Systèmes Biométriques & Registres de l'État Civil", "Leadership en Transformation Numérique & Cybersécurité", "Gestion des Opérations IT & Gouvernance", "Marchés Publics & Négociation de Contrats Internationaux", "Ingénierie Informatique, Réseaux & Maintenance des Systèmes", "Traitement du Langage Naturel (NLP) & Planification Stratégique"],
+        bio: "Ingénieur d'État avec plus de 25 ans d'expérience en leadership stratégique dans la gestion des systèmes biométriques, les opérations techniques et les initiatives de transformation numérique dans le secteur public. Alliant une expertise approfondie en gouvernance administrative à une maîtrise technique avancée en apprentissage automatique, science des données et solutions propulsées par l'IA, avec un bilan solide en gestion des marchés publics et des équipes pluridisciplinaires pour bâtir des infrastructures intelligentes et sécurisées.",
         expHeader: "Expérience Professionnelle",
         projectsHeader: "Missions Majeures",
         techHeader: "Portfolio Technique ML (GitHub)",
@@ -1444,58 +1488,69 @@ const T = {
         langNames: ["Arabe", "Français", "Anglais"],
         experience: [
             {
-                title: "Consul Général Adjoint",
-                company: "Consulat Général de Mauritanie — Jeddah, Arabie Saoudite",
+                title: "Directeur du Centre de l'État Civil (Agence Nationale du Registre des Populations et des Documents Sécurisés)",
+                company: "Consulat Général de Mauritanie — Djeddah, Royaume d'Arabie Saoudite",
                 date: "2019 — 2024",
-                desc: "Direction des affaires consulaires et de la diplomatie numérique pour la diaspora mauritanienne.",
+                desc: "Pilotage de la transformation numérique complète des opérations consulaires et des systèmes de documentation gouvernementaux.",
                 achievements: [
-                    "Pilotage de la transformation numérique des opérations et systèmes documentaires consulaires",
-                    "Direction de la délivrance d'identités biométriques et des services d'état civil",
-                    "Coordination de processus administratifs de haut niveau avec les entités gouvernementales",
-                    "Gestion et optimisation de l'performance d'équipes pluridisciplinaires"
+                    "Pilotage de la transformation numérique complète des opérations consulaires et des systèmes de documentation gouvernementaux",
+                    "Supervision directe de la délivrance des cartes d'identité biométriques intelligentes et des services d'état civil numérique pour garantir précision et sécurité",
+                    "Coordination des opérations administratives de haut niveau et des marchés souverains avec les différentes entités gouvernementales",
+                    "Management, encadrement et amélioration des performances des équipes techniques et administratives pluridisciplinaires"
                 ]
             },
             {
-                title: "Directeur de l'Authentification des Documents Sécurisés",
-                company: "Agence Nationale du Registre des Populations (ANRPTS) — Mauritanie",
+                title: "Directeur de l'Authentification des Documents Sécurisés – ANRPTS",
+                company: "Mauritanie",
                 date: "2015 — 2019",
-                desc: "Direction du registre biométrique national et des systèmes de documents sécurisés.",
+                desc: "Gestion du registre biométrique national complet et des systèmes de documents sécurisés hautement sensibles.",
                 achievements: [
-                    "Direction du registre biométrique national et des systèmes de titres sécurisés",
-                    "Supervision des opérations de passeports, CNI, visas et titres de séjour",
-                    "Gestion de l'infrastructure IT et des équipes d'opérations techniques",
-                    "Mise en œuvre de cadres d'assurance qualité pour la production sécurisée"
+                    "Gestion du registre biométrique national complet et des systèmes de documents sécurisés hautement sensibles",
+                    "Supervision technique et audit de l'authentification pour la délivrance de passeports, cartes d'identité électroniques, visas et titres de séjour",
+                    "Gestion et développement de l'infrastructure IT, protection des serveurs et pilotage des équipes d'opérations techniques",
+                    "Mise en œuvre de cadres de gouvernance et assurance qualité stricte pour la production numérique sécurisée"
                 ]
             },
             {
-                title: "Membre du Comité des Marchés (CIMAC)",
+                title: "Membre de la Commission des Marchés (CIMAC)",
                 company: "ANRPTS — Mauritanie",
                 date: "2016 — 2018",
                 desc: "Membre du comité d'évaluation des marchés publics nationaux.",
                 achievements: [
-                    "Évaluation et approbation des contrats de passation de marchés",
-                    "Veille à la conformité aux normes de gouvernance et de transparence"
+                    "Évaluation technique et financière, et approbation des grands marchés publics techniques et souverains",
+                    "Garantie de la conformité totale aux normes de gouvernance locales et internationales, à la transparence et à la maîtrise des risques"
                 ]
             },
             {
                 title: "Responsable des Marchés Publics",
-                company: "Programme National de Lutte contre le VIH/SIDA — Mauritanie",
+                company: "Programme National de Lutte contre le SIDA — Mauritanie",
                 date: "2005 — 2011",
-                desc: "Gestion du cycle de vie des marchés publics du programme national.",
+                desc: "Gestion du cycle complet des marchés logistiques et techniques du programme national.",
                 achievements: [
-                    "Gestion du cycle de passation et des négociations contractuelles",
-                    "Coordination avec des partenaires internationaux dont des entités de la Banque mondiale",
-                    "Garantie de la conformité réglementaire et financière"
+                    "Gestion du cycle complet des marchés logistiques et techniques, et négociation de contrats complexes",
+                    "Coordination directe et conformité avec les partenaires internationaux, dont les entités de la Banque Mondiale et ses organisations affiliées",
+                    "Assurance de la conformité réglementaire, juridique et financière dans la gestion des budgets alloués"
                 ]
             },
             {
                 title: "Secrétaire Général",
-                company: "Commune d'Al-Mabrouk — Mauritanie",
+                company: "Commune de Mbrouk — Mauritanie",
                 date: "2006 — 2011",
-                desc: "Direction des opérations administratives et financières municipales.",
+                desc: "Management et pilotage des opérations administratives et financières de haut niveau de la commune.",
                 achievements: [
-                    "Direction des opérations administratives et financières",
-                    "Supervision de la prestation des services publics et des processus de gouvernance"
+                    "Management et pilotage des opérations administratives et financières de haut niveau de la commune",
+                    "Supervision de la prestation des services publics et des processus de gouvernance locale"
+                ]
+            },
+            {
+                title: "Superviseur Centre IT & Ingénieur Maintenance",
+                company: "Dar Al Computer — Mauritanie",
+                date: "2002 — 2005",
+                desc: "Supervision de centres informatiques et d'infrastructures réseau multi-villes.",
+                achievements: [
+                    "Supervision technique et opérationnelle des centres IT de l'entreprise dans 7 grandes villes",
+                    "Gestion et conception de l'infrastructure réseau, maintenance des systèmes et serveurs critiques",
+                    "Formation technique avancée des équipes et accompagnement des projets gouvernementaux émergents"
                 ]
             },
             {
@@ -1504,19 +1559,8 @@ const T = {
                 date: "2003 — 2008",
                 desc: "Formation IT et mise en œuvre technique pour des programmes régionaux.",
                 achievements: [
-                    "Formation IT et mise en œuvre de systèmes",
-                    "Soutien aux programmes de développement et de formation régionaux"
-                ]
-            },
-            {
-                title: "Superviseur de Centres IT & Ingénieur Maintenance",
-                company: "Dar Al-Computer — Mauritanie",
-                date: "2002 — 2005",
-                desc: "Supervision de centres informatiques et d'infrastructures réseau multi-villes.",
-                achievements: [
-                    "Supervision de centres IT dans 7 villes",
-                    "Gestion de l'infrastructure réseau et de la maintenance des systèmes",
-                    "Formation technique pour des projets gouvernementaux"
+                    "Formation professionnelle aux solutions logicielles et déploiement de systèmes numériques modernes pour les institutions",
+                    "Soutien et encadrement des programmes de développement et de formation régionaux en renforcement des capacités numériques"
                 ]
             },
             {
@@ -1548,14 +1592,19 @@ const T = {
             { num:"09", icon:"📊", title:"Prédiction de Prix Crypto", desc:"Application du deep learning aux marchés financiers — modèle LSTM (réseau récurrent) pour la prédiction des prix de cryptomonnaies en série temporelle.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb" },
             { num:"10", icon:"🧠", title:"Analyse de Sentiment Arabe", desc:"Pont entre langue et IA — modèle NLP classifiant les textes arabes en émotions positives ou négatives, combinant ML et Prompt Engineering pour le contexte arabophone.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Arabic_Sentiment_Analysis_10.ipynb" },
             { num:"11", icon:"🛂", title:"Détection de Fraude dans les Marchés Publics", desc:"Ancré dans 20+ ans d'expérience en marchés publics — système IA utilisant Isolation Forest pour détecter anomalies et contrats suspects dans les appels d'offres gouvernementaux.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Procurement_Fraud_Detection_11.ipynb" },
-            { num:"12", icon:"📋", title:"Optimiseur CV ATS", desc:"Alliant 25+ ans d'expérience RH avec l'IA — système analysant la compatibilité du CV avec les offres d'emploi via TF-IDF & Cosine Similarity pour passer les systèmes de suivi des candidatures.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" }
+            { num:"12", icon:"📋", title:"Optimiseur CV ATS", desc:"Alliant 25+ ans d'expérience RH avec l'IA — système analysant la compatibilité du CV avec les offres d'emploi via TF-IDF & Cosine Similarity pour passer les systèmes de suivi des candidatures.", link:"https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb" },
+            { num:"13", icon:"🏠", title:"PropAI – Plateforme d'Évaluation Immobilière au Qatar", desc:"Application web complète propulsée par l'IA pour l'analyse du marché immobilier qatari — avec tableau de bord en temps réel, moteur de recherche intelligent à prédiction automatique des prix, et conseiller conversationnel intégré Claude AI.", link:"https://ahmedvall70.github.io/AhmedVall_PropAI/" }
         ],
         certs: [
             { title: "Diplôme d'Ingénieur d'État (BAC + 5)", provider: "Électronique & Développement Numérique · Programme 5 ans", date: "1992–1997" },
-            { title: "Diplôme en Administration des Affaires", provider: "United Academy for Training Management", date: "2021" },
+            { title: "Badge Python Coder Certifié", provider: "Plateforme mondiale Kaggle", date: "Juin 2026" },
+            { title: "Badge Agent of Discord (Développeur d'Agents IA)", provider: "Kaggle × Google", date: "Juin 2026" },
+            { title: "Badge Code Uploader", provider: "Plateforme mondiale Kaggle", date: "Juin 2026" },
+            { title: "Membre de la Communauté Kaggle IA", provider: "Plateforme mondiale Kaggle", date: "Mars 2026" },
             { title: "Spécialisation Machine Learning", provider: "Stanford / Coursera", date: "2025" },
-            { title: "Spécialisation Deep Learning", provider: "DeepLearning.AI / Coursera", date: "2025" },
-            { title: "Python pour Data Science & IA", provider: "IBM", date: "2024" }
+            { title: "Spécialisation Deep Learning", provider: "DeepLearning.AI", date: "2025" },
+            { title: "Certificat Python pour la Science des Données et l'IA", provider: "IBM", date: "2024" },
+            { title: "Diplôme Professionnel en Administration des Affaires", provider: "Académie Unie de Formation et de Management", date: "2021" }
         ],
         skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Gestion de Centres IT", "Diplomatie Numérique", "Planification Stratégique", "Marchés Publics", "Négociation Contractuelle", "NLP & Vision par Ordinateur", "TensorFlow", "Scikit-learn", "OpenCV", "Analyse de Données", "Transformation Numérique", "Opérations IT"]
     }
@@ -1604,6 +1653,12 @@ function setLanguage(lang) {
     }
     const locEl = document.getElementById('contact-location');
     if (locEl && d.contactLocation) locEl.innerText = d.contactLocation;
+    const proLinksEl = document.getElementById('pro-links');
+    if (proLinksEl && d.proLinks) {
+        proLinksEl.innerHTML = d.proLinks.map((l, i) =>
+            `${i > 0 ? '<span aria-hidden="true"> | </span>' : ''}<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+        ).join('');
+    }
     document.getElementById('exp-header').innerText = d.expHeader;
     document.getElementById('projects-header').innerText = d.projectsHeader;
     document.getElementById('tech-portfolio-header').innerText = d.techHeader;
@@ -1859,25 +1914,25 @@ function loadVisitorCount() {
 
 // ─── AI ASSISTANT ───
 const aiKnowledge = {
-    experience: `Ahmed Vall's professional experience (selected):\n1️⃣ Deputy Consul General — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Director of Secure Document Authentication — ANRPTS (2015–2019)\n3️⃣ Procurement Committee Member (CIMAC) — ANRPTS (2016–2018)\n4️⃣ Public Procurement Officer — National HIV/AIDS Program (2005–2011)\n5️⃣ Secretary General — Al-Mabrouk Municipality (2006–2011)\n6️⃣ IT Trainer & Maintenance Engineer — Star Technologies (2003–2008)\n7️⃣ IT Center Supervisor — Dar Al-Computer (2002–2005)\n8️⃣ IT Trainer — Iqraa Institute (2000–2002)`,
-    projects: `Ahmed Vall has 12 ML projects:\n🩺 Diabetes Prediction\n🌸 Iris Classification\n🤖 Gemini AI Integration\n🔍 Sentiment Analyzer (NLP)\n💱 Exchange Rate Tracker\n🏠 Saudi Real Estate Predictor\n📧 Spam Mail Classifier\n🔢 Handwritten Digit Classifier (CNN)\n📊 Crypto Price Predictor\n🧠 Arabic Sentiment Analysis\n🛂 Procurement Fraud Detection\n📋 ATS CV Optimizer`,
+    experience: `Ahmed Vall's professional experience (selected):\n1️⃣ Civil Status Center Director — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Secure Documents Authentication Manager – ANRPTS (2015–2019)\n3️⃣ Procurement Committee Member (CIMAC) — ANRPTS (2016–2018)\n4️⃣ Public Procurement Officer — National AIDS Control Program (2005–2011)\n5️⃣ Secretary General — Mbrouk Municipality (2006–2011)\n6️⃣ IT Trainer & Maintenance Engineer — Star Technologies (2003–2008)\n7️⃣ IT Center Supervisor — Dar Al Computer (2002–2005)\n8️⃣ IT Trainer — Iqraa Institute (2000–2002)`,
+    projects: `Ahmed Vall has 13 ML projects:\n🩺 Diabetes Prediction\n🌸 Iris Classification\n🤖 Gemini AI Integration\n🔍 Sentiment Analyzer (NLP)\n💱 Exchange Rate Tracker\n🏠 Saudi Real Estate Predictor\n📧 Spam Mail Classifier\n🔢 Handwritten Digit Classifier (CNN)\n📊 Crypto Price Predictor\n🧠 Arabic Sentiment Analysis\n🛂 Procurement Fraud Detection\n📋 ATS CV Optimizer\n🏠 PropAI — Qatar Real Estate Valuation Platform`,
     skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Prompt Engineering\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Public Procurement & Digital Diplomacy`,
-    contact: `📧 Email: ahmedvalljemaldine@gmail.com\n📍 Doha, Qatar\n💬 WhatsApp: +974 7473 6271\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina\n📘 Facebook: ahmedvall.sidina\n💼 LinkedIn: ahmed-vall-sidina`,
+    contact: `📧 Email: ahmedvalljemaldine@gmail.com\n📍 Doha, Qatar\n💬 WhatsApp: +974 7473 6271\n💼 LinkedIn: linkedin.com/in/ahmed-vall-sidina\n🌐 Portfolio: ahmedvall70.github.io/ahmed-vall-cv/\n📊 Kaggle: kaggle.com/AHMEDVALL70\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina`,
     education: `🎓 State Engineer BAC+5 — Electronics & Digital Development (1992–1997)\n📊 Machine Learning Specialization — Stanford/Coursera (2025)\n🧠 Deep Learning Specialization — DeepLearning.AI (2025)\n🐍 Python for Data Science — IBM (2024)\n💼 Business Administration Diploma — United Academy (2021)`,
     languages: `Ahmed Vall speaks:\n🇲🇷 Arabic — Native (100%)\n🇫🇷 French — Professional (70%)\n🇬🇧 English — Intermediate (50%)`,
     location: `📍 Currently based in Doha, Qatar`,
-    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5), former diplomat, and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital diplomacy with cutting-edge AI skills including 12 published ML projects on GitHub. Based in Doha, Qatar.`
+    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5) and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital transformation with cutting-edge AI skills including 13 published ML projects on GitHub. Based in Doha, Qatar.`
 };
 
 const arKnowledge = {
-    experience: `خبرة أحمد فال المهنية (أبرز المناصب):\n1️⃣ نائب القنصل العام — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ مدير مصادقة الوثائق المؤمنة — ANRPTS (2015–2019)\n3️⃣ عضو لجنة الصفقات CIMAC — ANRPTS (2016–2018)\n4️⃣ مسؤول الصفقات العمومية — البرنامج الوطني لمكافحة السيدا (2005–2011)\n5️⃣ الأمين العام — بلدية المبروك (2006–2011)\n6️⃣ مدرب تقني — ستار تكنولوجيز (2003–2008)\n7️⃣ مشرف مراكز الحاسوب — دار الكمبيوتر (2002–2005)\n8️⃣ مدرب تقنية المعلومات — معهد إقرأ (2000–2002)`,
-    projects: `لديه 12 مشروعاً في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🌸 تصنيف الأيريس\n🤖 تكامل Gemini AI\n🔍 تحليل المشاعر (NLP)\n💱 تتبع أسعار الصرف\n🏠 توقع أسعار العقارات السعودية\n📧 تصنيف البريد المزعج\n🔢 التعرف على الأرقام (CNN)\n📊 التنبؤ بأسعار العملات الرقمية\n🧠 تحليل مشاعر النصوص العربية\n🛂 كشف الاحتيال في الصفقات العمومية\n📋 محسّن السيرة الذاتية ATS`,
+    experience: `خبرة أحمد فال المهنية (أبرز المناصب):\n1️⃣ مدير مركز الحالة المدنية — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ مدير المصادقة على الوثائق المؤمنة – ANRPTS (2015–2019)\n3️⃣ عضو لجنة المشتريات CIMAC — ANRPTS (2016–2018)\n4️⃣ مسؤول المشتريات العامة — البرنامج الوطني لمكافحة الإيدز (2005–2011)\n5️⃣ الأمين العام — بلدية المربوك (2006–2011)\n6️⃣ مدرب تقنية المعلومات — ستار تكنولوجيز (2003–2008)\n7️⃣ مشرف مراكز تقنية المعلومات — دار الكمبيوتر (2002–2005)\n8️⃣ مدرب تقنية المعلومات — معهد إقرأ (2000–2002)`,
+    projects: `لديه 13 مشروعاً في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🌸 تصنيف الأيريس\n🤖 تكامل Gemini AI\n🔍 تحليل المشاعر (NLP)\n💱 تتبع أسعار الصرف\n🏠 توقع أسعار العقارات السعودية\n📧 تصنيف البريد المزعج\n🔢 التعرف على الأرقام (CNN)\n📊 التنبؤ بأسعار العملات الرقمية\n🧠 تحليل مشاعر النصوص العربية\n🛂 كشف الاحتيال في الصفقات العمومية\n📋 محسّن السيرة الذاتية ATS\n🏠 PropAI — منصة التقييم العقاري الذكي في قطر`,
     skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق، هندسة البرامج\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الصفقات العمومية والدبلوماسية الرقمية`,
-    contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n📍 الدوحة، قطر\n💬 واتساب: +974 7473 6271\n🐙 GitHub: github.com/AHMEDVALL70\n💼 LinkedIn: ahmed-vall-sidina`,
+    contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n📍 الدوحة، قطر\n💬 واتساب: +974 7473 6271\n💼 LinkedIn: ahmed-vall-sidina\n🌐 Portfolio: ahmedvall70.github.io/ahmed-vall-cv/\n📊 Kaggle: kaggle.com/AHMEDVALL70\n🐙 GitHub: github.com/AHMEDVALL70`,
     education: `🎓 مهندس دولة BAC+5 — إلكترونيات وتطوير رقمي (1992–1997)\n📊 تخصص تعلم الآلة — Stanford/Coursera (2025)\n🧠 تعلم عميق — DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات — IBM (2024)\n💼 دبلوم إدارة أعمال — الأكاديمية المتحدة (2021)`,
     languages: `يتحدث أحمد فال:\n🇲🇷 العربية — اللغة الأم (100%)\n🇫🇷 الفرنسية — مهني (70%)\n🇬🇧 الإنجليزية — متوسط (50%)`,
     location: '📍 يقيم حالياً في الدوحة، قطر',
-    about: `أحمد فال جمال الدين سيدينا مهندس دولة ودبلوماسي سابق ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والدبلوماسية الرقمية مع 12 مشروعاً منشوراً في مجال الذكاء الاصطناعي. مقيم في الدوحة، قطر.`
+    about: `أحمد فال جمال الدين سيدينا مهندس دولة ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي. مقيم في الدوحة، قطر.`
 };
 
 function getAIResponse(msg) {
