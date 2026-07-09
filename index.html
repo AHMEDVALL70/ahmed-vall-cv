@@ -7,6 +7,7 @@
     <meta name="description" content="Ahmed Vall Jemal Dine Sidina — State Engineer & ML Specialist with 25+ years in biometrics and digital transformation. Based in Doha, Qatar. AI projects on GitHub.">
     <meta name="keywords" content="Ahmed Vall Jemal Dine Sidina, AHMEDVALL70, أحمد فال جمال الدين سيدينا, Machine Learning, Engineer, Mauritania, Biometrics, AI">
     <meta name="author" content="Ahmed Vall Jemal Dine Sidina">
+    <link rel="canonical" href="https://ahmedvall70.github.io/ahmed-vall-cv/">
 
     <!-- ✅ تحسين: Open Graph tags للمشاركة في واتساب ولينكدإن -->
     <meta property="og:title" content="Ahmed Vall Jemal Dine Sidina — State Engineer · AI & ML Specialist">
@@ -24,7 +25,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- ✅ إصلاح: إضافة Playfair Display و DM Sans (كانا مستخدمين في CSS دون تحميل) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;700;900&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <script type="application/ld+json">
@@ -42,7 +44,8 @@
             "https://www.kaggle.com/AHMEDVALL70",
             "https://ahmedvall70.github.io/ahmed-vall-cv/",
             "https://github.com/AHMEDVALL70",
-            "https://x.com/ahmedvallsidina"
+            "https://x.com/ahmedvallsidina",
+            "https://ahmedvall70.github.io/AhmedVall_PropAI/"
         ]
     }
     </script>
@@ -561,7 +564,7 @@
         }
         .pdf-modal-close:hover { background: rgba(255,255,255,0.2); }
         .pdf-modal-body { flex: 1; position: relative; overflow: hidden; }
-        .pdf-modal-body iframe { width: 100%; height: 100%; border: none; }
+        .pdf-modal-body iframe { width: 100%; height: 100%; border: none; background: #333; }
         .pdf-shield { position: absolute; top: 0; left: 0; right: 0; height: 40px; z-index: 10; background: transparent; }
 
         /* Lightbox */
@@ -714,6 +717,7 @@
             display: none; flex-direction: column; overflow: hidden;
             animation: slideUp 0.3s ease;
         }
+        [data-theme="light"] .ai-panel { background: var(--card-bg); }
         @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         .ai-panel.open { display: flex; }
         .ai-panel-header {
@@ -805,6 +809,8 @@
             .geo-ring { animation: none !important; }
         }
         @media (max-width: 900px) {
+            /* ✅ إصلاح: background-attachment: fixed يسبب مشاكل أداء وتقطيع على الجوال */
+            body { background-attachment: scroll; }
             .hero { grid-template-columns: 1fr; }
             .hero-right { min-height: 280px; order: -1; }
             .hero-left { padding: 40px 24px 60px; }
@@ -1033,7 +1039,8 @@
         </div>
         <div class="pdf-modal-body">
             <div class="pdf-shield"></div>
-            <iframe id="pdf-iframe" src="" sandbox="allow-scripts allow-same-origin"></iframe>
+            <!-- ✅ إصلاح: عرض PDF مباشرة بدل Google Viewer غير الموثوق، وإزالة sandbox المتناقض -->
+            <iframe id="pdf-iframe" src="" title="PDF Document Viewer"></iframe>
         </div>
     </div>
 
@@ -1055,7 +1062,7 @@
         <audio id="smartPlayer" controls></audio>
     </div>
 
-    <!-- ✅ تحسين: عداد الزوار الحقيقي -->
+    <!-- ✅ إصلاح: العداد يعمل محلياً (خدمة CountAPI توقفت نهائياً) -->
     <div class="visitor">
         <i class="fas fa-eye"></i>
         <span id="v-text">Visitors</span>:
@@ -1125,9 +1132,11 @@ const T = {
         eyebrow: "State Engineer · AI & Machine Learning Specialist",
         proLinks: [
             { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
-            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Bayt", url: "https://people.bayt.com/ahmed-vall-sidina/" },
             { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
-            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" },
+            { label: "PropAI Platform", url: "https://ahmedvall70.github.io/AhmedVall_PropAI/" },
+            { label: "Indeed Profile", url: "https://profile.indeed.com/?hl=en_QA&co=QA&from=gnav-homepage" }
         ],
         langPills: ["Arabic — Native", "French — Fluent", "English — Intermediate"],
         expertiseHeader: "Areas of Expertise",
@@ -1155,6 +1164,18 @@ const T = {
         testimonialAuthor: "— Official Commendation from the General Directorate",
         langNames: ["Arabic", "French", "English"],
         experience: [
+            {
+                title: "Administrative Supervisor | Freelance Python & AI Developer",
+                company: "Private Sector Organization — Doha, Qatar",
+                date: "07/2025 — Present",
+                desc: "Supervising administrative operations while independently developing AI and Machine Learning solutions as a parallel freelance practice.",
+                achievements: [
+                    "Supervise administrative operations within a private organization in Qatar",
+                    "Independently develop AI and Machine Learning solutions as a parallel freelance practice",
+                    "Apply advanced Python programming skills to build real-world projects in predictive modeling, natural language processing, and data analysis",
+                    "Continuously expand technical expertise in artificial intelligence through certifications and applied projects"
+                ]
+            },
             {
                 title: "Civil Status Center Director (National Agency for Population Registry and Secure Documents)",
                 company: "Consulate General of Mauritania — Jeddah, Kingdom of Saudi Arabia",
@@ -1274,7 +1295,7 @@ const T = {
             { title: "Python for Data Science & AI Certificate", provider: "IBM", date: "2024" },
             { title: "Professional Business Administration Diploma", provider: "United Academy for Training and Management", date: "2021" }
         ],
-        skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "IT Center Management", "Digital Diplomacy", "Strategic Planning", "Public Procurement", "Contract Negotiation", "NLP & Computer Vision", "TensorFlow", "Scikit-learn", "OpenCV", "Data Analysis", "Digital Transformation", "IT Operations"]
+        skills: ["Biometrics", "Cisco Networking", "Cybersecurity", "Python / ML", "Pandas / NumPy", "HTML5 / CSS3 / JavaScript", "AI Agents Development", "Deep Learning", "IT Center Management", "Digital Diplomacy", "Strategic Planning", "Public Procurement", "Contract Negotiation", "NLP & Computer Vision", "TensorFlow", "Scikit-learn", "OpenCV", "Data Analysis", "Digital Transformation", "IT Operations"]
     },
     ar: {
         name: "أحمد فال جمال الدين سيدينا",
@@ -1291,9 +1312,11 @@ const T = {
         eyebrow: "مهندس دولة · مختص الذكاء الاصطناعي وتعلم الآلة",
         proLinks: [
             { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
-            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Bayt", url: "https://people.bayt.com/ahmed-vall-sidina/" },
             { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
-            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+            { label: "Portfolio Website", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" },
+            { label: "منصة PropAI", url: "https://ahmedvall70.github.io/AhmedVall_PropAI/" },
+            { label: "ملفي على Indeed", url: "https://profile.indeed.com/?hl=en_QA&co=QA&from=gnav-homepage" }
         ],
         langPills: ["العربية — اللغة الأم", "الفرنسية — بطلاقة", "الإنجليزية — متوسط"],
         expertiseHeader: "مجالات التخصص",
@@ -1321,6 +1344,18 @@ const T = {
         testimonialAuthor: "— إشادة رسمية من الإدارة العامة",
         langNames: ["العربية", "الفرنسية", "الإنجليزية"],
         experience: [
+            {
+                title: "مشرف إداري | مطوّر بايثون وذكاء اصطناعي مستقل",
+                company: "مؤسسة قطاع خاص — الدوحة، قطر",
+                date: "07/2025 — حتى الآن",
+                desc: "الإشراف على العمليات الإدارية مع تطوير حلول الذكاء الاصطناعي وتعلم الآلة كممارسة مستقلة موازية.",
+                achievements: [
+                    "الإشراف على العمليات الإدارية داخل مؤسسة خاصة في قطر",
+                    "تطوير حلول الذكاء الاصطناعي وتعلم الآلة بشكل مستقل كممارسة موازية",
+                    "توظيف مهارات بايثون المتقدمة لبناء مشاريع واقعية في النمذجة التنبؤية ومعالجة اللغة الطبيعية وتحليل البيانات",
+                    "التوسع المستمر في الخبرات التقنية للذكاء الاصطناعي عبر الشهادات والمشاريع التطبيقية"
+                ]
+            },
             {
                 title: "مدير مركز الحالة المدنية (الوكالة الوطنية لسجل السكان والوثائق المؤمنة)",
                 company: "القنصلية العامة لموريتانيا — جدة، المملكة العربية السعودية",
@@ -1440,7 +1475,7 @@ const T = {
             { title: "شهادة بايثون لعلوم البيانات والذكاء الاصطناعي", provider: "IBM", date: "2024" },
             { title: "دبلوم إدارة الأعمال الاحترافي", provider: "الأكاديمية المتحدة للتدريب والإدارة", date: "2021" }
         ],
-        skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "إدارة مراكز الكمبيوتر", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي", "الصفقات العمومية", "إبرام العقود والتفاوض", "NLP والرؤية الحاسوبية", "TensorFlow", "Scikit-learn", "OpenCV", "تحليل البيانات", "التحول الرقمي", "عمليات تقنية المعلومات"]
+        skills: ["الأنظمة البيومترية", "شبكات سيسكو", "الأمن السيبراني", "بايثون / تعلم الآلة", "Pandas / NumPy", "HTML5 / CSS3 / JavaScript", "تطوير وكلاء الذكاء الاصطناعي", "التعلم العميق", "إدارة مراكز الكمبيوتر", "الدبلوماسية الرقمية", "التخطيط الاستراتيجي", "الصفقات العمومية", "إبرام العقود والتفاوض", "NLP والرؤية الحاسوبية", "TensorFlow", "Scikit-learn", "OpenCV", "تحليل البيانات", "التحول الرقمي", "عمليات تقنية المعلومات"]
     },
     fr: {
         name: "Ahmed Vall Jemal Dine Sidina",
@@ -1457,9 +1492,11 @@ const T = {
         eyebrow: "Ingénieur d'État · Spécialiste en IA & Machine Learning",
         proLinks: [
             { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-vall-sidina" },
-            { label: "Bayt", url: "https://www.bayt.com/en/myworkspace-j/" },
+            { label: "Bayt", url: "https://people.bayt.com/ahmed-vall-sidina/" },
             { label: "Kaggle", url: "https://www.kaggle.com/AHMEDVALL70" },
-            { label: "Portfolio", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" }
+            { label: "Portfolio", url: "https://ahmedvall70.github.io/ahmed-vall-cv/" },
+            { label: "Plateforme PropAI", url: "https://ahmedvall70.github.io/AhmedVall_PropAI/" },
+            { label: "Profil Indeed", url: "https://profile.indeed.com/?hl=en_QA&co=QA&from=gnav-homepage" }
         ],
         langPills: ["Arabe — Langue maternelle", "Français — Courant", "Anglais — Intermédiaire"],
         expertiseHeader: "Domaines d'Expertise",
@@ -1487,6 +1524,18 @@ const T = {
         testimonialAuthor: "— Éloge officiel de la Direction Générale",
         langNames: ["Arabe", "Français", "Anglais"],
         experience: [
+            {
+                title: "Superviseur Administratif | Développeur Python & IA Freelance",
+                company: "Organisation du secteur privé — Doha, Qatar",
+                date: "07/2025 — Présent",
+                desc: "Supervision des opérations administratives tout en développant des solutions d'IA et de Machine Learning en pratique indépendante parallèle.",
+                achievements: [
+                    "Supervision des opérations administratives au sein d'une organisation privée au Qatar",
+                    "Développement indépendant de solutions d'IA et de Machine Learning en pratique freelance parallèle",
+                    "Application de compétences Python avancées pour construire des projets réels en modélisation prédictive, NLP et analyse de données",
+                    "Développement continu de l'expertise en intelligence artificielle via certifications et projets appliqués"
+                ]
+            },
             {
                 title: "Directeur du Centre de l'État Civil (Agence Nationale du Registre des Populations et des Documents Sécurisés)",
                 company: "Consulat Général de Mauritanie — Djeddah, Royaume d'Arabie Saoudite",
@@ -1606,7 +1655,7 @@ const T = {
             { title: "Certificat Python pour la Science des Données et l'IA", provider: "IBM", date: "2024" },
             { title: "Diplôme Professionnel en Administration des Affaires", provider: "Académie Unie de Formation et de Management", date: "2021" }
         ],
-        skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Gestion de Centres IT", "Diplomatie Numérique", "Planification Stratégique", "Marchés Publics", "Négociation Contractuelle", "NLP & Vision par Ordinateur", "TensorFlow", "Scikit-learn", "OpenCV", "Analyse de Données", "Transformation Numérique", "Opérations IT"]
+        skills: ["Biométrie", "Réseaux Cisco", "Cybersécurité", "Python / ML", "Pandas / NumPy", "HTML5 / CSS3 / JavaScript", "Développement d'Agents IA", "Deep Learning", "Gestion de Centres IT", "Diplomatie Numérique", "Planification Stratégique", "Marchés Publics", "Négociation Contractuelle", "NLP & Vision par Ordinateur", "TensorFlow", "Scikit-learn", "OpenCV", "Analyse de Données", "Transformation Numérique", "Opérations IT"]
     }
 };
 
@@ -1672,7 +1721,8 @@ function setLanguage(lang) {
     // Docs labels
     document.getElementById('docs-label').innerText = d.docsLabel;
     document.getElementById('view-only-text').innerText = d.viewOnly;
-    document.getElementById('view-only-text2').innerText = d.viewBtnText;
+    // ✅ إصلاح: كان يعرض "عرض" بدلاً من "عرض فقط" في رأس نافذة PDF
+    document.getElementById('view-only-text2').innerText = d.viewOnly;
     document.getElementById('view-btn-text').innerText = d.viewBtnText;
     document.querySelectorAll('.view-btn-text2').forEach(el => el.innerText = d.viewBtnText);
 
@@ -1866,9 +1916,10 @@ function handleLightboxClick(e) {
 }
 
 // ─── PDF ───
+// ✅ إصلاح: عرض PDF مباشرة في iframe (المتصفحات الحديثة تعرضه أصلياً)
+// بدلاً من Google Docs Viewer الذي يعطي صفحة بيضاء أو "refused to connect" كثيراً
 function openPDF(url, title) {
-    const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
-    document.getElementById('pdf-iframe').src = viewerUrl;
+    document.getElementById('pdf-iframe').src = url + '#toolbar=0&navpanes=0';
     document.getElementById('pdf-modal-title').textContent = title;
     document.getElementById('pdf-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1893,46 +1944,38 @@ function copyEmail(e) {
     });
 }
 
-// ✅ تحسين: عداد الزوار الحقيقي عبر CountAPI
+// ✅ إصلاح: خدمة CountAPI توقفت نهائياً — عداد محلي بسيط بدون طلبات شبكة فاشلة
+// (للحصول على إحصائيات حقيقية لكل الزوار، استخدم خدمة مثل GoatCounter المجانية)
 function loadVisitorCount() {
-    fetch('https://api.countapi.xyz/hit/ahmedvall70.github.io/visits')
-        .then(res => res.json())
-        .then(data => {
-            if (data && data.value) {
-                document.getElementById('v-count').innerText = data.value.toLocaleString();
-            } else {
-                document.getElementById('v-count').innerText = '870+';
-            }
-        })
-        .catch(() => {
-            // Fallback: استخدام localStorage مع القيمة الأصلية 870
-            let v = parseInt(localStorage.getItem('site_v_count') || 870) + 1;
-            localStorage.setItem('site_v_count', v);
-            document.getElementById('v-count').innerText = v.toLocaleString();
-        });
+    let v = 981;
+    try {
+        v = parseInt(localStorage.getItem('site_v_count') || '981', 10) + 1;
+        localStorage.setItem('site_v_count', String(v));
+    } catch (_) {}
+    document.getElementById('v-count').innerText = v.toLocaleString();
 }
 
 // ─── AI ASSISTANT ───
 const aiKnowledge = {
-    experience: `Ahmed Vall's professional experience (selected):\n1️⃣ Civil Status Center Director — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Secure Documents Authentication Manager – ANRPTS (2015–2019)\n3️⃣ Procurement Committee Member (CIMAC) — ANRPTS (2016–2018)\n4️⃣ Public Procurement Officer — National AIDS Control Program (2005–2011)\n5️⃣ Secretary General — Mbrouk Municipality (2006–2011)\n6️⃣ IT Trainer & Maintenance Engineer — Star Technologies (2003–2008)\n7️⃣ IT Center Supervisor — Dar Al Computer (2002–2005)\n8️⃣ IT Trainer — Iqraa Institute (2000–2002)`,
+    experience: `Ahmed Vall's professional experience (selected):\n⭐ Administrative Supervisor | Freelance Python & AI Developer — Qatar (07/2025–Present)\n1️⃣ Civil Status Center Director — Mauritanian Consulate, Jeddah (2019–2024)\n2️⃣ Secure Documents Authentication Manager – ANRPTS (2015–2019)\n3️⃣ Procurement Committee Member (CIMAC) — ANRPTS (2016–2018)\n4️⃣ Public Procurement Officer — National AIDS Control Program (2005–2011)\n5️⃣ Secretary General — Mbrouk Municipality (2006–2011)\n6️⃣ IT Trainer & Maintenance Engineer — Star Technologies (2003–2008)\n7️⃣ IT Center Supervisor — Dar Al Computer (2002–2005)\n8️⃣ IT Trainer — Iqraa Institute (2000–2002)`,
     projects: `Ahmed Vall has 13 ML projects:\n🩺 Diabetes Prediction\n🌸 Iris Classification\n🤖 Gemini AI Integration\n🔍 Sentiment Analyzer (NLP)\n💱 Exchange Rate Tracker\n🏠 Saudi Real Estate Predictor\n📧 Spam Mail Classifier\n🔢 Handwritten Digit Classifier (CNN)\n📊 Crypto Price Predictor\n🧠 Arabic Sentiment Analysis\n🛂 Procurement Fraud Detection\n📋 ATS CV Optimizer\n🏠 PropAI — Qatar Real Estate Valuation Platform`,
-    skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• OpenCV, NLP, Deep Learning, Prompt Engineering\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Public Procurement & Digital Diplomacy`,
+    skills: `Technical Skills:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• HTML5, CSS3, JavaScript\n• OpenCV, NLP, Deep Learning, AI Agents, Prompt Engineering\n• Biometric Systems & Secure Documents\n• Cisco Networking & Cybersecurity\n• Public Procurement & Digital Diplomacy`,
     contact: `📧 Email: ahmedvalljemaldine@gmail.com\n📍 Doha, Qatar\n💬 WhatsApp: +974 7473 6271\n💼 LinkedIn: linkedin.com/in/ahmed-vall-sidina\n🌐 Portfolio: ahmedvall70.github.io/ahmed-vall-cv/\n📊 Kaggle: kaggle.com/AHMEDVALL70\n🐙 GitHub: github.com/AHMEDVALL70\n🐦 X: @ahmedvallsidina`,
     education: `🎓 State Engineer BAC+5 — Electronics & Digital Development (1992–1997)\n📊 Machine Learning Specialization — Stanford/Coursera (2025)\n🧠 Deep Learning Specialization — DeepLearning.AI (2025)\n🐍 Python for Data Science — IBM (2024)\n💼 Business Administration Diploma — United Academy (2021)`,
     languages: `Ahmed Vall speaks:\n🇲🇷 Arabic — Native (100%)\n🇫🇷 French — Professional (70%)\n🇬🇧 English — Intermediate (50%)`,
     location: `📍 Currently based in Doha, Qatar`,
-    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5) and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital transformation with cutting-edge AI skills including 13 published ML projects on GitHub. Based in Doha, Qatar.`
+    about: `Ahmed Vall Jemal Dine Sidina is a State Engineer (BAC+5) and Machine Learning specialist from Mauritania. He combines 25+ years of experience in biometric systems, civil registry, and digital transformation with cutting-edge AI skills including 13 published ML projects on GitHub. Currently working in Qatar as an Administrative Supervisor and freelance Python & AI developer. Based in Doha, Qatar.`
 };
 
 const arKnowledge = {
-    experience: `خبرة أحمد فال المهنية (أبرز المناصب):\n1️⃣ مدير مركز الحالة المدنية — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ مدير المصادقة على الوثائق المؤمنة – ANRPTS (2015–2019)\n3️⃣ عضو لجنة المشتريات CIMAC — ANRPTS (2016–2018)\n4️⃣ مسؤول المشتريات العامة — البرنامج الوطني لمكافحة الإيدز (2005–2011)\n5️⃣ الأمين العام — بلدية المربوك (2006–2011)\n6️⃣ مدرب تقنية المعلومات — ستار تكنولوجيز (2003–2008)\n7️⃣ مشرف مراكز تقنية المعلومات — دار الكمبيوتر (2002–2005)\n8️⃣ مدرب تقنية المعلومات — معهد إقرأ (2000–2002)`,
+    experience: `خبرة أحمد فال المهنية (أبرز المناصب):\n⭐ مشرف إداري | مطوّر بايثون وذكاء اصطناعي مستقل — قطر (07/2025–حتى الآن)\n1️⃣ مدير مركز الحالة المدنية — القنصلية الموريتانية، جدة (2019–2024)\n2️⃣ مدير المصادقة على الوثائق المؤمنة – ANRPTS (2015–2019)\n3️⃣ عضو لجنة المشتريات CIMAC — ANRPTS (2016–2018)\n4️⃣ مسؤول المشتريات العامة — البرنامج الوطني لمكافحة الإيدز (2005–2011)\n5️⃣ الأمين العام — بلدية المربوك (2006–2011)\n6️⃣ مدرب تقنية المعلومات — ستار تكنولوجيز (2003–2008)\n7️⃣ مشرف مراكز تقنية المعلومات — دار الكمبيوتر (2002–2005)\n8️⃣ مدرب تقنية المعلومات — معهد إقرأ (2000–2002)`,
     projects: `لديه 13 مشروعاً في تعلم الآلة:\n🩺 التنبؤ بالسكري\n🌸 تصنيف الأيريس\n🤖 تكامل Gemini AI\n🔍 تحليل المشاعر (NLP)\n💱 تتبع أسعار الصرف\n🏠 توقع أسعار العقارات السعودية\n📧 تصنيف البريد المزعج\n🔢 التعرف على الأرقام (CNN)\n📊 التنبؤ بأسعار العملات الرقمية\n🧠 تحليل مشاعر النصوص العربية\n🛂 كشف الاحتيال في الصفقات العمومية\n📋 محسّن السيرة الذاتية ATS\n🏠 PropAI — منصة التقييم العقاري الذكي في قطر`,
-    skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow\n• OpenCV, NLP, تعلم عميق، هندسة البرامج\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الصفقات العمومية والدبلوماسية الرقمية`,
+    skills: `المهارات التقنية:\n• Python, Scikit-learn, TensorFlow, Pandas, NumPy\n• HTML5, CSS3, JavaScript\n• OpenCV, NLP, تعلم عميق، وكلاء ذكاء اصطناعي، هندسة البرامج\n• الأنظمة البيومترية والوثائق المؤمنة\n• شبكات سيسكو والأمن السيبراني\n• الصفقات العمومية والدبلوماسية الرقمية`,
     contact: `📧 البريد: ahmedvalljemaldine@gmail.com\n📍 الدوحة، قطر\n💬 واتساب: +974 7473 6271\n💼 LinkedIn: ahmed-vall-sidina\n🌐 Portfolio: ahmedvall70.github.io/ahmed-vall-cv/\n📊 Kaggle: kaggle.com/AHMEDVALL70\n🐙 GitHub: github.com/AHMEDVALL70`,
     education: `🎓 مهندس دولة BAC+5 — إلكترونيات وتطوير رقمي (1992–1997)\n📊 تخصص تعلم الآلة — Stanford/Coursera (2025)\n🧠 تعلم عميق — DeepLearning.AI (2025)\n🐍 بايثون لعلوم البيانات — IBM (2024)\n💼 دبلوم إدارة أعمال — الأكاديمية المتحدة (2021)`,
     languages: `يتحدث أحمد فال:\n🇲🇷 العربية — اللغة الأم (100%)\n🇫🇷 الفرنسية — مهني (70%)\n🇬🇧 الإنجليزية — متوسط (50%)`,
     location: '📍 يقيم حالياً في الدوحة، قطر',
-    about: `أحمد فال جمال الدين سيدينا مهندس دولة ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي. مقيم في الدوحة، قطر.`
+    about: `أحمد فال جمال الدين سيدينا مهندس دولة ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي. يعمل حالياً في قطر مشرفاً إدارياً ومطوّر بايثون وذكاء اصطناعي مستقل. مقيم في الدوحة، قطر.`
 };
 
 function getAIResponse(msg) {
@@ -1971,18 +2014,27 @@ function sendAI() {
     if (!msg) return;
     input.value = '';
     const msgs = document.getElementById('ai-messages');
-    msgs.innerHTML += `<div class="ai-msg user">${msg}</div>`;
 
-    // ✅ تحسين: مؤشر الكتابة
-    const typingId = 'typing-' + Date.now();
-    msgs.innerHTML += `<div class="ai-typing" id="${typingId}"><span></span><span></span><span></span></div>`;
+    // ✅ إصلاح أمني: إدراج رسالة المستخدم كنص (textContent) بدل innerHTML لمنع حقن HTML
+    const userDiv = document.createElement('div');
+    userDiv.className = 'ai-msg user';
+    userDiv.textContent = msg;
+    msgs.appendChild(userDiv);
+
+    // مؤشر الكتابة
+    const typing = document.createElement('div');
+    typing.className = 'ai-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(typing);
     msgs.scrollTop = msgs.scrollHeight;
 
     setTimeout(() => {
-        const typing = document.getElementById(typingId);
-        if (typing) typing.remove();
+        typing.remove();
         const reply = getAIResponse(msg);
-        msgs.innerHTML += `<div class="ai-msg bot">${reply.replace(/\n/g,'<br>')}</div>`;
+        const botDiv = document.createElement('div');
+        botDiv.className = 'ai-msg bot';
+        botDiv.innerHTML = reply.replace(/\n/g, '<br>');
+        msgs.appendChild(botDiv);
         msgs.scrollTop = msgs.scrollHeight;
     }, 600);
 }
